@@ -5,6 +5,7 @@
 1. `cd` into this frontend folder with your terminal or command prompt
 1. Run `npm install` which will install all the required dependencies
 1. When successful, run `ng serve --open` - this will open the application in your default web browser.
+   This only works if you have Angular CLI globally installed. If not, run `npm run ng serve --open`.
 1. Alternatively, you can run just `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 1. This project uses [Angular Material](https://material.angular.io/) for styling. It is enabled for you by by us by ruuning `ng add @angular/material`. 
 
