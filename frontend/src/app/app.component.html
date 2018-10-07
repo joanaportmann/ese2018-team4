@@ -1,6 +1,39 @@
-<mat-form-field>
-  <input matInput placeholder="Create list" [(ngModel)]="todoList.name" name="name">
-</mat-form-field>
+
+<!-- <div style="background-color:black;color:white;padding:20px;"> -->
+
+<p>
+  Please enter all required information for the Job
+</p>
+<div class="example-container">
+
+  <p>
+  <mat-form-field>
+    <input matInput placeholder="Job Id">
+  </mat-form-field>
+  </p>
+  <p>
+  <mat-form-field>
+    <input matInput placeholder="Job Name" [(ngModel)]="todoList.name" name="name">
+  </mat-form-field>
+  </p>
+
+  <p>
+  <mat-form-field>
+    <textarea matInput placeholder="Description"></textarea>
+  </mat-form-field>
+  </p>
+
+  <p>
+  <mat-form-field>
+    <textarea matInput placeholder="Necessary Skills"></textarea>
+  </mat-form-field>
+</p>
+</div>
+
+<!-- <mat-form-field>
+  <input matInput placeholder="Create Job" [(ngModel)]="todoList.name" name="name">
+</mat-form-field> -->
+
 <button mat-button (click)="onTodoListCreate()">create</button>
 <app-todo-list [todoList]="todoList" (destroy)="onTodoListDestroy($event)"
                *ngFor="let todoList of todoLists"></app-todo-list>
