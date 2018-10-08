@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  todoList: TodoList = new TodoList(null, '');
+  todoList: TodoList = new TodoList(null, '', '', '');
   todoLists: TodoList[] = [];
 
   constructor(private httpClient: HttpClient) {
@@ -18,17 +18,19 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.httpClient.get('http://localhost:3000/todolist').subscribe((instances: any) => {
-      this.todoLists = instances.map((instance) => new TodoList(instance.id, instance.name));
+      this.todoLists = instances.map((instance) => 
+          new TodoList(instance.id, instance.name, instance.description, instance.necessarySkills));
     });
   }
 
   onTodoListCreate() {
     this.httpClient.post('http://localhost:3000/todolist', {
       'name': this.todoList.name
+      // TODO: send other stuff
     }).subscribe((instance: any) => {
       this.todoList.id = instance.id;
       this.todoLists.push(this.todoList);
-      this.todoList = new TodoList(null, '');
+      this.todoList = new TodoList(null, '', '', '');
     });
   }
 

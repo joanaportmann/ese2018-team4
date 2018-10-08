@@ -8,7 +8,7 @@
 
   <p>
   <mat-form-field>
-    <input matInput placeholder="Job Id">
+    <input matInput placeholder="Job Id" [(ngModel)]="todoList.id" name="id">
   </mat-form-field>
   </p>
   <p>
@@ -19,13 +19,13 @@
 
   <p>
   <mat-form-field>
-    <textarea matInput placeholder="Description"></textarea>
+    <textarea matInput placeholder="Description" [(ngModel)]="todoList.description" name="description"></textarea>
   </mat-form-field>
   </p>
 
   <p>
   <mat-form-field>
-    <textarea matInput placeholder="Necessary Skills"></textarea>
+    <textarea matInput placeholder="Necessary Skills" [(ngModel)]="todoList.necessarySkills" name="necessarySkills"></textarea>
   </mat-form-field>
 </p>
 </div>
