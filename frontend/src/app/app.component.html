@@ -1,15 +1,8 @@
-<body style = "background-color: mistyrose">
-
 <h1 style="text-align:center; font-family:courier;"><ins>Studentenjobvermittlung</ins></h1>
 <p style="text-align:center;">Please enter all required information for the Job</p>
 
 <div class="example-container">
 
-  <p style="text-align:center;">
-  <mat-form-field>
-    <input matInput placeholder="Job Id" [(ngModel)]="todoList.id" name="id">
-  </mat-form-field>
-  </p>
   <p style="text-align:center;">
   <mat-form-field>
     <input matInput placeholder="Job Name" [(ngModel)]="todoList.name" name="name">
@@ -29,12 +22,8 @@
 </p>
 </div>
 
-<!-- <mat-form-field>
-  <input matInput placeholder="Create Job" [(ngModel)]="todoList.name" name="name">
-</mat-form-field> -->
-<p align = "center">
+<p align="center">
 <button mat-button (click)="onTodoListCreate()">create</button>
 <app-todo-list [todoList]="todoList" (destroy)="onTodoListDestroy($event)"
                *ngFor="let todoList of todoLists"></app-todo-list>
 </p>
-</body>

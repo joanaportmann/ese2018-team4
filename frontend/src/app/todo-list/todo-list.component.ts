@@ -30,9 +30,7 @@ export class TodoListComponent implements OnInit {
   }
 
   onSave() {
-    this.httpClient.put('http://localhost:3000/todolist/' + this.todoList.id, {
-      'name': this.todoList.name
-    }).subscribe();
+    this.httpClient.put('http://localhost:3000/todolist/' + this.todoList.id, this.todoList).subscribe();
   }
 
   onDestroy() {

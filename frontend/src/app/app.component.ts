@@ -24,14 +24,12 @@ export class AppComponent implements OnInit {
   }
 
   onTodoListCreate() {
-    this.httpClient.post('http://localhost:3000/todolist', {
-      'name': this.todoList.name
-      // TODO: send other stuff
-    }).subscribe((instance: any) => {
-      this.todoList.id = instance.id;
-      this.todoLists.push(this.todoList);
-      this.todoList = new TodoList(null, '', '', '');
-    });
+    this.httpClient.post('http://localhost:3000/todolist', this.todoList)
+      .subscribe((instance: any) => {
+        this.todoList.id = instance.id;
+        this.todoLists.push(this.todoList);
+        this.todoList = new TodoList(null, '', '', '');
+      });
   }
 
   onTodoListDestroy(todoList: TodoList) {

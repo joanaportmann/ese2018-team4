@@ -2,15 +2,15 @@
   <mat-form-field>
     <input matInput placeholder="Name" [(ngModel)]="todoList.name" name="name" (ngModelChange)="onSave()">
   </mat-form-field>
-  <button mat-button (click)="onDestroy()">destroy</button>
   <br>
   <mat-form-field>
-    <input matInput placeholder="Create Item" [(ngModel)]="todoItem.name" name="name">
+    <input matInput placeholder="Description" [(ngModel)]="todoList.description" name="description" (ngModelChange)="onSave()">
   </mat-form-field>
-  <button mat-button (click)="onTodoItemCreate()">add</button>
-  <mat-list>
-    <mat-list-item *ngFor="let todoItem of todoItems">
-      <app-todo-item [todoItem]="todoItem" (destroy)="onTodoItemDestroy($event)"></app-todo-item>
-    </mat-list-item>
-  </mat-list>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Necessary Skills" [(ngModel)]="todoList.necessarySkills" name="necessarySkills" (ngModelChange)="onSave()">
+  </mat-form-field>
+  <br>
+  <button mat-button (click)="onDestroy()">destroy</button>
+  <br>
 </mat-card>
