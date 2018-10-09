@@ -1,16 +1,20 @@
 <mat-card>
-  <mat-form-field>
-    <input matInput placeholder="Name" [(ngModel)]="todoList.name" name="name" (ngModelChange)="onSave()">
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input matInput placeholder="Description" [(ngModel)]="todoList.description" name="description" (ngModelChange)="onSave()">
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input matInput placeholder="Necessary Skills" [(ngModel)]="todoList.necessarySkills" name="necessarySkills" (ngModelChange)="onSave()">
-  </mat-form-field>
-  <br>
-  <button mat-button (click)="onDestroy()">destroy</button>
-  <br>
+
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              <input matInput placeholder="Jobname" [(ngModel)]="todoList.name" name="name" (ngModelChange)="onSave()">  <button mat-button (click)="onDestroy()">destroy</button>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+    
+        <mat-form-field>
+            <input matInput placeholder="Description" [(ngModel)]="todoList.description" name="description" (ngModelChange)="onSave()">
+        </mat-form-field>
+    <br>
+        <mat-form-field>
+            <input matInput placeholder="Necessary Skills" [(ngModel)]="todoList.necessarySkills" name="necessarySkills" (ngModelChange)="onSave()">
+        </mat-form-field>
+       
+      </mat-expansion-panel>
 </mat-card>
