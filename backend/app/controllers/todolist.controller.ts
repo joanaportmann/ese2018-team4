@@ -29,7 +29,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 });
 router.put('/:id', async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  const instance = await TodoList.findById(id);
+  const instance: TodoList | null = await TodoList.findById(id);
   if (instance == null) {
     res.statusCode = 404;
     res.json({
