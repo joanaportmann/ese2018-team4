@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TodoList} from './todo-list';
 import {TodoItem} from './todo-item';
 import {HttpClient} from '@angular/common/http';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import {HttpClient} from '@angular/common/http';
 export class AppComponent implements OnInit {
   todoList: TodoList = new TodoList(null, '', '', '');
   todoLists: TodoList[] = [];
+  Validators
 
   constructor(private httpClient: HttpClient) {
 
@@ -18,7 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.httpClient.get('http://localhost:3000/todolist').subscribe((instances: any) => {
-      this.todoLists = instances.map((instance) => 
+      this.todoLists = instances.map((instance) =>
           new TodoList(instance.id, instance.name, instance.description, instance.necessarySkills));
     });
   }
@@ -35,5 +37,4 @@ export class AppComponent implements OnInit {
   onTodoListDestroy(todoList: TodoList) {
     this.todoLists.splice(this.todoLists.indexOf(todoList), 1);
   }
-
 }

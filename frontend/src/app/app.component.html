@@ -1,17 +1,18 @@
 <h1 style="text-align:center; font-family:courier;"><ins>Studentenjobvermittlung</ins></h1>
-<p style="text-align:center;">Please enter all required information for the Job</p>
+<p style="text-align:center;">Please enter the information for the Job <br>
+ - fields marked with (*) must be filled in.</p>
 
 <div class="example-container">
 
   <p style="text-align:center;">
   <mat-form-field>
-    <input matInput placeholder="Job Name" [(ngModel)]="todoList.name" name="name">
+    <input matInput placeholder="Job Name" required [(ngModel)]="todoList.name" name="name">
   </mat-form-field>
   </p>
 
   <p style="text-align:center;">
   <mat-form-field>
-    <textarea matInput placeholder="Description" [(ngModel)]="todoList.description" name="description"></textarea>
+    <textarea matInput placeholder="Description" required [(ngModel)]="todoList.description" name="description"></textarea>
   </mat-form-field>
   </p>
 
