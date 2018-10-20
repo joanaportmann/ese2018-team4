@@ -1,8 +1,7 @@
 import {Table, Column, Model, HasMany} from 'sequelize-typescript';
-import {TodoItem} from './todoitem.model';
 
 @Table
-export class TodoList extends Model<TodoList> {
+export class Job extends Model<Job> {
 
   @Column
   name!: string;
@@ -12,9 +11,6 @@ export class TodoList extends Model<TodoList> {
 
   @Column
   necessarySkills!: string;
-
-  @HasMany(() => TodoItem)
-  todoItems!: TodoItem[];
 
   toSimplification(): any {
     return {

@@ -6,25 +6,25 @@
 
   <p style="text-align:center;">
   <mat-form-field>
-    <input matInput placeholder="Job Name" required [(ngModel)]="todoList.name" name="name">
+    <input matInput placeholder="Job Name" required [(ngModel)]="job.name" name="name">
   </mat-form-field>
   </p>
 
   <p style="text-align:center;">
   <mat-form-field>
-    <textarea matInput placeholder="Description" required [(ngModel)]="todoList.description" name="description"></textarea>
+    <textarea matInput placeholder="Description" required [(ngModel)]="job.description" name="description"></textarea>
   </mat-form-field>
   </p>
 
   <p style="text-align:center;">
   <mat-form-field>
-    <textarea matInput placeholder="Necessary Skills" [(ngModel)]="todoList.necessarySkills" name="necessarySkills"></textarea>
+    <textarea matInput placeholder="Necessary Skills" [(ngModel)]="job.necessarySkills" name="necessarySkills"></textarea>
   </mat-form-field>
 </p>
 </div>
 
 <p align="center">
-<button mat-button (click)="onTodoListCreate()">create</button>
-<app-todo-list [todoList]="todoList" (destroy)="onTodoListDestroy($event)"
-               *ngFor="let todoList of todoLists"></app-todo-list>
+<button mat-button (click)="onJobCreate()">create</button>
+<app-job [job]="job" (destroy)="onJobDestroy($event)"
+               *ngFor="let job of jobs"></app-job>
 </p>

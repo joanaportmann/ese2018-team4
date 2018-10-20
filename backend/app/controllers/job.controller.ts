@@ -1,14 +1,14 @@
 import {Router, Request, Response} from 'express';
-import {TodoList} from '../models/todolist.model';
+import {Job} from '../models/job.model';
 
 const router: Router = Router();
 router.get('/', async (req: Request, res: Response) => {
-  const instances = await TodoList.findAll();
+  const instances = await Job.findAll();
   res.statusCode = 200;
-  res.send(instances.map(e => e.toSimplification()));
+  res.send(instances.map(job => job.toSimplification()));
 });
 router.post('/', async (req: Request, res: Response) => {
-  const instance = new TodoList();
+  const instance = new Job();
   instance.fromSimplification(req.body);
   await instance.save();
   res.statusCode = 201;
@@ -16,7 +16,7 @@ router.post('/', async (req: Request, res: Response) => {
 });
 router.get('/:id', async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  const instance = await TodoList.findById(id);
+  const instance = await Job.findById(id);
   if (instance == null) {
     res.statusCode = 404;
     res.json({
@@ -29,7 +29,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 });
 router.put('/:id', async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  const instance: TodoList | null = await TodoList.findById(id);
+  const instance: Job | null = await Job.findById(id);
   if (instance == null) {
     res.statusCode = 404;
     res.json({
@@ -44,7 +44,7 @@ router.put('/:id', async (req: Request, res: Response) => {
 });
 router.delete('/:id', async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  const instance = await TodoList.findById(id);
+  const instance = await Job.findById(id);
   if (instance == null) {
     res.statusCode = 404;
     res.json({
@@ -58,4 +58,4 @@ router.delete('/:id', async (req: Request, res: Response) => {
   res.send();
 });
 
-export const TodoListController: Router = router;
+export const JobController: Router = router;
