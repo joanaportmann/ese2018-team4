@@ -10,9 +10,12 @@ router.get('/', async (req: Request, res: Response) => {
   res.send(instances.map(job => job.toSimplification()));
 });
 
-router.post('/', async (req: Request, res: Response) => {
-  passport.authenticate('local');
-
+router.post('/', (req: Request, res: Response) => {
+  if (!req.user) {
+    res.statusCode = 403;
+    res.send('You are not logged in, moron');
+  }
+}, async (req: Request, res: Response) => {
   const instance = new Job();
   instance.fromSimplification(req.body);
   await instance.save();

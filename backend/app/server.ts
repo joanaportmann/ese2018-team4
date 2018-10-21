@@ -5,6 +5,8 @@ import express from 'express';
 import {JobController} from './controllers';
 import {Sequelize} from 'sequelize-typescript';
 import {Job} from './models/job.model';
+import passport from 'passport';
+import {Strategy as LocalStrategy} from 'passport-local';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -18,6 +20,16 @@ sequelize.addModels([Job]);
 // create a new express application instance
 const app: express.Application = express();
 app.use(express.json());
+
+// init passport (for authentication)
+app.use(passport.initialize());
+//app.use(passport.session());
+
+// configure authentication strategy
+passport.use(new LocalStrategy((username: string, password: string, done: Function) => {
+  if(username === 'test' && password === 'test') return done(null, 'test');
+  return done(null, false, {message: 'authentication failed'});
+}));
 
 // define the port the express app will listen on
 var port: number = 3000;
