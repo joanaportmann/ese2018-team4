@@ -23,11 +23,20 @@ app.use(express.json());
 
 // init passport (for authentication)
 app.use(passport.initialize());
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 //app.use(passport.session());
 
 // configure authentication strategy
 passport.use(new LocalStrategy((username: string, password: string, done: Function) => {
-  if(username === 'test' && password === 'test') return done(null, 'test');
+  if(username === 'test' && password === 'test') return done(null, {name: 'test'});
   return done(null, false, {message: 'authentication failed'});
 }));
 
@@ -45,6 +54,10 @@ app.use(function (req, res, next) {
 });
 
 app.use('/job', JobController);
+app.post('/login', passport.authenticate('local'), (req: express.Request, res: express.Response) => {
+    res.statusCode = 200;
+    res.send('login successful');
+});
 
 sequelize.sync().then(() => {
 // start serving the application on the given port
