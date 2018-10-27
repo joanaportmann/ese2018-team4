@@ -7,6 +7,8 @@ import {Sequelize} from 'sequelize-typescript';
 import {Job} from './models/job.model';
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
+import {User} from './models/user.model';
+import crypto from 'crypto';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -15,7 +17,7 @@ const sequelize =  new Sequelize({
   password: '',
   storage: 'db.sqlite'
 });
-sequelize.addModels([Job]);
+sequelize.addModels([Job, User]);
 
 // create a new express application instance
 const app: express.Application = express();
@@ -35,9 +37,17 @@ passport.deserializeUser(function(user, done) {
 //app.use(passport.session());
 
 // configure authentication strategy
-passport.use(new LocalStrategy((username: string, password: string, done: Function) => {
-  if(username === 'test' && password === 'test') return done(null, {name: 'test'});
-  return done(null, false, {message: 'authentication failed'});
+passport.use(new LocalStrategy(async (username: string, password: string, done: Function) => {
+  console.log('Attempting login with user: ' + username);
+  const user: User | null = await User.findByPrimary(username);
+  if (!user) return done(null, false, {message: 'no user found'});
+  console.log('user found');
+  console.log('userpw: ' + User.hashPassword(password));
+  console.log('password from db: ' + user.passwordHash);
+  if (User.hashPassword(password).toLowerCase() !== user.passwordHash.toLowerCase())
+    return done(null, false, {message: 'wrong password'});
+  console.log('password correct');
+  return done(null, user);
 }));
 
 // define the port the express app will listen on
