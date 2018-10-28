@@ -6,15 +6,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 
 // Add css components from angular material
-import {MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule, MatListModule, MatExpansionModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule, MatListModule, MatExpansionModule, MatSnackBarModule} from '@angular/material';
 import { JobComponent } from './job/job.component';
 import {FormsModule} from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     JobComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import {FormsModule} from '@angular/forms';
     MatInputModule,
     MatCheckboxModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

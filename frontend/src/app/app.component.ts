@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Job} from './job';
+import {Job} from './models/job';
 import {HttpClient} from '@angular/common/http';
 import {FormControl, Validators} from '@angular/forms';
 
@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   Validators
 
   constructor(private httpClient: HttpClient) {
-
   }
 
   ngOnInit() {
@@ -31,6 +30,7 @@ export class AppComponent implements OnInit {
         this.jobs.push(this.job);
         this.job = new Job(null, '', '', '');
       });
+      
   }
 
   onJobDestroy(job: Job) {

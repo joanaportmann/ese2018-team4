@@ -38,15 +38,12 @@ passport.deserializeUser(function(user, done) {
 
 // configure authentication strategy
 passport.use(new LocalStrategy(async (username: string, password: string, done: Function) => {
-  console.log('Attempting login with user: ' + username);
   const user: User | null = await User.findByPrimary(username);
   if (!user) return done(null, false, {message: 'no user found'});
-  console.log('user found');
-  console.log('userpw: ' + User.hashPassword(password));
-  console.log('password from db: ' + user.passwordHash);
+
   if (User.hashPassword(password).toLowerCase() !== user.passwordHash.toLowerCase())
     return done(null, false, {message: 'wrong password'});
-  console.log('password correct');
+
   return done(null, user);
 }));
 
