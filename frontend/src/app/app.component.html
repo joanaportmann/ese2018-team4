@@ -1,5 +1,11 @@
 <form class="main-form">
   <h1 class="page-title">Studentenjobvermittlung</h1>
+
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#Sign In">Sign In</a></li>
+  </ul>
+
   <p>
     Please enter the information for the Job - fields marked with (*) must be filled in.
   </p>
@@ -14,8 +20,8 @@
                [errorStateMatcher]="matcher"
                [(ngModel)]="job.name"
                name="name"
-               class="input">
-        <mat-error *ngIf="nameFormControl.hasError('required')">
+               class="form-control">
+        <mat-error *ngIf="nameFormControl.touched" >
           Job Name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
@@ -32,9 +38,9 @@
                   name="description"
                   class="textarea">
         </textarea>
-        <mat-error *ngIf="descriptionFormControl.hasError('required')">
+        <!--<mat-error *ngIf="descriptionFormControl.hasError('required')">
           Description is <strong>required</strong>
-        </mat-error>
+        </mat-error> -->
       </mat-form-field>
     </p>
 

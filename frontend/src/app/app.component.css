@@ -1,4 +1,32 @@
 .page-title {
   line-height: 1.1;
   margin: 0 0 15px 0;
+  padding: 20px;
+  background-color: crimson;
+}
+
+ul {
+  align-self: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  margin: 0 2px;
+}
+
+.main-form {
+
 }

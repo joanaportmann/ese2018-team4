@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
         this.job.id = instance.id;
         this.jobs.push(this.job);
         this.job = new Job(null, '', '', '');
+        this.jobForm.get('nameFormControl').markAsTouched();
       });
   }
 
