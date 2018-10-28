@@ -8,8 +8,8 @@ import {HttpClientModule} from '@angular/common/http';
 // Add css components from angular material
 import {MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule, MatListModule, MatExpansionModule, MatSnackBarModule} from '@angular/material';
 import { JobComponent } from './job/job.component';
-import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
     MatListModule,

@@ -1,32 +1,64 @@
-<h1 style="text-align:center; font-family:courier;"><ins>Studentenjobvermittlung</ins></h1>
-<p style="text-align:center;">Please enter the information for the Job <br>
- - fields marked with (*) must be filled in.</p>
+<form class="main-form">
+  <h1 class="page-title">Studentenjobvermittlung</h1>
 
  <app-login> </app-login>
- 
-<div class="example-container">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#Sign In">Sign In</a></li>
+  </ul>
 
-  <p style="text-align:center;">
-  <mat-form-field>
-    <input matInput placeholder="Job Name" required [(ngModel)]="job.name" name="name">
-  </mat-form-field>
+  <p>
+    Please enter the information for the Job - fields marked with (*) must be filled in.
   </p>
 
-  <p style="text-align:center;">
-  <mat-form-field>
-    <textarea matInput placeholder="Description" required [(ngModel)]="job.description" name="description"></textarea>
-  </mat-form-field>
+  <div class="input-container">
+    <p>
+      <mat-form-field>
+        <input matInput
+               placeholder="Job Name"
+               required
+               [formControl]="nameFormControl"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="job.name"
+               name="name"
+               class="form-control">
+        <mat-error *ngIf="nameFormControl.touched" >
+          Job Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <textarea matInput
+                  placeholder="Description"
+                  required
+                  [formControl] = descriptionFormControl
+                  [errorStateMatcher]="matcher2"
+                  [(ngModel)]="job.description"
+                  name="description"
+                  class="textarea">
+        </textarea>
+        <!--<mat-error *ngIf="descriptionFormControl.hasError('required')">
+          Description is <strong>required</strong>
+        </mat-error> -->
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <textarea matInput
+                  placeholder="Necessary Skills"
+                  [(ngModel)]="job.necessarySkills"
+                  name="necessarySkills"
+                  class="textarea">
+        </textarea>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <p>
+    <button mat-button *ngIf="!nameFormControl.errors && !descriptionFormControl.errors" (click)="onJobCreate()">create</button>
+    <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
   </p>
-
-  <p style="text-align:center;">
-  <mat-form-field>
-    <textarea matInput placeholder="Necessary Skills" [(ngModel)]="job.necessarySkills" name="necessarySkills"></textarea>
-  </mat-form-field>
-</p>
-</div>
-
-<p align="center">
-<button mat-button (click)="onJobCreate()">create</button>
-<app-job [job]="job" (destroy)="onJobDestroy($event)"
-               *ngFor="let job of jobs"></app-job>
-</p>
+</form>
