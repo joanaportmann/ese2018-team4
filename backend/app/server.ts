@@ -5,6 +5,10 @@ import express from 'express';
 import {JobController} from './controllers';
 import {Sequelize} from 'sequelize-typescript';
 import {Job} from './models/job.model';
+import passport from 'passport';
+import {Strategy as LocalStrategy} from 'passport-local';
+import {User} from './models/user.model';
+import crypto from 'crypto';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -13,11 +17,35 @@ const sequelize =  new Sequelize({
   password: '',
   storage: 'db.sqlite'
 });
-sequelize.addModels([Job]);
+sequelize.addModels([Job, User]);
 
 // create a new express application instance
 const app: express.Application = express();
 app.use(express.json());
+
+// init passport (for authentication)
+app.use(passport.initialize());
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+//app.use(passport.session());
+
+// configure authentication strategy
+passport.use(new LocalStrategy(async (username: string, password: string, done: Function) => {
+  const user: User | null = await User.findByPrimary(username);
+  if (!user) return done(null, false, {message: 'no user found'});
+
+  if (User.hashPassword(password).toLowerCase() !== user.passwordHash.toLowerCase())
+    return done(null, false, {message: 'wrong password'});
+
+  return done(null, user);
+}));
 
 // define the port the express app will listen on
 var port: number = 3000;
@@ -33,6 +61,10 @@ app.use(function (req, res, next) {
 });
 
 app.use('/job', JobController);
+app.post('/login', passport.authenticate('local'), (req: express.Request, res: express.Response) => {
+    res.statusCode = 200;
+    res.send('login successful');
+});
 
 sequelize.sync().then(() => {
 // start serving the application on the given port

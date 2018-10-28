@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Job} from '../job';
+import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
 
 @Component({

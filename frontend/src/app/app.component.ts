@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Job} from './job';
+import {Job} from './models/job';
 import {HttpClient} from '@angular/common/http';
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -28,7 +28,6 @@ export class AppComponent implements OnInit {
   matcher2 = new MyErrorStateMatcher();
 
   constructor(private httpClient: HttpClient) {
-
   }
 
   ngOnInit(): void {
@@ -51,6 +50,7 @@ export class AppComponent implements OnInit {
         this.job = new Job(null, '', '', '');
         this.jobForm.get('nameFormControl').markAsTouched();
       });
+      
   }
 
   onJobDestroy(job: Job): void {
