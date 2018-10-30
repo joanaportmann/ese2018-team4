@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import { Credentials } from '../models/credentials';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material';
+import {MatDialog, MatSnackBar, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-login',
