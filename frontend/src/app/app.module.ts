@@ -11,7 +11,7 @@ import {MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule,
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DialogComponent, DialogComponentDialogComponent} from './dialog/dialog.component';
+import {DialogComponent} from './dialog/dialog.component';
 
 
 @NgModule({
@@ -19,8 +19,7 @@ import {DialogComponent, DialogComponentDialogComponent} from './dialog/dialog.c
     AppComponent,
     JobComponent,
     LoginComponent,
-    DialogComponent,
-    DialogComponentDialogComponent
+    DialogComponent
   ],
   imports: [
     BrowserModule,

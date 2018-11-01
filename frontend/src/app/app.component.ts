@@ -3,6 +3,8 @@ import {Job} from './models/job';
 import {HttpClient} from '@angular/common/http';
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import {MatDialog} from "@angular/material";
+import {DialogComponent} from "./dialog/dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +26,6 @@ export class AppComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
   jobForm: FormGroup;
-
   matcher2 = new MyErrorStateMatcher();
 
   constructor(private httpClient: HttpClient) {
@@ -37,8 +38,8 @@ export class AppComponent implements OnInit {
     });
 
     this.jobForm = new FormGroup({
-      nameFormControl: new FormControl(this.job.name, [ Validators.required ]),
-      descriptionFormControl: new FormControl(this.job.description, [ Validators.required ])
+      nameFormControl: new FormControl(this.job.name, [Validators.required]),
+      descriptionFormControl: new FormControl(this.job.description, [Validators.required])
     });
   }
 
@@ -48,14 +49,13 @@ export class AppComponent implements OnInit {
         this.job.id = instance.id;
         this.jobs.push(this.job);
         this.job = new Job(null, '', '', '');
-        this.jobForm.get('nameFormControl').markAsTouched();
       });
-      
   }
 
   onJobDestroy(job: Job): void {
     this.jobs.splice(this.jobs.indexOf(job), 1);
   }
+
 }
   export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {

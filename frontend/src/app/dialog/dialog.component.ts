@@ -1,10 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
-import { Credentials } from '../models/credentials';
-
-export interface DialogData {
-  animal: string;
-}
+import {Component} from '@angular/core';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-dialog',
@@ -13,21 +8,15 @@ export interface DialogData {
 })
 
 export class DialogComponent {
-
- // credentials = new Credentials('', '');
-
-  constructor(public dialog: MatDialog) { }
-
-  openDialog(): void {
-    this.dialog.open(DialogComponentDialogComponent, {data: {animal: 'username'}});
-  }
 }
-@Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css']
-})
+  export class Dialog {
+  constructor(public dialog: MatDialog) {}
 
-export class DialogComponentDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
