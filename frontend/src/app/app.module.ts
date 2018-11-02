@@ -6,8 +6,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 
 // Add css components from angular material
-import {MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule,
-  MatListModule, MatExpansionModule, MatSnackBarModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule,
+  MatListModule, MatExpansionModule, MatSnackBarModule, MatDialogModule
+} from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -32,8 +34,12 @@ import {DialogComponent} from './dialog/dialog.component';
     MatInputModule,
     MatCheckboxModule,
     MatCardModule,
+    MatDialogModule,
     MatExpansionModule,
     MatSnackBarModule
+  ],
+  entryComponents: [
+    DialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

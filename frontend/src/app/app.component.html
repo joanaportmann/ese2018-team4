@@ -3,11 +3,11 @@
 
   <ul>
     <li><a href="#home">Home</a></li>
-    <li><a href="#Sign In">Sign In</a></li>
+    <li> <button mat-button (click)="openDialog()">Log In</button></li>
   </ul>
 
-  <app-login> </app-login>
-<app-dialog></app-dialog>
+  <button mat-button (click)="openDialog()">Log In</button>
+
   <p>
     Please enter the information for the Job - fields marked with (*) must be filled in.
   </p>

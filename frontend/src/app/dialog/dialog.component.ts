@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-dialog',
@@ -9,14 +9,5 @@ import {MatDialog} from '@angular/material';
 
 export class DialogComponent {
 }
-  export class Dialog {
-  constructor(public dialog: MatDialog) {}
 
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-}
