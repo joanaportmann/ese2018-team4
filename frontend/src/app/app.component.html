@@ -2,15 +2,31 @@
   <h1 class="page-title">Studentenjobvermittlung</h1>
 
   <ul>
-    <li><a href="#home">Home</a></li>
-    <li> <button mat-button (click)="openDialog()">Log In</button></li>
+    <li> <button  mat-button><a style="color: white;">Jobs</a> </button></li>
+    <li> <button  mat-button (click)="openDialog()"><a style="color: white;">Log In</a> </button></li>
+    <li> <button  mat-button><a style="color: white;">Register</a> </button></li>
   </ul>
 
-  <button mat-button (click)="openDialog()">Log In</button>
+  <mat-card>
+    <mat-card-title>Front-end engineer</mat-card-title>
+    <mat-card-subtitle>40-50%</mat-card-subtitle>
+    <mat-card-content>A front-end engineer, also known as a front-end web
+      developer or designer, selects, installs and tests the user
+      interface elements of a website. The front-end developer focuses
+      on the look and feel of the site, along with its functionality.
+      Job prospects remain strong for front-end engineers, particularly those
+      who have the skills necessary to develop websites that are accessible on mobile devices.
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Apply</button>
+    </mat-card-actions>
+  </mat-card>
 
-  <p>
-    Please enter the information for the Job - fields marked with (*) must be filled in.
-  </p>
+  <mat-card>
+  <mat-card-title>
+    Create a new Job
+  </mat-card-title>
+    <mat-card-subtitle>Fields marked with (*) must be filled in</mat-card-subtitle>
 
   <div class="input-container">
     <p>
@@ -62,4 +78,6 @@
     <button mat-button *ngIf="!nameFormControl.errors && !descriptionFormControl.errors" (click)="onJobCreate()">create</button>
     <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
   </p>
+
+  </mat-card>
 </form>
