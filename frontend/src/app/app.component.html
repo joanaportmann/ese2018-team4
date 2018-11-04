@@ -1,4 +1,4 @@
-<form class="main-form">
+<div class="main-wrapper">
   <h1 class="page-title">Studentenjobvermittlung</h1>
 
   <ul>
@@ -28,7 +28,7 @@
   </mat-card-title>
     <mat-card-subtitle>Fields marked with (*) must be filled in</mat-card-subtitle>
 
-  <div class="input-container">
+  <form #jobForm="ngForm" class="create-job">
     <p>
       <mat-form-field>
         <input matInput
@@ -72,12 +72,13 @@
         </textarea>
       </mat-form-field>
     </p>
-  </div>
 
-  <p>
+    <p>
     <button mat-button *ngIf="!nameFormControl.errors && !descriptionFormControl.errors" (click)="onJobCreate()">create</button>
     <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
   </p>
 
+  </form>
+
   </mat-card>
-</form>
+</div>

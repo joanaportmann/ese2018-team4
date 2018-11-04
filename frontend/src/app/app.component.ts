@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Job} from './models/job';
 import {HttpClient} from '@angular/common/http';
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from '@angular/forms';
@@ -13,6 +13,8 @@ import {DialogComponent} from './dialog/dialog.component';
 })
 
 export class AppComponent implements OnInit {
+  @ViewChild('jobForm')
+  public jobForm: NgForm;
   job: Job = new Job(null, '', '', '');
   jobs: Job[] = [];
   // Validators
@@ -25,7 +27,7 @@ export class AppComponent implements OnInit {
   ]);
 
   matcher = new MyErrorStateMatcher();
-  jobForm: FormGroup;
+  jobFormGroup: FormGroup;
   matcher2 = new MyErrorStateMatcher();
 
   constructor(private httpClient: HttpClient, public dialog: MatDialog) {
@@ -37,7 +39,7 @@ export class AppComponent implements OnInit {
         new Job(instance.id, instance.name, instance.description, instance.necessarySkills));
     });
 
-    this.jobForm = new FormGroup({
+    this.jobFormGroup = new FormGroup({
       nameFormControl: new FormControl(this.job.name, [Validators.required]),
       descriptionFormControl: new FormControl(this.job.description, [Validators.required])
     });
@@ -49,6 +51,7 @@ export class AppComponent implements OnInit {
         this.job.id = instance.id;
         this.jobs.push(this.job);
         this.job = new Job(null, '', '', '');
+        this.jobForm.resetForm();
       });
   }
 
