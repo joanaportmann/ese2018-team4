@@ -14,6 +14,7 @@ import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DialogComponent} from './dialog/dialog.component';
+import { CreateJobComponent } from './create-job/create-job.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {DialogComponent} from './dialog/dialog.component';
     AppComponent,
     JobComponent,
     LoginComponent,
-    DialogComponent
+    DialogComponent,
+    CreateJobComponent
   ],
   imports: [
     BrowserModule,

@@ -12,53 +12,9 @@ import {DialogComponent} from './dialog/dialog.component';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
-  @ViewChild('jobForm')
-  public jobForm: NgForm;
-  job: Job = new Job(null, '', '', '');
-  jobs: Job[] = [];
-  // Validators
-
-  nameFormControl = new FormControl('', [
-    Validators.required
-  ]);
-  descriptionFormControl = new FormControl('', [
-    Validators.required
-  ]);
-
-  matcher = new MyErrorStateMatcher();
-  jobFormGroup: FormGroup;
-  matcher2 = new MyErrorStateMatcher();
-
-  constructor(private httpClient: HttpClient, public dialog: MatDialog) {
+export class AppComponent{
+  constructor(public dialog: MatDialog) {
   }
-
-  ngOnInit(): void {
-    this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
-      this.jobs = instances.map((instance) =>
-        new Job(instance.id, instance.name, instance.description, instance.necessarySkills));
-    });
-
-    this.jobFormGroup = new FormGroup({
-      nameFormControl: new FormControl(this.job.name, [Validators.required]),
-      descriptionFormControl: new FormControl(this.job.description, [Validators.required])
-    });
-  }
-
-  onJobCreate(): void {
-    this.httpClient.post('http://localhost:3000/job', this.job)
-      .subscribe((instance: any) => {
-        this.job.id = instance.id;
-        this.jobs.push(this.job);
-        this.job = new Job(null, '', '', '');
-        this.jobForm.resetForm();
-      });
-  }
-
-  onJobDestroy(job: Job): void {
-    this.jobs.splice(this.jobs.indexOf(job), 1);
-  }
-
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent);
 
@@ -67,12 +23,13 @@ export class AppComponent implements OnInit {
     });
   }
 }
-  export class MyErrorStateMatcher implements ErrorStateMatcher {
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-      const isSubmitted = form && form.submitted;
-      return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-    }
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
+}
 
 
 

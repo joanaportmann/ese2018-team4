@@ -1,0 +1,61 @@
+
+<mat-card>
+  <mat-card-title>
+    Create a new Job
+  </mat-card-title>
+  <mat-card-subtitle>Fields marked with (*) must be filled in</mat-card-subtitle>
+
+  <form #jobForm="ngForm" class="create-job">
+    <p>
+      <mat-form-field>
+        <input matInput
+               placeholder="Job Name"
+               required
+               [formControl]="nameFormControl"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="job.name"
+               name="name"
+               class="form-control">
+        <mat-error *ngIf="nameFormControl.touched" >
+          Job Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <textarea matInput
+                  placeholder="Description"
+                  required
+                  [formControl] = descriptionFormControl
+                  [errorStateMatcher]="matcher2"
+                  [(ngModel)]="job.description"
+                  name="description"
+                  class="textarea">
+        </textarea>
+        <!--<mat-error *ngIf="descriptionFormControl.hasError('required')">
+          Description is <strong>required</strong>
+        </mat-error> -->
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field>
+        <textarea matInput
+                  placeholder="Necessary Skills"
+                  [(ngModel)]="job.necessarySkills"
+                  name="necessarySkills"
+                  class="textarea">
+        </textarea>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <button mat-button *ngIf="!nameFormControl.errors && !descriptionFormControl.errors" (click)="onJobCreate()">create</button>
+      <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
+    </p>
+
+  </form>
+
+</mat-card>
+
