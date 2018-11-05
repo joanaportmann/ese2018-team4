@@ -15,14 +15,6 @@ export class CreateJobComponent implements OnInit {
   job: Job = new Job(null, '', '', '');
   jobs: Job[] = [];
   jobFormGroup: FormGroup;
-  nameFormControl = new FormControl('', [
-    Validators.required
-  ]);
-  descriptionFormControl = new FormControl('', [
-    Validators.required
-  ]);
-  matcher = new MyErrorStateMatcher();
-  matcher2 = new MyErrorStateMatcher();
 
   constructor(private httpClient: HttpClient) {
   }
@@ -51,6 +43,10 @@ export class CreateJobComponent implements OnInit {
 
   onJobDestroy(job: Job): void {
     this.jobs.splice(this.jobs.indexOf(job), 1);
+  }
+
+  resetForm(): void {
+    this.jobForm.reset();
   }
 
 }

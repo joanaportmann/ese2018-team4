@@ -8,15 +8,13 @@
   <form #jobForm="ngForm" class="create-job">
     <p>
       <mat-form-field>
-        <input matInput
+        <input matInput #nameInput="ngModel"
                placeholder="Job Name"
                required
-               [formControl]="nameFormControl"
-               [errorStateMatcher]="matcher"
                [(ngModel)]="job.name"
                name="name"
                class="form-control">
-        <mat-error *ngIf="nameFormControl.touched" >
+        <mat-error *ngIf="nameInput.touched" >
           Job Name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
@@ -24,16 +22,14 @@
 
     <p>
       <mat-form-field>
-        <textarea matInput
+        <textarea matInput #descriptionInput="ngModel"
                   placeholder="Description"
                   required
-                  [formControl] = descriptionFormControl
-                  [errorStateMatcher]="matcher2"
                   [(ngModel)]="job.description"
                   name="description"
                   class="textarea">
         </textarea>
-        <!--<mat-error *ngIf="descriptionFormControl.hasError('required')">
+        <!--<mat-error *ngIf="descriptionInput.hasError('required')">
           Description is <strong>required</strong>
         </mat-error> -->
       </mat-form-field>
@@ -51,11 +47,13 @@
     </p>
 
     <p>
-      <button mat-button *ngIf="!nameFormControl.errors && !descriptionFormControl.errors" (click)="onJobCreate()">create</button>
-      <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
+      <button mat-button *ngIf="!jobForm.errors" (click)="onJobCreate()">create</button>
+      <button mat-button (click)="resetForm()">reset</button>
     </p>
 
   </form>
+
+  <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
 
 </mat-card>
 
