@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DialogComponent} from './dialog/dialog.component';
 import { CreateJobComponent } from './create-job/create-job.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({

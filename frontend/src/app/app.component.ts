@@ -12,7 +12,8 @@ import {DialogComponent} from './dialog/dialog.component';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent{
+export class AppComponent {
+  panelOpenState = false;
   constructor(public dialog: MatDialog) {
   }
   openDialog() {
@@ -23,7 +24,6 @@ export class AppComponent{
     });
   }
 }
-
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
