@@ -1,9 +1,11 @@
 .page-title {
   line-height: 1.1;
   margin: 0 0 15px 0;
-  padding: 20px;
+  padding: 30px;
   background-color: #333;
-  color: beige;
+  color: papayawhip;
+  font-family: sans-serif;
+
 }
 
 ul {

@@ -13,7 +13,6 @@ import {DialogComponent} from './dialog/dialog.component';
 })
 
 export class AppComponent {
-  panelOpenState = false;
   constructor(public dialog: MatDialog) {
   }
   openDialog() {
