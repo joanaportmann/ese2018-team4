@@ -18,7 +18,8 @@ export class LoginComponent {
 
   login() {
     this.httpClient.post('http://localhost:3000/login', this.credentials, {
-      responseType: 'text'
+      responseType: 'text',
+      withCredentials: true
     }).subscribe((responseText: string) => {
        this.snackBar.open('Login successful, message: ' + responseText);
     }, (error: HttpErrorResponse) => {

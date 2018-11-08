@@ -10,13 +10,16 @@ router.get('/', async (req: Request, res: Response) => {
   res.send(instances.map(job => job.toSimplification()));
 });
 
-router.post('/', (req: Request, res: Response) => {
+router.post('/', (req: Request, res: Response, next: Function) => {
   if (!req.user) {
     res.statusCode = 403;
     res.send('You are not logged in, moron');
   }
+  next();
 }, async (req: Request, res: Response) => {
+  console.log('user 2: ' + req.user);
   const instance = new Job();
+  
   instance.fromSimplification(req.body);
   await instance.save();
   res.statusCode = 201;

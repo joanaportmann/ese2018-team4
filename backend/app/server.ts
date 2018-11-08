@@ -1,5 +1,7 @@
 // import everything from express and assign it to the express variable
 import express from 'express';
+let session = require("express-session"),
+bodyParser = require("body-parser");
 
 // import all the controllers. If you add a new controller, make sure to import it here as well.
 import {JobController} from './controllers';
@@ -8,7 +10,6 @@ import {Job} from './models/job.model';
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 import {User} from './models/user.model';
-import crypto from 'crypto';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -23,8 +24,12 @@ sequelize.addModels([Job, User]);
 const app: express.Application = express();
 app.use(express.json());
 
+app.use(session({secret: "cats"}));
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // init passport (for authentication)
 app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -34,7 +39,6 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-//app.use(passport.session());
 
 // configure authentication strategy
 passport.use(new LocalStrategy(async (username: string, password: string, done: Function) => {
@@ -54,7 +58,8 @@ if (process.env.PORT !== undefined) {
 }
 
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
