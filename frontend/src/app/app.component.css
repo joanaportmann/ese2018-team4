@@ -1,4 +1,4 @@
-.page-title {
+/*.page-title {
   line-height: 1.1;
   margin: 0 0 15px 0;
   padding: 30px;
@@ -7,30 +7,12 @@
   font-family: sans-serif;
 
 }
+*/
 
-ul {
-
-  align-self: center;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  font-family: 'Roboto', monospace;
-  font-size: medium;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: white;
-  margin: 0 2px;
+header{
+  padding: 200px;
+  margin: 0 0 0 0;
+  background-image: url("background2.png");
 }
 
 mat-expansion-panel-header{
