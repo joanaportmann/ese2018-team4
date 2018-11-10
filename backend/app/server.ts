@@ -10,6 +10,7 @@ import {Job} from './models/job.model';
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
 import {User} from './models/user.model';
+import { UserController } from './controllers/user.controller';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -66,6 +67,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/job', JobController);
+app.use('/user', UserController);
 app.post('/login', passport.authenticate('local'), (req: express.Request, res: express.Response) => {
     res.statusCode = 200;
     res.send('login successful');

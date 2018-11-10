@@ -1,6 +1,5 @@
 import {Router, Request, Response} from 'express';
 import {Job} from '../models/job.model';
-import passport from 'passport';
 
 const router: Router = Router();
 
@@ -17,9 +16,8 @@ router.post('/', (req: Request, res: Response, next: Function) => {
   }
   next();
 }, async (req: Request, res: Response) => {
-  console.log('user 2: ' + req.user);
   const instance = new Job();
-  
+
   instance.fromSimplification(req.body);
   await instance.save();
   res.statusCode = 201;
