@@ -1,65 +1,53 @@
-<form class="main-form">
-  <h1 class="page-title">Studentenjobvermittlung</h1>
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>UniBE</b> Studentenjobvermittlung</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <button mat-button>About Us</button>
+      <button  mat-button (click)="openDialog()">Log In</button>
+    </div>
+  </div>
+</div>
 
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#Sign In">Sign In</a></li>
-  </ul>
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">STUDIJOBS</span><br>
+    <span class="w3-large">where companies can offer Jobs and Students can apply</span>
+    <p><button (click)="openDialog()" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Log In or Sign Up here</button></p>
+  </div>
+</header>
 
-  <app-login> </app-login>
+<div class="main-wrapper">
+  <!-- Page content -->
+  <div class="w3-content w3-padding" style="max-width:1564px">
 
-  <p>
-    Please enter the information for the Job - fields marked with (*) must be filled in.
-  </p>
+    <!-- Job Section -->
+    <div class="w3-container w3-padding-20" id="availableJobs">
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Available Jobs</h3>
+    </div>
 
-  <div class="input-container">
-    <p>
-      <mat-form-field>
-        <input matInput
-               placeholder="Job Name"
-               required
-               [formControl]="nameFormControl"
-               [errorStateMatcher]="matcher"
-               [(ngModel)]="job.name"
-               name="name"
-               class="form-control">
-        <mat-error *ngIf="nameFormControl.touched" >
-          Job Name is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field>
-        <textarea matInput
-                  placeholder="Description"
-                  required
-                  [formControl] = descriptionFormControl
-                  [errorStateMatcher]="matcher2"
-                  [(ngModel)]="job.description"
-                  name="description"
-                  class="textarea">
-        </textarea>
-        <!--<mat-error *ngIf="descriptionFormControl.hasError('required')">
-          Description is <strong>required</strong>
-        </mat-error> -->
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field>
-        <textarea matInput
-                  placeholder="Necessary Skills"
-                  [(ngModel)]="job.necessarySkills"
-                  name="necessarySkills"
-                  class="textarea">
-        </textarea>
-      </mat-form-field>
-    </p>
+    <div class="w3-row-padding">
+        <mat-card>
+          <mat-card-title>Front-end and Back-end engineer</mat-card-title>
+          <mat-card-subtitle>300%</mat-card-subtitle>
+          <mat-card-content>HELP! We need someone who can make our project work! You have to be very talented in programming (especially typescript, html, css). You also gotta have an eye for design so that everything looks super beautiful and nice. Our team is very open to new talents!
+            Please apply for this job, we could really use you! Thank you!
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>Apply</button>
+          </mat-card-actions>
+        </mat-card>
   </div>
 
-  <p>
-    <button mat-button *ngIf="!nameFormControl.errors && !descriptionFormControl.errors" (click)="onJobCreate()">create</button>
-    <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
-  </p>
-</form>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Create a new Job
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-create-job></app-create-job>
+    </mat-expansion-panel>
+
+</div>
+</div>
