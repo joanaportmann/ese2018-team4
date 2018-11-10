@@ -22,6 +22,22 @@ export class AppComponent {
       console.log('this dialog is closed');
     });
   }
+
+  onJobCreate(): void {
+    this.httpClient.post('http://localhost:3000/job', this.job, {withCredentials: true})
+      .subscribe((instance: any) => {
+        this.job.id = instance.id;
+        this.jobs.push(this.job);
+        this.job = new Job(null, '', '', '');
+        this.jobForm.get('nameFormControl').markAsTouched();
+      });
+      
+  }
+
+  onJobDestroy(job: Job): void {
+    this.jobs.splice(this.jobs.indexOf(job), 1);
+  }
+
 }
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
