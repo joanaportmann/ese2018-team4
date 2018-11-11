@@ -37,7 +37,8 @@ li a, li button {
 }
 
 li button {
-  padding: 6px 10px;
+  padding: 0;
+  margin: 6px 0;
 }
 
 li a:hover, li button:hover {
