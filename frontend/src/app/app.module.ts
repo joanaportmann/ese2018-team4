@@ -8,14 +8,14 @@ import {HttpClientModule} from '@angular/common/http';
 // Add css components from angular material
 import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule,
-  MatListModule, MatExpansionModule, MatSnackBarModule, MatDialogModule
+  MatListModule, MatExpansionModule, MatSnackBarModule, MatDialogModule, MatStepperModule
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DialogComponent} from './dialog/dialog.component';
 import { CreateJobComponent } from './create-job/create-job.component';
-import {RouterModule} from '@angular/router';
+import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import {RouterModule} from '@angular/router';
     JobComponent,
     LoginComponent,
     DialogComponent,
-    CreateJobComponent
+    CreateJobComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +40,12 @@ import {RouterModule} from '@angular/router';
     MatCardModule,
     MatDialogModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    RegisterDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

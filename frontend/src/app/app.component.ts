@@ -5,6 +5,7 @@ import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
+import {RegisterDialogComponent} from "./register-dialog/register-dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,9 @@ export class AppComponent {
   constructor(private httpClient: HttpClient, public dialog: MatDialog) {
   }
 
+  /**
+   * open the log-In popUp-window
+   */
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent);
 

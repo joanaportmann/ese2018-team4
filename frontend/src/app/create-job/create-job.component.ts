@@ -31,6 +31,10 @@ export class CreateJobComponent implements OnInit {
     });
   }
 
+  /**
+   * post the input data from a 'Job-Creation' to backend, set and Id and
+   * reset the whole form
+   */
   onJobCreate(): void {
     this.httpClient.post('http://localhost:3000/job', this.job, {withCredentials: true})
       .subscribe((instance: any) => {
@@ -41,10 +45,17 @@ export class CreateJobComponent implements OnInit {
       });
   }
 
+  /**
+   * delete created jobs so that they are also deleted from the database
+   * @param job
+   */
   onJobDestroy(job: Job): void {
     this.jobs.splice(this.jobs.indexOf(job), 1);
   }
 
+  /**
+   * reset current data inputs so that the fields are empty again
+   */
   resetForm(): void {
     this.jobForm.reset();
 

@@ -1,10 +1,12 @@
+<!-- This HTML file is the portrayal of a 'Job-Creation', it
+consists of several input fields, some of them are validated
+as required -->
 
 <mat-card>
   <mat-card-title>
     Create a new Job
   </mat-card-title>
   <mat-card-subtitle>Fields marked with (*) must be filled in</mat-card-subtitle>
-
   <form #jobForm="ngForm" class="create-job">
     <p>
       <mat-form-field>
@@ -14,7 +16,7 @@
                [(ngModel)]="job.name"
                name="name"
                class="form-control">
-        <mat-error *ngIf="nameInput.hasError('required')" >
+        <mat-error *ngIf="nameInput.hasError('required')">
           Job Name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
@@ -50,10 +52,7 @@
       <button mat-button *ngIf="!jobForm.errors" (click)="onJobCreate()">create</button>
       <button mat-button (click)="resetForm()">reset</button>
     </p>
-
   </form>
-
   <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
-
 </mat-card>
 

@@ -1,0 +1,56 @@
+<!-- This HTML file is the portrayal when someone wants to register
+on the website, it consists of a 'dialog'-->
+
+<h2 mat-dialog-title>Welcome to STUDIJOBS!</h2>
+<mat-dialog-content class="mat-typography">
+  <form>
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Personal Data</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="First name, Last name" formControlName="first" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Your Company" formControlName="first" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <textarea matInput placeholder="Describe your Company"></textarea>
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Account Data</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="username" [(ngModel)]="credentials.username" formControlName="second" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="password" [(ngModel)]="credentials.password" formControlName="second" required>
+          </mat-form-field>
+          <br>
+          <mat-checkbox>I accept Terms & Conditions</mat-checkbox>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now registered on STUDIJOBS. Well Done.
+        <div>
+          <button mat-button (click)="register()">Register</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+</mat-dialog-content>
