@@ -1,28 +1,10 @@
-
-
-body {
-
-}
-
-h1 {
-  height: 150px;
-  max-width:1500px;
-  padding: 20px 40px;
-  margin: 0;
-
-  font-size: 1.5em;
-  color: dimgray;
-  background-image: url("background2.png");
-}
-
-h1 span.title {
-  font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: 2em;
-  color: black;
-}
-
 /* menu */
+
 ul {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
   list-style-type: none;
   overflow: hidden;
   background-color: grey;
@@ -57,6 +39,24 @@ li a.logo {
 
 .active {
   background-color: lightskyblue;
+}
+
+/* header */
+
+h1 {
+  height: 150px;
+  width: 100%;
+  font-size: 1.5em;
+  color: dimgray;
+  background-image: url("background2.png");
+  padding: 20px 40px;
+  margin: 35px 0 0 0;
+}
+
+h1 span.title {
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 2em;
+  color: black;
 }
 
 mat-expansion-panel-header{
