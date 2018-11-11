@@ -32,7 +32,7 @@ export class CreateJobComponent implements OnInit {
   }
 
   onJobCreate(): void {
-    this.httpClient.post('http://localhost:3000/job', this.job)
+    this.httpClient.post('http://localhost:3000/job', this.job, {withCredentials: true})
       .subscribe((instance: any) => {
         this.job.id = instance.id;
         this.jobs.push(this.job);
