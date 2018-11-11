@@ -9,10 +9,49 @@
 }
 */
 
-header{
-  padding: 200px;
+h1 {
+  padding: 100px;
   margin: 0 0 0 0;
   background-image: url("background2.png");
+}
+
+/* menu */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: grey;
+}
+
+li {
+  float: left;
+}
+
+li a, li button {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li button {
+  padding: 6px 10px;
+}
+
+li a:hover, li button:hover {
+  background-color: black;
+}
+
+li a.logo {
+  color: black;
+  background-color: white;
+  letter-spacing: 3px;
+}
+
+.active {
+  background-color: lightskyblue;
 }
 
 mat-expansion-panel-header{
