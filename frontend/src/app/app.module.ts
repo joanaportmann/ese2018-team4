@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DialogComponent} from './dialog/dialog.component';
 import { CreateJobComponent } from './create-job/create-job.component';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+import { ProfilePanelComponent } from './profile-panel/profile-panel.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
     LoginComponent,
     DialogComponent,
     CreateJobComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    ProfilePanelComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,9 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
   ],
   entryComponents: [
     DialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    ProfilePanelComponent,
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

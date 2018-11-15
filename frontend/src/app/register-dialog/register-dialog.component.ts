@@ -35,7 +35,7 @@ export class RegisterDialogComponent implements OnInit {
       responseType: 'text',
       withCredentials: true
     }).subscribe((responseText: string) => {
-      this.snackBar.open('SignIn successful, message: ' + responseText);
+      this.snackBar.open('Sign In successful');
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Sign In failed');
     });

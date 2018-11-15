@@ -2,24 +2,22 @@
 on the website, it consists of a 'dialog'-->
 
 <h2 mat-dialog-title>Welcome to STUDIJOBS!</h2>
+Please fill in this form to create an Account
+<br>
 <mat-dialog-content class="mat-typography">
   <form>
     <mat-horizontal-stepper [linear]="isLinear" #stepper>
       <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel>Personal Data</ng-template>
+          <ng-template matStepLabel>Account Data</ng-template>
           <mat-form-field>
-            <input matInput placeholder="First name, Last name" formControlName="first" required>
+            <input matInput placeholder="username" [(ngModel)]="credentials.username" formControlName="first" required>
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input matInput placeholder="Your Company" formControlName="first" required>
+            <input matInput placeholder="password" [(ngModel)]="credentials.password" formControlName="first" required>
           </mat-form-field>
           <br>
-          <mat-form-field>
-            <textarea matInput placeholder="Describe your Company"></textarea>
-          </mat-form-field>
-
           <div>
             <button mat-button matStepperNext>Next</button>
           </div>
@@ -27,16 +25,18 @@ on the website, it consists of a 'dialog'-->
       </mat-step>
       <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Account Data</ng-template>
+          <ng-template matStepLabel>Personal Data</ng-template>
           <mat-form-field>
-            <input matInput placeholder="username" [(ngModel)]="credentials.username" formControlName="second" required>
+            <input matInput placeholder="First name, Last name" formControlName="second" required>
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input matInput placeholder="password" [(ngModel)]="credentials.password" formControlName="second" required>
+            <input matInput placeholder="Your Company" formControlName="second" required>
           </mat-form-field>
           <br>
-          <mat-checkbox>I accept Terms & Conditions</mat-checkbox>
+          <mat-form-field>
+            <textarea matInput placeholder="Describe your Company"></textarea>
+          </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>Next</button>
@@ -45,8 +45,7 @@ on the website, it consists of a 'dialog'-->
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        You are now registered on STUDIJOBS. Well Done.
-        <div>
+       <div>
           <button mat-button (click)="register()">Register</button>
           <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
