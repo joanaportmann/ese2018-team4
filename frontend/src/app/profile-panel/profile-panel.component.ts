@@ -7,10 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePanelComponent implements OnInit {
 
+  loggedIn: boolean;
   constructor() { }
-  open() {
-    console.log('wtf');
-  }
 
   ngOnInit() {
   }

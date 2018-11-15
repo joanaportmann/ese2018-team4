@@ -18,16 +18,12 @@ export class LoginComponent {
   constructor(private httpClient: HttpClient, public snackBar: MatSnackBar,
               public dialog: MatDialog) {}
   login() {
-    function openUserView(comp: ProfilePanelComponent) {
-comp.open();
-
-    }
 
     this.httpClient.post('http://localhost:3000/login', this.credentials, {
       responseType: 'text',
       withCredentials: true
     }).subscribe((responseText: string) => {
-      openUserView(this.profilePanel);
+      this.profilePanel.loggedIn = true;
        this.snackBar.open('Welcome, ' + this.credentials.username);
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Login failed');
