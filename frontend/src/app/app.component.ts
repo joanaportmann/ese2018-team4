@@ -6,7 +6,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
 import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
-import {ProfilePanelComponent} from "./profile-panel/profile-panel.component";
+import {ProfilePanelComponent} from './profile-panel/profile-panel.component';
 
 @Component({
   selector: 'app-root',

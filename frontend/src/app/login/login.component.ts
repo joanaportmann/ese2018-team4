@@ -17,13 +17,15 @@ export class LoginComponent {
 
   constructor(private httpClient: HttpClient, public snackBar: MatSnackBar,
               public dialog: MatDialog) {}
-  login() {
+
+              login() {
 
     this.httpClient.post('http://localhost:3000/login', this.credentials, {
       responseType: 'text',
       withCredentials: true
     }).subscribe((responseText: string) => {
-      this.profilePanel.loggedIn = true;
+      this.profilePanel.setLoggedIn(true);
+      console.log('logged in', this.profilePanel);
        this.snackBar.open('Welcome, ' + this.credentials.username);
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Login failed');
