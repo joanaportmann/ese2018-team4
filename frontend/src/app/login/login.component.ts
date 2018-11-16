@@ -3,7 +3,6 @@ import { Credentials } from '../models/credentials';
 import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import {MatDialog, MatSnackBar, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {RegisterDialogComponent} from '../register-dialog/register-dialog.component';
-import {ProfilePanelComponent} from '../profile-panel/profile-panel.component';
 
 @Component({
   selector: 'app-login',
@@ -13,24 +12,21 @@ import {ProfilePanelComponent} from '../profile-panel/profile-panel.component';
 export class LoginComponent {
 
   credentials = new Credentials('', '');
-  profilePanel = new ProfilePanelComponent();
 
   constructor(private httpClient: HttpClient, public snackBar: MatSnackBar,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog, private dialogRef: MatDialogRef<LoginComponent>) {}
 
-              login() {
-
+  login() {
     this.httpClient.post('http://localhost:3000/login', this.credentials, {
       responseType: 'text',
       withCredentials: true
     }).subscribe((responseText: string) => {
-      this.profilePanel.setLoggedIn(true);
-      console.log('logged in', this.profilePanel);
-       this.snackBar.open('Welcome, ' + this.credentials.username);
+      console.log('logged in');
+      this.dialogRef.close();
+      this.snackBar.open('Welcome, ' + this.credentials.username);
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Login failed');
     });
-
   }
 
   /**

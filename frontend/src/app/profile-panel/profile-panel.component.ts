@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-profile-panel',
@@ -7,12 +9,15 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class ProfilePanelComponent implements OnInit {
-  loggedIn: boolean;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  setLoggedIn(val: boolean): void {
-    this.loggedIn = val;
+  /**
+   * Return username if user exists, else return falsy value (=user).
+   */
+  getUsername(): string {
+    const user: User = this.userService.getUser();
+    return user && user.username;
   }
 
   ngOnInit() {}

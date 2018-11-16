@@ -69,6 +69,10 @@ app.use(function (req, res, next) {
 app.use('/job', JobController);
 app.use('/user', UserController);
 app.post('/login', passport.authenticate('local'), (req: express.Request, res: express.Response) => {
+    // TODO: clear on log-out
+    // TODO: exclude pw hash from user cookie
+    res.cookie('user', req.user);
+    res.cookie('advertisement-tracking-id', 'yolo1234');
     res.statusCode = 200;
     res.send('login successful');
 });
