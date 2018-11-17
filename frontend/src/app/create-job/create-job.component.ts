@@ -47,7 +47,6 @@ export class CreateJobComponent implements OnInit {
 
   resetForm(): void {
     this.jobForm.reset();
-
   }
 
 }

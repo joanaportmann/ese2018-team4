@@ -6,50 +6,51 @@
   <mat-card-subtitle>Fields marked with (*) must be filled in</mat-card-subtitle>
 
   <form #jobForm="ngForm" class="create-job">
-    <p>
-      <mat-form-field>
-        <input matInput #nameInput="ngModel"
-               placeholder="Job Name"
-               required
-               [(ngModel)]="job.name"
-               name="name"
-               class="form-control">
-        <mat-error *ngIf="nameInput.hasError('required')" >
-          Job Name is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-    </p>
+    <mat-form-field>
+      <input matInput #nameInput="ngModel"
+        placeholder="Job Name"
+        required
+        [(ngModel)]="job.name"
+        name="name"
+        class="form-control">
+      <mat-error *ngIf="nameInput.hasError('required')" >
+        Job Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <p>
-      <mat-form-field>
-        <textarea matInput #descriptionInput="ngModel"
-                  placeholder="Description"
-                  required
-                  [(ngModel)]="job.description"
-                  name="description"
-                  class="textarea">
-        </textarea>
-        <mat-error *ngIf="descriptionInput.hasError('required')">
-          Description is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-    </p>
+    <mat-form-field class="long">
+      <textarea matInput #descriptionInput="ngModel"
+        placeholder="Description"
+        required
+        [(ngModel)]="job.description"
+        name="description"
+        class="textarea">
+      </textarea>
+      <mat-error *ngIf="descriptionInput.hasError('required')">
+        Description is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-    <p>
-      <mat-form-field>
-        <textarea matInput
-                  placeholder="Necessary Skills"
-                  [(ngModel)]="job.necessarySkills"
-                  name="necessarySkills"
-                  class="textarea">
-        </textarea>
-      </mat-form-field>
-    </p>
+    <mat-form-field>
+      <textarea matInput
+        placeholder="Necessary Skills"
+        [(ngModel)]="job.necessarySkills"
+        name="necessarySkills"
+        class="textarea">
+      </textarea>
+    </mat-form-field>
 
-    <p>
-      <button mat-button *ngIf="!jobForm.errors" (click)="onJobCreate()">create</button>
-      <button mat-button (click)="resetForm()">reset</button>
-    </p>
+    <mat-form-field>
+      <textarea matInput
+        placeholder="Status in %"
+        [(ngModel)]="job.status"
+        name="status"
+        class="textarea">
+      </textarea>
+    </mat-form-field>
+
+    <button mat-button *ngIf="!jobForm.errors" (click)="onJobCreate()">create</button>
+    <button mat-button (click)="resetForm()">reset</button>
 
   </form>
 
