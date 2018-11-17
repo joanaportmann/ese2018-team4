@@ -1,19 +1,6 @@
-<mat-card>
 
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-              <input matInput placeholder="Jobname" [(ngModel)]="job.name" name="name" (ngModelChange)="onSave()">  <button mat-button (click)="onDestroy()">destroy</button>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-    
-        <mat-form-field>
-            <input matInput placeholder="Description" [(ngModel)]="job.description" name="description" (ngModelChange)="onSave()">
-        </mat-form-field>
-    <br>
-        <mat-form-field>
-            <input matInput placeholder="Necessary Skills" [(ngModel)]="job.necessarySkills" name="necessarySkills" (ngModelChange)="onSave()">
-        </mat-form-field>
-       
-      </mat-expansion-panel>
-</mat-card>
+<div *ngIf="job">
+  <h1>{{job.name}} info</h1>
+  <p>(Description ect......)</p>
+  <button *ngIf="userService.getUser()" (click)="onDestroy()">x</button>
+</div>
