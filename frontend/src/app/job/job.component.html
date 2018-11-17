@@ -1,6 +1,10 @@
-
 <div *ngIf="job">
-  <h1>{{job.name}} info</h1>
-  <p>(Description ect......)</p>
+  <h1>{{job.name}}</h1>
+  <p>Description: A very interesting Job</p>
+  <p>Status: 50-60%</p>
+  <p>Salary: 12 $ per hour</p>
+  <p>Company: UPS</p>
+  <p>Phone number: <a>+4176305877</a></p>
+
   <button *ngIf="userService.getUser()" (click)="onDestroy()">x</button>
 </div>

@@ -15,8 +15,9 @@ export class JobComponent implements OnInit {
   @Output()
   destroy = new EventEmitter<Job>();
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(
+    private httpClient: HttpClient
+  ) {}
 
   ngOnInit() {
   }
