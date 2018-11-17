@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user';
+import {CreateJobComponent} from '../create-job/create-job.component';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-panel',
@@ -9,9 +11,17 @@ import { User } from '../models/user';
 })
 
 export class ProfilePanelComponent implements OnInit {
-
+  openJobCreationField: boolean;
+  openProfileField: boolean;
   constructor(private userService: UserService) {}
 
+  openCreateJob() {
+    this.openJobCreationField = true;
+  }
+
+  openProfile() {
+    this.openProfileField = true;
+  }
   /**
    * Return username if user exists, else return falsy value (=user).
    */

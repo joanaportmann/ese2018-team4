@@ -1,1 +1,13 @@
-{{getUsername()}}
+<mat-toolbar>Welcome, {{getUsername()}}! &nbsp;
+  <mat-menu  #appMenu="matMenu" yPosition="above" xPosition="after">
+    <button id="profile" (click)="openProfile()" mat-menu-item>My Profile</button>
+    <button id="createJob" (click)="openCreateJob()" mat-menu-item >Create a new Job</button>
+    <button mat-menu-item>Edit Jobs</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="appMenu">
+    Menu
+  </button>
+</mat-toolbar>
+
+  <app-profile-editor *ngIf="openProfileField"></app-profile-editor>
+  <app-create-job *ngIf="openJobCreationField"></app-create-job>
