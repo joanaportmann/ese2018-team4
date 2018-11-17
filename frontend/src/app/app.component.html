@@ -45,7 +45,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
         </mat-card>
   </div>
 
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngIf="userService.getUser()">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Create a new Job

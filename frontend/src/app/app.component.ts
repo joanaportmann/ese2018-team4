@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
 import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
 import {ProfilePanelComponent} from './profile-panel/profile-panel.component';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent {
   job: Job = new Job(null, '', '', '');
   jobs: Job[] = [];
 
-  constructor(private httpClient: HttpClient, public dialog: MatDialog) {
+  constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
   }
 
   /**
