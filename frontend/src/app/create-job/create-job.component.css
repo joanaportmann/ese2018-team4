@@ -6,7 +6,3 @@ mat-form-field {
 mat-form-field.long {
   max-width: 500px;
 }
-
-mat-form-field input.long {
-  height: 800px;
-}

@@ -24,6 +24,7 @@
         required
         [(ngModel)]="job.description"
         name="description"
+        rows="6"
         class="textarea">
       </textarea>
       <mat-error *ngIf="descriptionInput.hasError('required')">
