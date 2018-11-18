@@ -40,7 +40,6 @@ router.get('/:id', async (req: Request, res: Response) => {
 });
 
 router.put('/:id', async (req: Request, res: Response) => {
-  console.log('not good.....................................');
   const id = parseInt(req.params.id);
   const instance: Job | null = await Job.findById(id);
   if (instance == null) {
@@ -54,6 +53,31 @@ router.put('/:id', async (req: Request, res: Response) => {
   await instance.save();
   res.statusCode = 200;
   res.send(instance.toSimplification());
+});
+
+router.put('/:id/approved', async (req: Request, res: Response) => {
+  const id = parseInt(req.params.id);
+  const instance: Job | null = await Job.findById(id);
+  if (instance == null) {
+    res.statusCode = 404;
+    res.json({
+      'message': 'not found'
+    });
+    return;
+  }
+  if(!(req.body === 'true' || req.body === 'false')) {
+    res.statusCode = 400;
+    res.json({
+      'message': 'expected body to be "true" or "false"'
+    });
+    return;
+  }
+  instance.approved = req.body === 'true';
+  await instance.save();
+  res.statusCode = 200;
+  res.json({
+    'message': 'job ' + (instance.approved ? 'approved' : 'unapproved')
+  });
 });
 
 router.delete('/:id', async (req: Request, res: Response) => {
@@ -70,29 +94,6 @@ router.delete('/:id', async (req: Request, res: Response) => {
   await instance.destroy();
   res.statusCode = 204;
   res.send();
-});
-
-const approveRouter: Router = Router({ mergeParams: true });
-router.use('/:id/approved', approveRouter);
-
-approveRouter.put('/', async (req: Request, res: Response) => {
-  console.log('WHHHHHHHHHHHHHHHHHAAAAAAAAAAAATTT');
-  console.log(req.body);
-  const id = parseInt(req.params.id);
-  const instance: Job | null = await Job.findById(id);
-  if (instance == null) {
-    res.statusCode = 404;
-    res.json({
-      'message': 'not found'
-    });
-    return;
-  }
-  instance.approved = req.body;
-  await instance.save();
-  res.statusCode = 200;
-  res.json({
-    'message': 'job enabled'
-  });
 });
 
 export const JobController: Router = router;

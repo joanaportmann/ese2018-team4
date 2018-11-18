@@ -24,7 +24,7 @@ sequelize.addModels([Job, User]);
 // create a new express application instance
 const app: express.Application = express();
 app.use(express.json());
-//app.use(bodyParser.text());
+app.use(bodyParser.text());
 
 app.use(session({secret: "cats"}));
 app.use(bodyParser.urlencoded({ extended: false }));
