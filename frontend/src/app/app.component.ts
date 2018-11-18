@@ -5,6 +5,9 @@ import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
+import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
+import {ProfilePanelComponent} from './profile-panel/profile-panel.component';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,10 +21,19 @@ export class AppComponent {
   public jobForm: NgForm;
   job: Job = new Job(null, '', '', '');
   jobs: Job[] = [];
+  onHomeClicked: boolean;
+  
 
-  constructor(private httpClient: HttpClient, public dialog: MatDialog) {
+  constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
   }
 
+  openJobs(){
+    this.onHomeClicked = true;
+  }
+
+  /**
+   * open the log-In popUp-window
+   */
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent);
 
@@ -29,6 +41,7 @@ export class AppComponent {
       console.log('this dialog is closed');
     });
   }
+
 
   onJobCreate(): void {
     this.httpClient.post('http://localhost:3000/job', this.job, { withCredentials: true })

@@ -1,7 +1,13 @@
-import {Router, Request, Response} from 'express';
-import {Job} from '../models/job.model';
+import { Router, Request, Response } from 'express';
+import { Job } from '../models/job.model';
+import { authenticatedUser } from './authentication';
 
 const router: Router = Router();
+
+function sameUser (req: Request, res: Response, next: Function) {
+  //TODO: Implement as soon as we have user-job relation!!! Issue 23
+  next();
+}
 
 router.get('/', async (req: Request, res: Response) => {
   const instances = await Job.findAll();
@@ -9,16 +15,11 @@ router.get('/', async (req: Request, res: Response) => {
   res.send(instances.map(job => job.toSimplification()));
 });
 
-router.post('/', (req: Request, res: Response, next: Function) => {
-  if (!req.user) {
-    res.statusCode = 403;
-    res.send('You are not logged in, moron');
-  }
-  next();
-}, async (req: Request, res: Response) => {
+router.post('/', authenticatedUser, async (req: Request, res: Response) => {
   const instance = new Job();
 
   instance.fromSimplification(req.body);
+  instance.approved = false;
   await instance.save();
   res.statusCode = 201;
   res.send(instance.toSimplification());
@@ -38,7 +39,7 @@ router.get('/:id', async (req: Request, res: Response) => {
   res.send(instance.toSimplification());
 });
 
-router.put('/:id', async (req: Request, res: Response) => {
+router.put('/:id', authenticatedUser, sameUser, async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const instance: Job | null = await Job.findById(id);
   if (instance == null) {
@@ -54,7 +55,32 @@ router.put('/:id', async (req: Request, res: Response) => {
   res.send(instance.toSimplification());
 });
 
-router.delete('/:id', async (req: Request, res: Response) => {
+router.put('/:id/approved', async (req: Request, res: Response) => {
+  const id = parseInt(req.params.id);
+  const instance: Job | null = await Job.findById(id);
+  if (instance == null) {
+    res.statusCode = 404;
+    res.json({
+      'message': 'not found'
+    });
+    return;
+  }
+  if(!(req.body === 'true' || req.body === 'false')) {
+    res.statusCode = 400;
+    res.json({
+      'message': 'expected body to be "true" or "false"'
+    });
+    return;
+  }
+  instance.approved = req.body === 'true';
+  await instance.save();
+  res.statusCode = 200;
+  res.json({
+    'message': 'job ' + (instance.approved ? 'approved' : 'unapproved')
+  });
+});
+
+router.delete('/:id', authenticatedUser, sameUser, async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const instance = await Job.findById(id);
   if (instance == null) {

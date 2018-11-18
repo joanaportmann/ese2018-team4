@@ -1,5 +1,7 @@
-<form>
+<!-- This HTML File resembles the 'inside' of the popUp-dialog window
+when a user clicks on 'Log In'-->
 
+<form>
   <p>
   <mat-form-field>
     <input matInput placeholder="Username" [(ngModel)]="credentials.username" name="username">
@@ -8,11 +10,10 @@
 
   <p>
   <mat-form-field>
-    <input matInput placeholder="Password" [(ngModel)]="credentials.password" name="password">
+    <input type="password" matInput placeholder="Password" [(ngModel)]="credentials.password" name="password">
   </mat-form-field>
   </p>
 
   <button mat-button type="submit" (click)="login()">log in</button>
-  <button mat-button>Register</button>
-
+  <button mat-button (click)="openDialogRegister()">Register</button>
 </form>

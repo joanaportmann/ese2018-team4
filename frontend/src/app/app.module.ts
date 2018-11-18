@@ -7,15 +7,28 @@ import {HttpClientModule} from '@angular/common/http';
 
 // Add css components from angular material
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatInputModule,
-  MatListModule, MatExpansionModule, MatSnackBarModule, MatDialogModule
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatInputModule,
+  MatListModule,
+  MatExpansionModule,
+  MatSnackBarModule,
+  MatDialogModule,
+  MatStepperModule,
+  MatToolbar,
+  MatToolbarModule,
+  MatMenuModule, MatIconModule
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DialogComponent} from './dialog/dialog.component';
 import { CreateJobComponent } from './create-job/create-job.component';
-import {RouterModule} from '@angular/router';
+import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+import { ProfilePanelComponent } from './profile-panel/profile-panel.component';
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
 
 
 @NgModule({
@@ -24,7 +37,11 @@ import {RouterModule} from '@angular/router';
     JobComponent,
     LoginComponent,
     DialogComponent,
-    CreateJobComponent
+    CreateJobComponent,
+    RegisterDialogComponent,
+    ProfilePanelComponent,
+    ProfileEditorComponent,
+    AvailableJobsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +56,17 @@ import {RouterModule} from '@angular/router';
     MatCardModule,
     MatDialogModule,
     MatExpansionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    RegisterDialogComponent,
+    ProfilePanelComponent,
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
