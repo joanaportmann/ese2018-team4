@@ -21,8 +21,14 @@ export class AppComponent {
   public jobForm: NgForm;
   job: Job = new Job(null, '', '', '');
   jobs: Job[] = [];
+  onHomeClicked: boolean;
+  
 
   constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
+  }
+
+  openJobs(){
+    this.onHomeClicked = true;
   }
 
   /**
@@ -35,6 +41,7 @@ export class AppComponent {
       console.log('this dialog is closed');
     });
   }
+
 
   onJobCreate(): void {
     this.httpClient.post('http://localhost:3000/job', this.job, { withCredentials: true })

@@ -28,6 +28,7 @@ import { CreateJobComponent } from './create-job/create-job.component';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { ProfilePanelComponent } from './profile-panel/profile-panel.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
     CreateJobComponent,
     RegisterDialogComponent,
     ProfilePanelComponent,
-    ProfileEditorComponent
+    ProfileEditorComponent,
+    AvailableJobsComponent
   ],
   imports: [
     BrowserModule,
