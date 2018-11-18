@@ -1,11 +1,25 @@
-/* menu */
+/*.page-title {
+  line-height: 1.1;
+  margin: 0 0 15px 0;
+  padding: 30px;
+  background-color: #333;
+  color: papayawhip;
+  font-family: sans-serif;
 
+}
+*/
+
+h1 {
+  padding: 100px;
+  margin: 0 0 0 0;
+  background-image: url("background2.png");
+}
+
+/* menu */
 ul {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  width: 100%;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   background-color: grey;
 }
@@ -16,15 +30,15 @@ li {
 
 li a, li button {
   display: block;
-  text-align: center;
-  text-decoration: none;
-  padding: 14px 16px;
   color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 li button {
   padding: 0;
-  margin: 7px 0;
+  margin: 6px 0;
 }
 
 li a:hover, li button:hover {
@@ -32,31 +46,13 @@ li a:hover, li button:hover {
 }
 
 li a.logo {
-  letter-spacing: 3px;
   color: black;
   background-color: white;
+  letter-spacing: 3px;
 }
 
 .active {
   background-color: lightskyblue;
-}
-
-/* header */
-
-h1 {
-  height: 150px;
-  width: 100%;
-  font-size: 1.5em;
-  color: dimgray;
-  background-image: url("background2.png");
-  padding: 20px 40px;
-  margin: 35px 0 0 0;
-}
-
-h1 span.title {
-  font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: 2em;
-  color: black;
 }
 
 mat-expansion-panel-header{
