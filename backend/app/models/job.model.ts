@@ -12,6 +12,9 @@ export class Job extends Model<Job> {
   @Column
   necessarySkills!: string;
 
+  @Column
+  approved!: boolean; 
+
   toSimplification(): any {
     return {
       'id': this.id,

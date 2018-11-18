@@ -5,7 +5,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 <!-- Navbar (fixed)-->
 <div class="w3-top">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="#home" class="w3-bar-item w3-button"><b>UniBE</b> Studentenjobvermittlung</a>
+    <a href="#home" (click)="openJobs()" class="w3-bar-item w3-button"><b>UniBE</b> Studentenjobvermittlung</a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
       <button mat-button>About Us</button>
@@ -22,35 +22,6 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
   </div>
 </header>
 <app-profile-panel *ngIf="userService.getUser()"></app-profile-panel>
-<div class="main-wrapper">
-  <!-- Page content -->
-  <div class="w3-content w3-padding" style="max-width:1564px">
 
-    <!-- Job Section -->
-    <div class="w3-container w3-padding-20" id="availableJobs">
-      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Available Jobs</h3>
-    </div>
-
-    <div class="w3-row-padding">
-        <mat-card>
-          <mat-card-title>Front-end and Back-end engineer</mat-card-title>
-          <mat-card-subtitle>300%</mat-card-subtitle>
-          <mat-card-content>HELP! We need someone who can make our project work! You have to be very talented in programming (especially typescript, html, css). You also gotta have an eye for design so that everything looks super beautiful and nice. Our team is very open to new talents!
-            Please apply for this job, we could really use you! Thank you!
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>Apply</button>
-          </mat-card-actions>
-        </mat-card>
-  </div>
-    <mat-expansion-panel *ngIf="userService.getUser()">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Create a new Job
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <app-create-job></app-create-job>
-    </mat-expansion-panel>
-
-</div>
-</div>
+<app-available-jobs *ngIf="onHomeClicked"></app-available-jobs>
+  

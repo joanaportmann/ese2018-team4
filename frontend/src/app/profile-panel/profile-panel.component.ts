@@ -13,14 +13,21 @@ import {HttpClient} from '@angular/common/http';
 export class ProfilePanelComponent implements OnInit {
   openJobCreationField: boolean;
   openProfileField: boolean;
+  onHomeClicked: boolean = true;
   constructor(private userService: UserService) {}
 
   openCreateJob() {
     this.openJobCreationField = true;
+    this.openProfileField = false;
+    this.onHomeClicked = false;
   }
-
+  openJobs(){
+    this.onHomeClicked = true;
+  }
   openProfile() {
     this.openProfileField = true;
+    this.openJobCreationField = false;
+    this.onHomeClicked = false;
   }
   /**
    * Return username if user exists, else return falsy value (=user).
