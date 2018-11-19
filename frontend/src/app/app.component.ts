@@ -9,6 +9,7 @@ import {RegisterDialogComponent} from './register-dialog/register-dialog.compone
 import {ProfilePanelComponent} from './profile-panel/profile-panel.component';
 import { UserService } from './services/user.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,7 +23,7 @@ export class AppComponent {
   job: Job = new Job(null, '', '', '');
   jobs: Job[] = [];
   onHomeClicked: boolean;
-  
+
 
   constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
   }

@@ -29,6 +29,7 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
 import { ProfilePanelComponent } from './profile-panel/profile-panel.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
+import { MyJobsComponent } from './my-jobs/my-jobs.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AvailableJobsComponent } from './available-jobs/available-jobs.componen
     RegisterDialogComponent,
     ProfilePanelComponent,
     ProfileEditorComponent,
-    AvailableJobsComponent
+    AvailableJobsComponent,
+    MyJobsComponent
   ],
   imports: [
     BrowserModule,

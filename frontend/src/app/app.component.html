@@ -9,7 +9,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
       <button mat-button>About Us</button>
-      <button  mat-button (click)="openDialog()">Log In</button>
+      <button *ngIf="!userService.getUser()"  mat-button (click)="openDialog()">Log In</button>
     </div>
   </div>
 </div>
