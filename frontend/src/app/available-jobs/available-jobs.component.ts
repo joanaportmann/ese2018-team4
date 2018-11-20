@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,5 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class AvailableJobsComponent {
 
   constructor(private httpClient: HttpClient) { }
+
+  @HostBinding('class.is-open') @Input()
+  isOpen = false;
 
 }

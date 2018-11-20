@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user';
 import {CreateJobComponent} from '../create-job/create-job.component';
 import {HttpClient} from '@angular/common/http';
+import {AvailableJobsComponent} from '../available-jobs/available-jobs.component';
 
 @Component({
   selector: 'app-profile-panel',
@@ -13,16 +14,22 @@ import {HttpClient} from '@angular/common/http';
 export class ProfilePanelComponent implements OnInit {
   openJobCreationField: boolean;
   openProfileField: boolean;
-  onHomeClicked: boolean = true;
+  onHomeClicked = true;
   constructor(private userService: UserService) {}
+
+  @Output() toggle: EventEmitter<null> = new EventEmitter();
+
+  @HostListener('click')
+  click() {
+    this.toggle.emit();
+  }
 
   openCreateJob() {
     this.openJobCreationField = true;
     this.openProfileField = false;
     this.onHomeClicked = false;
   }
-  openJobs(){
-    this.onHomeClicked = true;
+  toggleAvailableJobs() {
   }
   openProfile() {
     this.openProfileField = true;

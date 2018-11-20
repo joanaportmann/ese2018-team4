@@ -21,7 +21,6 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
     <p><button *ngIf="!userService.getUser()" (click)="openDialog()" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Log In or Sign Up here</button></p>
   </div>
 </header>
-<app-profile-panel *ngIf="userService.getUser()"></app-profile-panel>
-
-<app-available-jobs *ngIf="onHomeClicked"></app-available-jobs>
+<app-profile-panel *ngIf="userService.getUser()" (toggle)="openJobs()"></app-profile-panel>
+<app-available-jobs [isOpen]="onHomeClicked"></app-available-jobs>
   

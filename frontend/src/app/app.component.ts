@@ -8,6 +8,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
 import {ProfilePanelComponent} from './profile-panel/profile-panel.component';
 import { UserService } from './services/user.service';
+import {NativeDateAdapter} from '@angular/material';
 
 
 @Component({
@@ -22,14 +23,14 @@ export class AppComponent {
   public jobForm: NgForm;
   job: Job = new Job(null, '', '', '');
   jobs: Job[] = [];
-  onHomeClicked: boolean;
+  onHomeClicked = false;
 
 
   constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
   }
 
-  openJobs(){
-    this.onHomeClicked = true;
+  openJobs() {
+    this.onHomeClicked = !this.onHomeClicked;
   }
 
   /**

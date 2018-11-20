@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, HostBinding, Injectable, OnInit, ViewChild} from '@angular/core';
 import {AppComponent, MyErrorStateMatcher} from '../app.component';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Job} from '../models/job';
@@ -9,12 +9,14 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: './create-job.component.html',
   styleUrls: ['./create-job.component.css']
 })
+
 export class CreateJobComponent implements OnInit {
   @ViewChild('jobForm')
   public jobForm: NgForm;
   job: Job = new Job(null, '', '', '');
   jobs: Job[] = [];
   jobFormGroup: FormGroup;
+
 
   constructor(private httpClient: HttpClient) {
   }

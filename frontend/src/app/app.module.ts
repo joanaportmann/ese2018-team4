@@ -18,7 +18,7 @@ import {
   MatStepperModule,
   MatToolbar,
   MatToolbarModule,
-  MatMenuModule, MatIconModule
+  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -57,7 +57,9 @@ import { MyJobsComponent } from './my-jobs/my-jobs.component';
     MatCheckboxModule,
     MatCardModule,
     MatDialogModule,
+    MatDatepickerModule,
     MatExpansionModule,
+    MatSelectModule,
     MatSnackBarModule,
     MatStepperModule,
     MatToolbarModule,
@@ -70,7 +72,7 @@ import { MyJobsComponent } from './my-jobs/my-jobs.component';
     ProfilePanelComponent,
     LoginComponent
   ],
-  providers: [],
+  providers: [AppComponent, ProfileEditorComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
