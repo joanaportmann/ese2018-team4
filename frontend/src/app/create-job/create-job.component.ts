@@ -4,6 +4,7 @@ import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
 
+
 @Component({
   selector: 'app-create-job',
   templateUrl: './create-job.component.html',
