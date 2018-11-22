@@ -19,7 +19,7 @@ Please fill in this form to create an Account
           </mat-form-field>
           <br>
           <div>
-            <button mat-button matStepperNext>Next</button>
+            <button style="float: right;" mat-button matStepperNext>Next -></button>
           </div>
         </form>
       </mat-step>
@@ -38,16 +38,16 @@ Please fill in this form to create an Account
             <textarea matInput placeholder="Describe your Company"></textarea>
           </mat-form-field>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperPrevious><- Back</button>
+            <button mat-button matStepperNext>Next -></button>
           </div>
         </form>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
        <div>
-          <button mat-button (click)="register()">Register</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
+         <button style = "float: right;" mat-button (click)="register()">Register</button>
+         <button style = "float: right;" mat-button (click)="stepper.reset()">Reset</button>
         </div>
       </mat-step>
     </mat-horizontal-stepper>
