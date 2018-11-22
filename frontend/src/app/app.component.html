@@ -8,16 +8,13 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
     <a href="#home" (click)="openJobs()" class="w3-bar-item w3-button"><b>UniBE</b> Studentenjobvermittlung</a>
     <!-- Float links to the right. Hide them on small screens -->
     <div class="w3-right w3-hide-small">
-      <svg width="50" height="30">
-        <image xlink:href="https://d1b10bmlvqabco.cloudfront.net/attach/jl2bsdaky4867r/il3qyrgkst84cu/jo8u1phb49x2/logomib_vector.svg" height="30" width="50"/>
-      </svg>
-      <button mat-button>About Us</button>
+      <button mat-button (click)="aboutUs()">About Us</button>
       <button *ngIf="!userService.getUser()"  mat-button (click)="openDialog()">Log In</button>
     </div>
   </div>
 </div>
 
-<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px; max-height: 40px" id="home">
   <div class="w3-display-left w3-text-white" style="padding:48px">
     <span class="w3-jumbo w3-hide-small">STUDIJOBS</span>
 
@@ -28,7 +25,31 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 </header>
 
 <app-profile-panel *ngIf="userService.getUser()" (toggle)="openJobs()"></app-profile-panel>
-<app-available-jobs [isOpen]="onHomeClicked"></app-available-jobs>
+<mat-card *ngIf="onAboutUs">
+  <mat-card-title>About Us</mat-card-title>
+  <mat-card-subtitle>Who created this website?</mat-card-subtitle>
+  <mat-card-content>
+    Imagine this: four students who don't really know each other have to get together and create this masterpiece
+    of a website. WTF, right? Well, this is exactly what happened to us roughly two months ago. We were faced a pretty
+    tough challenge and had to learn what it means working in a team and get a taste of our possible future as
+    software engineers. <br><br>
+    Our Team consists of: <br><br>
+    <strong>Joana Portmann <br>
+    Kristjan <br>
+    Joel Zuber <br>
+      Ann Kiener</strong> <br><br>
+    Thank you for being on our website! We really appreciate it!
+    <br>
+
+    <svg width="200" height="200">
+      <image xlink:href="https://d1b10bmlvqabco.cloudfront.net/attach/jl2bsdaky4867r/il3qyrgkst84cu/jo8u1phb49x2/logomib_vector.svg" height="200" width="200"/>
+    </svg>
+
+  </mat-card-content>
+</mat-card>
+
+<app-available-jobs *ngIf="onHomeClicked"></app-available-jobs>
+<!-- <app-job *ngIf="userService.getUser().userType === admin"></app-job> -->
 
 
 

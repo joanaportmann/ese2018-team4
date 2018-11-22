@@ -5,11 +5,7 @@ import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
-import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
-import {ProfilePanelComponent} from './profile-panel/profile-panel.component';
 import { UserService } from './services/user.service';
-import {NativeDateAdapter} from '@angular/material';
-
 
 @Component({
   selector: 'app-root',
@@ -21,16 +17,17 @@ export class AppComponent {
 
   @ViewChild('jobForm')
   public jobForm: NgForm;
-  job: Job = new Job(null, '', '', '');
+  job: Job = new Job(null, '', null, '', '', '');
   jobs: Job[] = [];
-  onHomeClicked = false;
+  onHomeClicked = true;
+  onAboutUs = false;
 
 
   constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
   }
 
   openJobs() {
-    this.onHomeClicked = !this.onHomeClicked;
+    this.onHomeClicked = true;
   }
 
   /**
@@ -44,13 +41,17 @@ export class AppComponent {
     });
   }
 
+aboutUs() {
+    this.onAboutUs = true;
+    this.onHomeClicked = false;
+}
 
   onJobCreate(): void {
     this.httpClient.post('http://localhost:3000/job', this.job, { withCredentials: true })
       .subscribe((instance: any) => {
         this.job.id = instance.id;
         this.jobs.push(this.job);
-        this.job = new Job(null, '', '', '');
+        this.job = new Job(null, '', null, '', '', '');
       });
 
   }

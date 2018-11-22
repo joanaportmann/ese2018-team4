@@ -18,7 +18,7 @@ import {
   MatStepperModule,
   MatToolbar,
   MatToolbarModule,
-  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule
+  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -30,6 +30,7 @@ import { ProfilePanelComponent } from './profile-panel/profile-panel.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
 import { MyJobsComponent } from './my-jobs/my-jobs.component';
+import { AdminViewComponent } from './admin-view/admin-view.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { MyJobsComponent } from './my-jobs/my-jobs.component';
     ProfilePanelComponent,
     ProfileEditorComponent,
     AvailableJobsComponent,
-    MyJobsComponent
+    MyJobsComponent,
+    AdminViewComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { MyJobsComponent } from './my-jobs/my-jobs.component';
     MatStepperModule,
     MatToolbarModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatNativeDateModule
   ],
   entryComponents: [
     DialogComponent,

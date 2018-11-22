@@ -9,7 +9,6 @@ export class MyJobsComponent implements OnInit {
 
   createJob: boolean;
   constructor() { }
-
   openCreate() {
     this.createJob = true;
   }

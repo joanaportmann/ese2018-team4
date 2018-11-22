@@ -11,15 +11,20 @@ Please fill in this form to create an Account
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Account Data</ng-template>
           <mat-form-field>
-            <input matInput placeholder="username" [(ngModel)]="credentials.username" formControlName="first" required>
+            <input matInput placeholder="Username" [(ngModel)]="credentials.username" formControlName="first" required>
+
+          </mat-form-field>
+
+          <br>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" [(ngModel)]="credentials.password" formControlName="first" required>
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input type="password" matInput placeholder="password" [(ngModel)]="credentials.password" formControlName="first" required>
+            <input type="password" matInput placeholder="Confirm Password" formControlName="first" required>
           </mat-form-field>
-          <br>
           <div>
-            <button mat-button matStepperNext>Next</button>
+            <button style="float: right;" mat-button matStepperNext *ngIf="!firstFormGroup.errors">Next</button>
           </div>
         </form>
       </mat-step>

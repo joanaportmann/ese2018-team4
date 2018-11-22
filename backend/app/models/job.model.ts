@@ -7,27 +7,39 @@ export class Job extends Model<Job> {
   name!: string;
 
   @Column
-  description!: string;
+  percentage!: number;
+
+  @Column
+  time!: string;
 
   @Column
   necessarySkills!: string;
 
   @Column
-  approved!: boolean; 
+  description!: string;
+
+  @Column
+  approved!: boolean;
 
   toSimplification(): any {
     return {
       'id': this.id,
       'name': this.name,
-      'description': this.description,
-      'necessarySkills': this.necessarySkills
+      'percentage': this.percentage,
+      'time': this.time,
+      'necessarySkills': this.necessarySkills,
+      'description': this.description
+
     };
   }
 
   fromSimplification(simplification: any): void {
     this.name = simplification['name'];
-    this.description = simplification['description'];
+    this.percentage = simplification['percentage'];
+    this.time = simplification['time'];
     this.necessarySkills = simplification['necessarySkills'];
+    this.description = simplification['description'];
+
   }
 
 }

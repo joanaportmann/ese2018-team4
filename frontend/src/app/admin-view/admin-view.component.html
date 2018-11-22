@@ -1,0 +1,9 @@
+<mat-toolbar>Welcome&nbsp;
+  <mat-menu  #appMenu="matMenu" yPosition="above" xPosition="after">
+    <button id="jobs" mat-menu-item>Edit Submitted Jobs</button>
+    <button id="users" mat-menu-item >Edit Users</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="appMenu">
+    Menu
+  </button>
+</mat-toolbar>

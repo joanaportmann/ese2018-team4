@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
+import {ErrorStateMatcher, MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
 import {Credentials} from '../models/credentials';
+
 
 @Component({
   selector: 'app-register-dialog',
@@ -41,5 +42,12 @@ export class RegisterDialogComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Registration failed');
     });
+  }
+}
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }

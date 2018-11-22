@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Injectable, Input, OnInit, Output} from '@angular/core';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
 
@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: './job.component.html',
   styleUrls: ['./job.component.css']
 })
+
 export class JobComponent implements OnInit {
 
   @Input()
