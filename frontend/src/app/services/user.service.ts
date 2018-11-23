@@ -12,7 +12,7 @@ export class UserService {
     const filteredArray: string[] = document.cookie
         .replace(/\s/g, '').split(';')
         .filter(x => x.startsWith('user='));
-    if(filteredArray.length === 0) return null;
+    if(filteredArray.length === 0) { return null; }
     const userString = decodeURIComponent(filteredArray[0].substring('user='.length));
     return JSON.parse(userString.substring('j:'.length));
   }

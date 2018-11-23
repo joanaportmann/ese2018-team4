@@ -1,20 +1,23 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, HostBinding, Injectable, OnInit, ViewChild} from '@angular/core';
 import {AppComponent, MyErrorStateMatcher} from '../app.component';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-create-job',
   templateUrl: './create-job.component.html',
   styleUrls: ['./create-job.component.css']
 })
+
 export class CreateJobComponent implements OnInit {
   @ViewChild('jobForm')
   public jobForm: NgForm;
-  job: Job = new Job(null, '', '', '');
+  job: Job = new Job(null, '', null, '', '', '');
   jobs: Job[] = [];
   jobFormGroup: FormGroup;
+
 
   constructor(private httpClient: HttpClient) {
   }
@@ -22,7 +25,7 @@ export class CreateJobComponent implements OnInit {
   ngOnInit(): void {
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
       this.jobs = instances.map((instance) =>
-        new Job(instance.id, instance.name, instance.description, instance.necessarySkills));
+        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time));
     });
 
     this.jobFormGroup = new FormGroup({
@@ -40,7 +43,7 @@ export class CreateJobComponent implements OnInit {
       .subscribe((instance: any) => {
         this.job.id = instance.id;
         this.jobs.push(this.job);
-        this.job = new Job(null, '', '', '');
+        this.job = new Job(null, '', null, '', '', '');
         this.jobForm.resetForm();
       });
   }
