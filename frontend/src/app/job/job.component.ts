@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./job.component.css']
 })
 
-export class JobComponent implements OnInit {
+export class JobComponent {
 
   @Input()
   job: Job;
@@ -17,9 +17,6 @@ export class JobComponent implements OnInit {
   destroy = new EventEmitter<Job>();
 
   constructor(private httpClient: HttpClient) {
-  }
-
-  ngOnInit() {
   }
 
   onSave() {
