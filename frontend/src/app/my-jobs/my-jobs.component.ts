@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormGroup, NgForm} from '@angular/forms';
+import {Job} from '../models/job';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-my-jobs',
@@ -8,10 +11,14 @@ import { Component, OnInit } from '@angular/core';
 export class MyJobsComponent implements OnInit {
 
   createJob: boolean;
-  constructor() { }
+
+  constructor(private httpClient: HttpClient) {
+  }
+
   openCreate() {
     this.createJob = true;
   }
+
   ngOnInit() {
   }
 

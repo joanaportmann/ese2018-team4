@@ -2,8 +2,15 @@
 consists of several input fields, some of them are validated
 as required -->
 
+<form class="createjob">
+<div>
+  <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
+</div>
+
+<div>
 <mat-card>
-  <mat-card-title>
+
+    <mat-card-title>
     Create a new Job
   </mat-card-title>
   <mat-card-subtitle>Fields marked with (*) must be filled in</mat-card-subtitle>
@@ -68,4 +75,5 @@ as required -->
   </form>
   <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
 </mat-card>
-
+</div>
+</form>
