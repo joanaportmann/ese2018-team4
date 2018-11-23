@@ -30,6 +30,7 @@ import { ProfilePanelComponent } from './profile-panel/profile-panel.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
 import { SearchComponent } from './search/search.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SearchComponent } from './search/search.component';
     ProfilePanelComponent,
     ProfileEditorComponent,
     AvailableJobsComponent,
-    SearchComponent
+    SearchComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
