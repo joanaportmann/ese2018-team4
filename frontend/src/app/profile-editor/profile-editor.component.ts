@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher, NativeDateAdapter} from '@angular/material';
+import {ErrorStateMatcher, MatDialog, MatDialogRef, NativeDateAdapter} from '@angular/material';
+import {RegisterDialogComponent} from '../register-dialog/register-dialog.component';
+import {LoginComponent} from '../login/login.component';
+import {DeleteAccountComponent} from "../delete-account/delete-account.component";
 
 
 export interface Gender {
@@ -13,8 +16,8 @@ export interface Gender {
   templateUrl: './profile-editor.component.html',
   styleUrls: ['./profile-editor.component.css']
 })
-export class ProfileEditorComponent implements OnInit {
-  constructor() {
+export class ProfileEditorComponent {
+  constructor(public dialog: MatDialog) {
   }
 
   emailFormControl = new FormControl('', [
@@ -29,11 +32,14 @@ export class ProfileEditorComponent implements OnInit {
     {value: 'Other-2', viewValue: 'Other'}
   ];
 
-  ngOnInit() {
-  }
+  deleteAccount() {
+    const openDialogDel = this.dialog.open(DeleteAccountComponent);
 
+    openDialogDel.afterClosed().subscribe( result => {
+      console.log('Dialog to Delete Account is closed');
+  });
 }
-
+}
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;

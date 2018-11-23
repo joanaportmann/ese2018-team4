@@ -31,6 +31,7 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
 import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
 import { MyJobsComponent } from './my-jobs/my-jobs.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
     ProfileEditorComponent,
     AvailableJobsComponent,
     MyJobsComponent,
-    AdminViewComponent
+    AdminViewComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,9 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
     DialogComponent,
     RegisterDialogComponent,
     ProfilePanelComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileEditorComponent,
+    DeleteAccountComponent
   ],
   providers: [AppComponent, ProfileEditorComponent],
   bootstrap: [AppComponent]

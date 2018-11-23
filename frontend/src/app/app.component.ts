@@ -6,6 +6,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
 import { UserService } from './services/user.service';
+import {User} from "./models/user";
 
 @Component({
   selector: 'app-root',
@@ -21,13 +22,17 @@ export class AppComponent {
   jobs: Job[] = [];
   onHomeClicked = true;
   onAboutUs = false;
-
+  openJobCreationField: boolean;
+  openProfileField: boolean;
 
   constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
   }
 
   openJobs() {
     this.onHomeClicked = true;
+    this.onAboutUs = false;
+    this.openJobCreationField = false;
+    this.openProfileField = false;
   }
 
   /**
@@ -44,6 +49,8 @@ export class AppComponent {
 aboutUs() {
     this.onAboutUs = true;
     this.onHomeClicked = false;
+    this.openProfileField = false;
+    this.openJobCreationField = false;
 }
 
   onJobCreate(): void {
@@ -58,6 +65,25 @@ aboutUs() {
 
   onJobDestroy(job: Job): void {
     this.jobs.splice(this.jobs.indexOf(job), 1);
+  }
+
+  openCreateJob() {
+    this.openJobCreationField = true;
+    this.openProfileField = false;
+    this.onHomeClicked = false;
+    this.onAboutUs = false;
+  }
+  toggleAvailableJobs() {
+  }
+  openProfile() {
+    this.openProfileField = true;
+    this.openJobCreationField = false;
+    this.onHomeClicked = false;
+    this.onAboutUs = false;
+  }
+  getUsername(): string {
+    const user: User = this.userService.getUser();
+    return user && user.username;
   }
 
 }

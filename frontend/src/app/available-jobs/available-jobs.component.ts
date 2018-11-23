@@ -1,6 +1,7 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-available-jobs',
   templateUrl: './available-jobs.component.html',
