@@ -10,9 +10,7 @@ div.search-bar {
   padding: 35px;
 }
 
-a {
-  color: white;
-  background-color: blue;
-  padding: 5px;
+button {
+  padding: 5px 15px;
   margin: 10px;
 }
