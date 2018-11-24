@@ -21,7 +21,10 @@ Please fill in this form to create an Account
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input type="password" matInput placeholder="Confirm Password" formControlName="confirmedPassword" required>
+            <input type="password" matInput placeholder="Confirm Password" formControlName="confirmedPassword" required [errorStateMatcher]="PasswordConfirmationMatcher">
+            <mat-error *ngIf="firstFormGroup.hasError('notSame')">
+                Passwords do not match
+            </mat-error>
           </mat-form-field>
           <div>
             <button style="float: right;" mat-button matStepperNext *ngIf="!firstFormGroup.errors">Next</button>

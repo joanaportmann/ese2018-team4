@@ -18,6 +18,7 @@ export class RegisterDialogComponent implements OnInit {
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  PasswordConfirmationMatcher: GroupErrorStateMatcher = new GroupErrorStateMatcher();
 
   constructor(private httpClient: HttpClient, public snackBar: MatSnackBar, private _formBuilder: FormBuilder,
     public dialog: MatDialog, private dialogReg: MatDialogRef<RegisterDialogComponent>) { }
@@ -27,16 +28,22 @@ export class RegisterDialogComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
       confirmedPassword: ['', Validators.required]
-    });
+    }, { validator: this.checkPasswords });
     this.secondFormGroup = this._formBuilder.group({
       companyName: [''],
-      email:[''],
-      phoneNumber:[''],
-      homepage:[''],
-      address:[''],
-      numberOfEmployees:[''],
-      business:['']
+      email: [''],
+      phoneNumber: [''],
+      homepage: [''],
+      address: [''],
+      numberOfEmployees: [''],
+      business: ['']
     });
+  }
+
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+    let pass = group.controls.password.value;
+    let confirmPass = group.controls.confirmedPassword.value;
+    return pass === confirmPass ? null : { notSame: true };
   }
 
   /**
@@ -45,7 +52,7 @@ export class RegisterDialogComponent implements OnInit {
   register() {
     const firstFormValue = this.firstFormGroup.value;
     const secondFormValue = this.secondFormGroup.value;
-    const user = new RegistrationInfo(firstFormValue.username, firstFormValue.password, secondFormValue.companyName, 
+    const user = new RegistrationInfo(firstFormValue.username, firstFormValue.password, secondFormValue.companyName,
       secondFormValue.email, secondFormValue.phoneNumber, secondFormValue.homepage, secondFormValue.address,
       secondFormValue.numberOfEmployees, secondFormValue.business);
     this.httpClient.post('http://localhost:3000/user', user, {
@@ -64,6 +71,15 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
+export class GroupErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+
+    return (invalidCtrl || invalidParent);
   }
 }
 
