@@ -62,7 +62,7 @@ export class RegisterDialogComponent implements OnInit {
       this.snackBar.open('You are now registered! Please log yourself in.');
       this.dialogReg.close();
     }, (error: HttpErrorResponse) => {
-      this.snackBar.open('Registration failed');
+      this.snackBar.open('Username already taken');
     });
   }
 }
