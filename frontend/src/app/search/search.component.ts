@@ -9,6 +9,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
   jobs: Job[] = [];
+  searchText = '';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,5 +18,19 @@ export class SearchComponent implements OnInit {
       this.jobs = instances.map((instance) =>
         new Job(instance.id, instance.name, instance.description, instance.necessarySkills));
     });
+
+    this.searchText = 'a';
+    this.jobs = this.filterText();
+  }
+
+  filterText(): Job[] {
+    if (!this.searchText.trim()) {
+      return this.jobs;
+    }
+    return jobs.filter(this.containsSomewhere);
+  }
+
+  private containsSomewhere(element, index, array) {
+    return element.includes(this.searchText);
   }
 }
