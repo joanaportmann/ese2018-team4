@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {ErrorStateMatcher, MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
-import {Credentials} from '../models/credentials';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ErrorStateMatcher, MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
+import { Credentials } from '../models/credentials';
+import { UserService } from '../services/user.service';
+import { Person } from '../models/user';
 
 
 @Component({
@@ -18,14 +20,22 @@ export class RegisterDialogComponent implements OnInit {
   secondFormGroup: FormGroup;
 
   constructor(private httpClient: HttpClient, public snackBar: MatSnackBar, private _formBuilder: FormBuilder,
-              public dialog: MatDialog, private dialogReg: MatDialogRef<RegisterDialogComponent>) { }
+    public dialog: MatDialog, private dialogReg: MatDialogRef<RegisterDialogComponent>) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      first: ['', Validators.required]
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmedPassword: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
-      second: ['', Validators.required]
+      companyName: [''],
+      email:[''],
+      phoneNumber:[''],
+      homepage:[''],
+      address:[''],
+      numberOfEmployees:[''],
+      business:['']
     });
   }
 
@@ -33,7 +43,12 @@ export class RegisterDialogComponent implements OnInit {
    * more or less the same function as the login() function
    */
   register() {
-    this.httpClient.post('http://localhost:3000/user', this.credentials, {
+    const firstFormValue = this.firstFormGroup.value;
+    const secondFormValue = this.secondFormGroup.value;
+    const user = new RegistrationInfo(firstFormValue.username, firstFormValue.password, secondFormValue.companyName, 
+      secondFormValue.email, secondFormValue.phoneNumber, secondFormValue.homepage, secondFormValue.address,
+      secondFormValue.numberOfEmployees, secondFormValue.business);
+    this.httpClient.post('http://localhost:3000/user', user, {
       responseType: 'text',
       withCredentials: true
     }).subscribe((responseText: string) => {
@@ -51,3 +66,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
+
+export class RegistrationInfo implements Person {
+  constructor(
+    public username: string,
+    public password: string,
+    public companyName: string,
+    public email: string,
+    public phoneNumber: string,
+    public homepage: string,
+    public address: string,
+    public numberOfEmployees: string,
+    public business: string
+  ) { }
+}
+

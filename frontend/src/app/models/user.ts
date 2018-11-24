@@ -1,7 +1,11 @@
-export interface User {
+export interface Person {
     username: string;
-    userType: UserType;
-    enabled: boolean;
+    companyName: string;
+  }
+
+export interface User extends Person {
+   userType: UserType;
+    enabled: boolean; 
 }
 
 export enum UserType {
