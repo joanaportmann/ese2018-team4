@@ -11,15 +11,20 @@ Please fill in this form to create an Account
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Account Data</ng-template>
           <mat-form-field>
-            <input matInput placeholder="username" [(ngModel)]="credentials.username" formControlName="first" required>
+            <input matInput placeholder="Username" [(ngModel)]="credentials.username" formControlName="first" required>
+
+          </mat-form-field>
+
+          <br>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" [(ngModel)]="credentials.password" formControlName="first" required>
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input type="password" matInput placeholder="password" [(ngModel)]="credentials.password" formControlName="first" required>
+            <input type="password" matInput placeholder="Confirm Password" formControlName="first" required>
           </mat-form-field>
-          <br>
           <div>
-            <button mat-button matStepperNext>Next</button>
+            <button style="float: right;" mat-button matStepperNext *ngIf="!firstFormGroup.errors">Next</button>
           </div>
         </form>
       </mat-step>
@@ -27,11 +32,11 @@ Please fill in this form to create an Account
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>Personal Data</ng-template>
           <mat-form-field>
-            <input matInput placeholder="First name, Last name" formControlName="second" required>
+            <input matInput placeholder="First name, Last name" formControlName="second">
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input matInput placeholder="Your Company" formControlName="second" required>
+            <input matInput placeholder="Your Company" formControlName="second">
           </mat-form-field>
           <br>
           <mat-form-field>
@@ -39,16 +44,9 @@ Please fill in this form to create an Account
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button (click)="register()">Register</button>
           </div>
         </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-       <div>
-          <button mat-button (click)="register()">Register</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
       </mat-step>
     </mat-horizontal-stepper>
   </form>

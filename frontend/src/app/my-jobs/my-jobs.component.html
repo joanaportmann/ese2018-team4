@@ -1,0 +1,11 @@
+<form class="my-jobs">
+  <mat-card>
+    <div>
+    <mat-card-title>My Jobs</mat-card-title>
+    </div>
+    <div>
+    <button *ngIf="!createJob" mat-button (click)="openCreate()">Create a new Job</button>
+    </div>
+    <app-create-job *ngIf="createJob"></app-create-job>
+  </mat-card>
+</form>

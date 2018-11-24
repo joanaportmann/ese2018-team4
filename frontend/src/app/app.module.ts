@@ -18,7 +18,7 @@ import {
   MatStepperModule,
   MatToolbar,
   MatToolbarModule,
-  MatMenuModule, MatIconModule
+  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -31,6 +31,9 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
 import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
 import { SearchComponent } from './search/search.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { MyJobsComponent } from './my-jobs/my-jobs.component';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     ProfileEditorComponent,
     AvailableJobsComponent,
     SearchComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    MyJobsComponent,
+    AdminViewComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -59,20 +65,25 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     MatCheckboxModule,
     MatCardModule,
     MatDialogModule,
+    MatDatepickerModule,
     MatExpansionModule,
+    MatSelectModule,
     MatSnackBarModule,
     MatStepperModule,
     MatToolbarModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatNativeDateModule
   ],
   entryComponents: [
     DialogComponent,
     RegisterDialogComponent,
     ProfilePanelComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileEditorComponent,
+    DeleteAccountComponent
   ],
-  providers: [],
+  providers: [AppComponent, ProfileEditorComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,6 +1,18 @@
 mat-card{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
   text-align: left;
   padding: 15px 15px 15px 15px;
   margin: 2px 2px 10px 2px;
 
+}
+
+.left{
+  flex-direction: row;
+}
+
+.right{
+  align-content: center;
 }
