@@ -62,7 +62,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 <app-profile-editor *ngIf="openProfileField" (toggle)="openProfile()"></app-profile-editor>
 <app-my-jobs *ngIf="openJobCreationField" (toggle)="openCreateJob()"></app-my-jobs>
 <app-available-jobs *ngIf="onHomeClicked"></app-available-jobs>
-<!-- <app-user-view *ngIf="userService.getUser().userType === admin"></app-job> -->
+ <app-admin-view *ngIf="userService.getUser().userType.toString() === 'admin'"></app-admin-view>
 
 
 

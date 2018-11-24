@@ -6,7 +6,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
 import { UserService } from './services/user.service';
-import {User} from "./models/user";
+import {User} from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -95,4 +95,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 
+enum UserType {
+  admin,
+  enterprise
+}
 
