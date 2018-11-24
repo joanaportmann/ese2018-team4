@@ -14,15 +14,13 @@ export class SearchComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.jobs = this.httpClient.get('http://localhost:3000/job');
-
-    this.searchText = 'a';
-    this.jobs = this.filterText();
-
-    this.jobs.subscribe((instances: any) => {
+    this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
       this.jobs = instances.map((instance) =>
         new Job(instance.id, instance.name, instance.description, instance.necessarySkills));
     });
+
+    this.searchText = 'a';
+    this.jobs = this.filterText();
   }
 
   filterText(): Job[] {
