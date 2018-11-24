@@ -9,24 +9,25 @@ import {HttpClient} from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
   jobs: Job[] = [];
-  searchText = '';
+  static searchText = '';
 
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
+    SearchComponent.searchText = 'a';
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
-      this.jobs = instances.map((instance) =>
-        new Job(instance.id, instance.name, instance.description, instance.necessarySkills));
+      this.jobs = instances.map(this.filter);
     });
-
-    this.searchText = 'a';
-    this.jobs = this.filterText();
   }
 
-  filterText(): Job[] {
-    if (!this.searchText.trim()) {
-      return this.jobs;
+  filter(job: any): Job {
+    if (SearchComponent.containsText(job)) {
+      return new Job(job.id, job.name, job.description, job.necessarySkills);
     }
-    return this.jobs.filter(job => true);
+    else return null;
+  }
+
+  private static containsText(job: any): boolean {
+    return job.name.includes(this.searchText);
   }
 }

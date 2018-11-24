@@ -2,4 +2,8 @@
   <app-search-bar></app-search-bar>
 </p>
 
-<a *ngFor="let job of jobs">{{job.name}}</a>
+<div *ngFor="let job of jobs">
+  <a *ngIf="job">
+    {{job.name}}
+  </a>
+</div>
