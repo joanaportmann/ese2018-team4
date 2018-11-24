@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
     if (!this.searchText.trim()) {
       return this.jobs;
     }
-    return jobs.filter(this.containsSomewhere);
+    return this.jobs.filter(this.containsSomewhere);
   }
 
   private containsSomewhere(element, index, array) {
