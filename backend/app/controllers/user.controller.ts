@@ -24,6 +24,22 @@ router.post('/', async (req: Request, res: Response) => {
   res.send(instance.toSimplification());
 });
 
+router.put('/:username', async (req:Request, res: Response) => {
+  const username = req.params.username;
+  const instance = await User.findByPrimary(username);
+  if (!instance) {
+    res.statusCode = 404;
+    res.json({
+      'message': 'not found'
+    });
+    return;
+  }
+  instance.fromSimplification(req.body);
+  await instance.save();
+  res.statusCode = 204;
+  res.send();
+});
+
 router.delete('/:username', async (req: Request, res: Response) => {
   const username = req.params.username;
   const instance = await User.findByPrimary(username);
