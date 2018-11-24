@@ -14,13 +14,15 @@ export class SearchComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
-      this.jobs = instances.map((instance) =>
-        new Job(instance.id, instance.name, instance.description, instance.necessarySkills));
-    });
+    this.jobs = this.httpClient.get('http://localhost:3000/job');
 
     this.searchText = 'a';
     this.jobs = this.filterText();
+
+    this.jobs.subscribe((instances: any) => {
+      this.jobs = instances.map((instance) =>
+        new Job(instance.id, instance.name, instance.description, instance.necessarySkills));
+    });
   }
 
   filterText(): Job[] {
@@ -31,6 +33,6 @@ export class SearchComponent implements OnInit {
   }
 
   private containsSomewhere(element, index, array) {
-    return element.includes(this.searchText);
+    return element.name.includes(this.searchText);
   }
 }
