@@ -6,7 +6,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
 import { UserService } from './services/user.service';
-import {User} from "./models/user";
+import {User} from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -24,15 +24,10 @@ export class AppComponent {
   onAboutUs = false;
   openJobCreationField: boolean;
   openProfileField: boolean;
+  openEditJobs: boolean;
+  openEditUser: boolean;
 
   constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
-  }
-
-  openJobs() {
-    this.onHomeClicked = true;
-    this.onAboutUs = false;
-    this.openJobCreationField = false;
-    this.openProfileField = false;
   }
 
   /**
@@ -44,6 +39,12 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('this dialog is closed');
     });
+  }
+  openJobs() {
+    this.onHomeClicked = true;
+    this.onAboutUs = false;
+    this.openJobCreationField = false;
+    this.openProfileField = false;
   }
 
 aboutUs() {
@@ -73,13 +74,24 @@ aboutUs() {
     this.onHomeClicked = false;
     this.onAboutUs = false;
   }
-  toggleAvailableJobs() {
-  }
+
   openProfile() {
     this.openProfileField = true;
     this.openJobCreationField = false;
     this.onHomeClicked = false;
     this.onAboutUs = false;
+  }
+
+  openEditUsers() {
+    this.onHomeClicked = false;
+    this.openEditJobs = false;
+    this.openEditUser = true;
+  }
+
+  openEditJob() {
+    this.onHomeClicked = false;
+    this.openEditUser = false;
+    this.openEditJobs = true;
   }
   getUsername(): string {
     const user: User = this.userService.getUser();
@@ -94,5 +106,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-
-
+enum UserType {
+  admin,
+  enterprise
+}

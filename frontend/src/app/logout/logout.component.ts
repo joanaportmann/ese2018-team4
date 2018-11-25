@@ -20,10 +20,10 @@ export class LogoutComponent {
       withCredentials: true
     }).subscribe((responseText: string) => {
       console.log('logged out');
-      
+
       this.snackBar.open('You are now logged out');
     }, (error: HttpErrorResponse) => {
-      this.snackBar.open('Login failed');
+      this.snackBar.open('Logout failed');
     });
   }
 

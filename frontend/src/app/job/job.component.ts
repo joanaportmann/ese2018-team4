@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Injectable, Input, OnInit, Output} from '@angular/core';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
+import {UserService} from '../services/user.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-job',
@@ -16,7 +18,10 @@ export class JobComponent {
   @Output()
   destroy = new EventEmitter<Job>();
 
-  constructor(private httpClient: HttpClient) {
+  options: FormGroup;
+
+  constructor(private httpClient: HttpClient, public userService: UserService, fb: FormBuilder) {
+   this.options = fb.group({approved: false});
   }
 
   onSave() {

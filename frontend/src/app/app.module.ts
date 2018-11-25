@@ -18,7 +18,7 @@ import {
   MatStepperModule,
   MatToolbar,
   MatToolbarModule,
-  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule
+  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule, MatFormFieldModule
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -33,6 +33,8 @@ import { MyJobsComponent } from './my-jobs/my-jobs.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { LogoutComponent } from './logout/logout.component';
+import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { LogoutComponent } from './logout/logout.component';
     MyJobsComponent,
     AdminViewComponent,
     DeleteAccountComponent,
-    LogoutComponent
+    LogoutComponent,
+    EditJobsComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,7 @@ import { LogoutComponent } from './logout/logout.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatListModule,
     MatInputModule,
     MatCheckboxModule,
@@ -65,6 +70,7 @@ import { LogoutComponent } from './logout/logout.component';
     MatDialogModule,
     MatDatepickerModule,
     MatExpansionModule,
+    MatFormFieldModule,
     MatSelectModule,
     MatSnackBarModule,
     MatStepperModule,
