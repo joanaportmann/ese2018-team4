@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    SearchComponent.searchText = 'a';
+    SearchComponent.searchText = +this.route.snapshot.paramMap.get('text');
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
       this.jobs = instances.map(this.filter);
     });
