@@ -15,7 +15,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
       <button mat-button [matMenuTriggerFor]="appMenu">
         Menu
       </button>
-<app-logout>ggghjkgggggggggggggggggggg</app-logout>
+  <app-logout *ngIf="userService.getUser()"></app-logout> 
       <button mat-button (click)="aboutUs()">About Us</button>
       <button *ngIf="!userService.getUser()"  mat-button (click)="openDialog()">Log In</button>
     </div>
