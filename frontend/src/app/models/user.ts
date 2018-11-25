@@ -15,6 +15,6 @@ export interface User extends Person {
 }
 
 export enum UserType {
-    admin,
-    enterprise
+    admin = 'admin',
+    enterprise = 'enterprise'
 }

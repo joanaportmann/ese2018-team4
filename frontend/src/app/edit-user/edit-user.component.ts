@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Job} from '../models/job';
 import {User} from '../models/user';
@@ -10,15 +10,17 @@ import {User} from '../models/user';
 })
 export class EditUserComponent implements OnInit {
 
-
   users: User[] = [];
-  constructor(private httpClient: HttpClient) { }
 
-  ngOnInit() {
-  /*  this.httpClient.get('http://localhost:3000/user').subscribe((instances: any) => {
-      this.users = instances.map((instance) =>
-        new User();
-    });*/
+  constructor(private httpClient: HttpClient) {
   }
 
+  ngOnInit() {
+    this.httpClient.get('http://localhost:3000/user').subscribe((instances: any) => {
+      this.users = instances;
+      //   .map((instance) =>
+      //     new User();
+      // });
+    });
+  }
 }

@@ -4,6 +4,12 @@ import { User } from '../models/user.model';
 
 const router: Router = Router();
 
+router.get('/', async (req: Request, res: Response) => {
+  const users: User[] = await User.findAll();
+  res.statusCode = 200;
+  res.send(users.map(user => user.toSimplification()));
+});
+
 router.post('/', async (req: Request, res: Response) => {
   const simpleUser = req.body;
   const user = await User.findByPrimary(simpleUser.username);

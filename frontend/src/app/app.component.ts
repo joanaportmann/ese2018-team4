@@ -26,6 +26,7 @@ export class AppComponent {
   openProfileField: boolean;
   openEditJobs: boolean;
   openEditUser: boolean;
+  UserType = UserType;
 
   constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
   }
@@ -107,6 +108,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 enum UserType {
-  admin,
-  enterprise
+  admin = 'admin',
+  enterprise = 'enterprise'
 }
