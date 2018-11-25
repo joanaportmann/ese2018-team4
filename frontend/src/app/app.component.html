@@ -76,6 +76,8 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 <app-edit-jobs *ngIf="openEditJobs && userService.getUser()"></app-edit-jobs>
 <app-edit-user *ngIf="openEditUser && userService.getUser()"></app-edit-user>
 
+<router-outlet></router-outlet>
+
 
 
 
