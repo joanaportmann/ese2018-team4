@@ -36,6 +36,7 @@ router.put('/:username', async (req:Request, res: Response) => {
   }
   instance.fromSimplification(req.body);
   await instance.save();
+  res.cookie('user', req.user);
   res.statusCode = 204;
   res.send();
 });
