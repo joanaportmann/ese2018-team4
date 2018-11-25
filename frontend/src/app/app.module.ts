@@ -37,6 +37,7 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
 import { LogoutComponent } from './logout/logout.component';
 import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    AppRoutingModule
   ],
   entryComponents: [
     DialogComponent,
