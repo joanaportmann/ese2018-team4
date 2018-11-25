@@ -1,12 +1,10 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher, MatDialog, MatDialogRef, NativeDateAdapter, MatSnackBar } from '@angular/material';
-import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
-import { LoginComponent } from '../login/login.component';
-import { DeleteAccountComponent } from "../delete-account/delete-account.component";
-import { UserService } from '../services/user.service';
-import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher, MatDialog, MatSnackBar } from '@angular/material';
+import { DeleteAccountComponent } from "../delete-account/delete-account.component";
+import { User } from '../models/user';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -29,7 +27,9 @@ export class ProfileEditorComponent {
   matcher = new MyErrorStateMatcher();
 
   submitChanges() {
-    this.httpClient.put(`http://localhost:3000/user/${this.user.username}`, this.user).subscribe(() => {
+    this.httpClient.put(`http://localhost:3000/user/${this.user.username}`, this.user, {
+      withCredentials: true
+    }).subscribe(() => {
       this.snackBar.open('Your account is updated');
     });
   }

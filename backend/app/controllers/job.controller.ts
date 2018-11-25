@@ -39,7 +39,7 @@ router.get('/:id', async (req: Request, res: Response) => {
   res.send(instance.toSimplification());
 });
 
-router.put('/:id', authenticatedUser, sameUser, async (req: Request, res: Response) => {
+router.put('/:id', authenticatedUser, async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const instance: Job | null = await Job.findById(id);
   if (instance == null) {
@@ -80,7 +80,7 @@ router.put('/:id/approved', async (req: Request, res: Response) => {
   });
 });
 
-router.delete('/:id', authenticatedUser, sameUser, async (req: Request, res: Response) => {
+router.delete('/:id', authenticatedUser, async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const instance = await Job.findById(id);
   if (instance == null) {
