@@ -53,6 +53,8 @@ aboutUs() {
     this.onHomeClicked = false;
     this.openProfileField = false;
     this.openJobCreationField = false;
+    this.openEditUser = false;
+    this.openEditJobs = false;
 }
 
   onJobCreate(): void {
@@ -86,13 +88,19 @@ aboutUs() {
   openEditUsers() {
     this.onHomeClicked = false;
     this.openEditJobs = false;
+    this.onAboutUs = false;
     this.openEditUser = true;
+    this.openJobCreationField = false;
+    this.openProfileField = false;
   }
 
   openEditJob() {
     this.onHomeClicked = false;
     this.openEditUser = false;
+    this.onAboutUs = false;
     this.openEditJobs = true;
+    this.openJobCreationField = false;
+    this.openProfileField = false;
   }
   getUsername(): string {
     const user: User = this.userService.getUser();

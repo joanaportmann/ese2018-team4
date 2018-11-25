@@ -37,3 +37,8 @@ export class JobComponent {
   }
 
 }
+
+enum UserType {
+  admin = 'admin',
+  enterprise = 'enterprise'
+}

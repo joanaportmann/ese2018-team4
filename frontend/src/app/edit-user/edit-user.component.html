@@ -1,10 +1,12 @@
-<span *ngFor="let user of users">{{user.username}},</span>
-
 <form class="edit-user">
   <mat-card>
     <div>
       <mat-card-title>Edit Users</mat-card-title>
     </div>
+
+  <mat-list>
+    <mat-list-item *ngFor="let user of users">{{user.username}},<br> <mat-checkbox>Approve</mat-checkbox></mat-list-item>
+  </mat-list>
 
 
     <div>
