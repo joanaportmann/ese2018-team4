@@ -33,7 +33,19 @@ export class ProfileEditorComponent {
       this.snackBar.open('Your account is updated');
     });
   }
+
+  deleteAccount() {
+    const dialogRef = this.dialog.open(DeleteAccountComponent);
+    dialogRef.componentInstance.user = this.userService.getUser();
+
+    dialogRef.afterClosed().subscribe( result => {
+      console.log('Dialog to Delete Account is closed');
+  });
 }
+
+}
+
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
