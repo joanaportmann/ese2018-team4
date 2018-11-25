@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    SearchComponent.searchText = +this.route.snapshot.paramMap.get('text');
+    SearchComponent.searchText = window.location.pathname.substr(8);
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
       this.jobs = instances.map(this.filter);
     });
