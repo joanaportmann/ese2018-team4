@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +12,10 @@ export class SearchComponent implements OnInit {
   jobs: Job[] = [];
   static searchText = '';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     SearchComponent.searchText = +this.route.snapshot.paramMap.get('text');
