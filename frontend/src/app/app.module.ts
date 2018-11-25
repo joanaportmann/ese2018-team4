@@ -32,6 +32,7 @@ import { AvailableJobsComponent } from './available-jobs/available-jobs.componen
 import { MyJobsComponent } from './my-jobs/my-jobs.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     AvailableJobsComponent,
     MyJobsComponent,
     AdminViewComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

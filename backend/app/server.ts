@@ -78,6 +78,16 @@ app.post('/login', passport.authenticate('local'), (req: express.Request, res: e
     res.send('login successful');
 });
 
+app.post('/logout', (req: express.Request, res: express.Response) => {
+ 
+  req.logout();
+  res.cookie('advertisement-tracking-id', 'yolo1234');
+  res.clearCookie('user', req.user)
+  res.statusCode = 200;
+  res.send('logout successful');
+});
+
+
 sequelize.sync().then(() => {
 // start serving the application on the given port
   app.listen(port, () => {
