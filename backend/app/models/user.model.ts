@@ -42,7 +42,7 @@ export class User extends Model<User> {
 
     /**
      * Take simple object and copy data into this object.
-     * @param simplification 
+     * @param simplification
      */
     fromSimplification(simplification: any): void {
         this.username = simplification['username'];
