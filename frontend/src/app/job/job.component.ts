@@ -32,7 +32,11 @@ export class JobComponent {
    this.options = fb.group({approved: false});
 
    const id = +this.route.snapshot.paramMap.get('id');
-   // this.job = http.getJob(id);
+   this.job = this.getJob(id);
+  }
+
+  private getJob(id: number): Job {
+    return null;
   }
 
   onSave() {
