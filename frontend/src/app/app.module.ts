@@ -29,6 +29,8 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
 import { ProfilePanelComponent } from './profile-panel/profile-panel.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
+import { SearchComponent } from './search/search.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 import { MyJobsComponent } from './my-jobs/my-jobs.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
@@ -48,6 +50,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     ProfilePanelComponent,
     ProfileEditorComponent,
     AvailableJobsComponent,
+    SearchComponent,
+    SearchBarComponent,
     MyJobsComponent,
     AdminViewComponent,
     DeleteAccountComponent,
