@@ -1,6 +1,5 @@
-import { Router, Request, Response } from "express";
+import { Request, Response, Router } from "express";
 import { User } from '../models/user.model';
-import { authenticatedUser } from './authentication';
 
 
 const router: Router = Router();
@@ -36,7 +35,7 @@ router.put('/:username', async (req:Request, res: Response) => {
   }
   instance.fromSimplification(req.body);
   await instance.save();
-  res.cookie('user', req.user);
+  res.cookie('user', instance.toSimplification());
   res.statusCode = 204;
   res.send();
 });

@@ -1,16 +1,16 @@
 // import everything from express and assign it to the express variable
 import express from 'express';
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+import { Sequelize } from 'sequelize-typescript';
+// import all the controllers. If you add a new controller, make sure to import it here as well.
+import { JobController } from './controllers';
+import { UserController } from './controllers/user.controller';
+import { Job } from './models/job.model';
+import { User } from './models/user.model';
 let session = require("express-session"),
 bodyParser = require("body-parser");
 
-// import all the controllers. If you add a new controller, make sure to import it here as well.
-import {JobController} from './controllers';
-import {Sequelize} from 'sequelize-typescript';
-import {Job} from './models/job.model';
-import passport from 'passport';
-import {Strategy as LocalStrategy} from 'passport-local';
-import {User} from './models/user.model';
-import { UserController } from './controllers/user.controller';
 
 const sequelize =  new Sequelize({
   database: 'development',
@@ -62,7 +62,8 @@ if (process.env.PORT !== undefined) {
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.header('Access-Control-Allow-Methods', '*');
+  // cannot use wildcard, because not (properly) supported by browsers yet
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
@@ -72,7 +73,6 @@ app.use('/user', UserController);
 app.post('/login', passport.authenticate('local'), (req: express.Request, res: express.Response) => {
     // TODO: exclude pw hash from user cookie
     res.cookie('user', req.user);
-    res.cookie('advertisement-tracking-id', 'yolo1234');
     res.statusCode = 200;
     res.send('login successful');
 });
@@ -80,8 +80,7 @@ app.post('/login', passport.authenticate('local'), (req: express.Request, res: e
 app.post('/logout', (req: express.Request, res: express.Response) => {
  
   req.logout();
-  res.cookie('advertisement-tracking-id', 'yolo1234');
-  res.clearCookie('user')
+  res.clearCookie('user');
   res.statusCode = 200;
   res.send('logout successful');
 });

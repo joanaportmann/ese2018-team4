@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Injectable, Input, OnInit, Output} from '@angular/core';
-import {Job} from '../models/job';
-import {HttpClient} from '@angular/common/http';
+import { Component, EventEmitter, Injectable, Input, OnInit, Output } from '@angular/core';
+import { Job } from '../models/job';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-job',
@@ -24,7 +24,7 @@ export class JobComponent {
   }
 
   onDestroy() {
-    this.httpClient.delete('http://localhost:3000/job/' + this.job.id).subscribe(() => {
+    this.httpClient.delete('http://localhost:3000/job/' + this.job.id, { withCredentials: true }).subscribe(() => {
       this.destroy.emit(this.job);
     });
   }

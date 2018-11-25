@@ -51,7 +51,7 @@ export class User extends Model<User> {
         this.email = simplification['email'];
         this.phoneNumber = simplification['phoneNumber'];
         this.address = simplification['address'];
-        this.homePage = simplification['homePage'];
+        this.homePage = simplification['homepage'];
         this.numberOfEmployees = simplification['numberOfEmployees'];
         this.business = simplification['business'];
     }
@@ -66,7 +66,7 @@ export class User extends Model<User> {
             'email': this.email,
             'address': this.address,
             'phoneNumber': this.phoneNumber,
-            'homePage': this.homePage,
+            'homepage': this.homePage,
             'numberOfEmployees': this.numberOfEmployees,
             'business': this.business
         }
