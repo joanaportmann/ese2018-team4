@@ -5,23 +5,26 @@ on the website, it consists of a 'dialog'-->
 Please fill in this form to create an Account
 <br>
 <mat-dialog-content class="mat-typography">
-  <form>
+  
     <mat-horizontal-stepper [linear]="isLinear" #stepper>
       <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Account Data</ng-template>
           <mat-form-field>
-            <input matInput placeholder="Username" [(ngModel)]="credentials.username" formControlName="first" required>
+            <input matInput placeholder="Username" formControlName="username" required>
 
           </mat-form-field>
 
           <br>
           <mat-form-field>
-            <input type="password" matInput placeholder="Password" [(ngModel)]="credentials.password" formControlName="first" required>
+            <input type="password" matInput placeholder="Password" formControlName="password" required>
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input type="password" matInput placeholder="Confirm Password" formControlName="first" required>
+            <input type="password" matInput placeholder="Confirm Password" formControlName="confirmedPassword" required [errorStateMatcher]="PasswordConfirmationMatcher">
+            <mat-error *ngIf="firstFormGroup.hasError('notSame')">
+                Passwords do not match
+            </mat-error>
           </mat-form-field>
           <div>
             <button style="float: right;" mat-button matStepperNext *ngIf="!firstFormGroup.errors">Next</button>
@@ -32,16 +35,37 @@ Please fill in this form to create an Account
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>Personal Data</ng-template>
           <mat-form-field>
-            <input matInput placeholder="First name, Last name" formControlName="second">
+            <input matInput placeholder="Your Company"  formControlName="companyName">
+          </mat-form-field>
+          <br>
+          
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input matInput placeholder="Your Company" formControlName="second">
+            <input matInput placeholder="Address" formControlNAme="address">
           </mat-form-field>
           <br>
           <mat-form-field>
-            <textarea matInput placeholder="Describe your Company"></textarea>
+            <input matInput placeholder="Phone number" formControlName="phoneNumber">
           </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Homepage"  formControlName="homepage">
+          </mat-form-field>
+          <br>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Number of Employees" formControlName="numberOfEmployees">
+          </mat-form-field>
+          <br>
+          <br> 
+          <mat-form-field>
+            <input matInput placeholder="Business" formControlName="business">
+          </mat-form-field>
+          <br>
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="register()">Register</button>
@@ -49,5 +73,5 @@ Please fill in this form to create an Account
         </form>
       </mat-step>
     </mat-horizontal-stepper>
-  </form>
+  
 </mat-dialog-content>

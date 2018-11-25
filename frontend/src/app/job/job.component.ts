@@ -1,6 +1,10 @@
+
 import {Component, EventEmitter, Injectable, Input, OnInit, Output} from '@angular/core';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
+import {UserService} from '../services/user.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
+
 
 @Component({
   selector: 'app-job',
@@ -8,7 +12,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./job.component.css']
 })
 
-export class JobComponent implements OnInit {
+export class JobComponent {
 
   @Input()
   job: Job;
@@ -16,10 +20,10 @@ export class JobComponent implements OnInit {
   @Output()
   destroy = new EventEmitter<Job>();
 
-  constructor(private httpClient: HttpClient) {
-  }
+  options: FormGroup;
 
-  ngOnInit() {
+  constructor(private httpClient: HttpClient, public userService: UserService, fb: FormBuilder) {
+   this.options = fb.group({approved: false});
   }
 
   onSave() {
@@ -27,7 +31,7 @@ export class JobComponent implements OnInit {
   }
 
   onDestroy() {
-    this.httpClient.delete('http://localhost:3000/job/' + this.job.id).subscribe(() => {
+    this.httpClient.delete('http://localhost:3000/job/' + this.job.id, { withCredentials: true }).subscribe(() => {
       this.destroy.emit(this.job);
     });
   }

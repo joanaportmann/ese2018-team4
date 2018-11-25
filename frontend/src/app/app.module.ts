@@ -18,7 +18,7 @@ import {
   MatStepperModule,
   MatToolbar,
   MatToolbarModule,
-  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule
+  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule, MatFormFieldModule
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -32,6 +32,9 @@ import { AvailableJobsComponent } from './available-jobs/available-jobs.componen
 import { MyJobsComponent } from './my-jobs/my-jobs.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { LogoutComponent } from './logout/logout.component';
+import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     AvailableJobsComponent,
     MyJobsComponent,
     AdminViewComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    LogoutComponent,
+    EditJobsComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +62,7 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatListModule,
     MatInputModule,
     MatCheckboxModule,
@@ -63,6 +70,7 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     MatDialogModule,
     MatDatepickerModule,
     MatExpansionModule,
+    MatFormFieldModule,
     MatSelectModule,
     MatSnackBarModule,
     MatStepperModule,

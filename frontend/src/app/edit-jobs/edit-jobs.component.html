@@ -1,0 +1,12 @@
+<form class="edit-jobs">
+  <mat-card>
+      <mat-card-title>Edit Jobs</mat-card-title>
+    <div>
+    <app-job [job]="job"  *ngFor="let job of jobs"></app-job>
+    </div>
+    <div>
+      <br>
+    <button mat-button (click)="save()">save</button>
+    </div>
+  </mat-card>
+</form>
