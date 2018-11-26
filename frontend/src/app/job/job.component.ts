@@ -4,6 +4,7 @@ import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../services/user.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
+//import {User} from './models/user';
 
 
 @Component({

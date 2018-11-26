@@ -22,11 +22,11 @@
         <input matInput placeholder="When?" [(ngModel)]="job.time" name="time" (ngModelChange)="onSave()">
       </mat-form-field>
       <br>
-      <!--<form [formGroup]="options">-->
-        <!--<mat-checkbox *ngIf="userService.getUser() && (userService.getUser().userType.toString() === 'admin')"-->
-                      <!--matInput-->
-                      <!--formControlName="approved">-->
-                      <!--Approve</mat-checkbox>-->
-          <!--</form>-->
+      <form [formGroup]="options">
+        <mat-checkbox *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"
+                      matInput
+                      formControlName="approved">
+                      Approve</mat-checkbox>
+          </form>
       </mat-expansion-panel>
 </mat-card>

@@ -46,6 +46,8 @@ export class AppComponent {
     this.onAboutUs = false;
     this.openJobCreationField = false;
     this.openProfileField = false;
+    this.openEditJobs = false;
+    this.openEditUser = false;
   }
 
 aboutUs() {
@@ -76,6 +78,8 @@ aboutUs() {
     this.openProfileField = false;
     this.onHomeClicked = false;
     this.onAboutUs = false;
+    this.openEditJobs = false;
+    this.openEditUser = false;
   }
 
   openProfile() {

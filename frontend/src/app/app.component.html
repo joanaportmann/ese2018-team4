@@ -70,11 +70,11 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
   </mat-card-content>
 </mat-card>
 
-<app-profile-editor *ngIf="openProfileField && userService.getUser()" (toggle)="openProfile()"></app-profile-editor>
-<app-my-jobs *ngIf="openJobCreationField && userService.getUser()" (toggle)="openCreateJob()"></app-my-jobs>
+<app-profile-editor *ngIf="openProfileField && userService.getUser() && !(userService.getUser().userType === UserType.admin)" (toggle)="openProfile()"></app-profile-editor>
+<app-my-jobs *ngIf="openJobCreationField && userService.getUser() && !(userService.getUser().userType === UserType.admin)" (toggle)="openCreateJob()"></app-my-jobs>
 <app-available-jobs *ngIf="onHomeClicked"></app-available-jobs>
-<app-edit-jobs *ngIf="openEditJobs && userService.getUser()"></app-edit-jobs>
-<app-edit-user *ngIf="openEditUser && userService.getUser()"></app-edit-user>
+<app-edit-jobs *ngIf="openEditJobs && userService.getUser() && (userService.getUser().userType === UserType.admin)"></app-edit-jobs>
+<app-edit-user *ngIf="openEditUser && userService.getUser() && (userService.getUser().userType === UserType.admin)"></app-edit-user>
 
 
 
