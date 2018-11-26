@@ -39,6 +39,7 @@ import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DemandComponent } from './demand/demand.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { DemandComponent } from './demand/demand.component';
     LogoutComponent,
     EditJobsComponent,
     EditUserComponent,
-    DemandComponent
+    DemandComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
