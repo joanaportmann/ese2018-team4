@@ -1,4 +1,4 @@
-
+<div class="container">
 <mat-expansion-panel *ngIf="userService.getUser()">
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -26,6 +26,7 @@
     <input matInput placeholder="Contact Information" [(ngModel)]="job.info" name="info" (ngModelChange)="onSave()">
   </mat-form-field>
 <br>
+  <button mat-button (click)="onSave()">Save Changes</button>
   <form [formGroup]="options">
         <mat-checkbox *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"
                       matInput
@@ -62,3 +63,4 @@
   </mat-form-field>
 
 </mat-expansion-panel>
+</div>

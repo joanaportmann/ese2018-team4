@@ -46,7 +46,7 @@ export class CreateJobComponent implements OnInit {
         this.jobs.push(this.job);
         this.job = new Job(null, '', '', '', null, '', '');
         this.jobForm.resetForm();
-        this.snackbar.open('Your Job will be displayed as soon as it is approved by an admin')
+        this.snackbar.open('Your Job will be displayed as soon as it is approved by an admin');
       });
   }
 
