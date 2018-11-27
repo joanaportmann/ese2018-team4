@@ -22,7 +22,11 @@
         <input matInput placeholder="When?" [(ngModel)]="job.time" name="time" (ngModelChange)="onSave()">
       </mat-form-field>
       <br>
-      <form [formGroup]="options">
+  <mat-form-field>
+    <input matInput placeholder="Contact Information" [(ngModel)]="job.info" name="info" (ngModelChange)="onSave()">
+  </mat-form-field>
+<br>
+  <form [formGroup]="options">
         <mat-checkbox *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"
                       matInput
                       formControlName="approved">
@@ -51,6 +55,10 @@
   <br>
   <mat-form-field>
     <input matInput placeholder="When?" [(ngModel)]="job.time" name="time" (ngModelChange)="onSave()" readonly="readonly">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Contact Information" [(ngModel)]="job.info" name="info" (ngModelChange)="onSave()" readonly="readonly">
   </mat-form-field>
 
 </mat-expansion-panel>
