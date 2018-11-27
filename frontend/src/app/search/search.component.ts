@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
 
   filter(job: any): Job {
     if (SearchComponent.containsText(job)) {
-      return new Job(job.id, job.name, job.percentage, job.time, job.necessarySkills, job.description);
+      return new Job(job.id, job.name, job.percentage, job.time, job.necessarySkills, job.description, job.info);
     }
     else return null;
   }

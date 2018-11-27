@@ -48,21 +48,33 @@ as required -->
           </mat-form-field>
         </p>
 
-        <p>
-          <mat-form-field>
-            <input matInput placeholder="Percentage (%)" [(ngModel)]="job.percentage" name="percentage">
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field>
-            <input matInput placeholder="When?" [(ngModel)]="job.time" name="time">
-          </mat-form-field>
-        </p>
-        <p>
-          <button mat-button *ngIf="!jobForm.errors" (click)="onJobCreate()">create</button>
-          <button mat-button (click)="resetForm()">reset</button>
-        </p>
-      </form>
-    </mat-card>
-  </div>
+
+    <p>
+    <mat-form-field>
+      <input matInput placeholder="Percentage (%)"
+             [(ngModel)]="job.percentage"
+             name="percentage">
+    </mat-form-field>
+  </p>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="When?"
+               [(ngModel)]="job.time"
+               name="time">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Contact Information"
+               [(ngModel)] ="job.info"
+               name="info">
+      </mat-form-field>
+    </p>
+    <p>
+      <button mat-button *ngIf="!jobForm.errors" (click)="onJobCreate()">create</button>
+      <button mat-button (click)="resetForm()">reset</button>
+    </p>
+  </form>
+</mat-card>
+</div>
 </form>
