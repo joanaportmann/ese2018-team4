@@ -8,7 +8,7 @@ as required -->
       <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"> My created Jobs</h3>
       <h6 class="w3-border-bottom w3-border-light-grey w3-padding-16">(not displayed on website until they get
         approved)</h6>
-      <app-job [job]="job" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
+      <app-job [job]="job" [showDestroyButton]="true" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
     </mat-card>
   </div>
 

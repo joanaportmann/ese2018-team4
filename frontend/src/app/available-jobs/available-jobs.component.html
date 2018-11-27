@@ -4,7 +4,7 @@
 
    <mat-card>
      <div>
-       <app-job [job]="job"  *ngFor="let job of jobs"></app-job>
+       <app-job [showDestroyButton]="isEditable" [job]="job"  *ngFor="let job of jobs"></app-job>
 
      </div>
    </mat-card>
