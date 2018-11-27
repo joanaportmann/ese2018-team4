@@ -58,6 +58,7 @@ router.delete('/:username', async (req: Request, res: Response) => {
   }
   instance.fromSimplification(req.body);
   await instance.destroy();
+  res.clearCookie('user');
   res.statusCode = 204;
   res.send();
 });

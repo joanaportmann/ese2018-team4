@@ -1,3 +1,4 @@
+<mat-card>
 <mat-card-title>About Us</mat-card-title>
 <mat-card-subtitle>Who created this website?</mat-card-subtitle>
 <mat-card-content>
@@ -19,7 +20,7 @@
   </svg>
 
 </mat-card-content>
-
+</mat-card>
 
 <app-profile-editor *ngIf="openProfileField && userService.getUser()" (toggle)="openProfile()"></app-profile-editor>
 <app-my-jobs *ngIf="openJobCreationField && userService.getUser()" (toggle)="openCreateJob()"></app-my-jobs>
