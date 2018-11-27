@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class AvailableJobsComponent implements OnInit {
 
-  job: Job = new Job(null, '', null, '', '', '');
+  job: Job = new Job(null, '', '', '', null, '');
   jobs: Job[] = [];
 
 
