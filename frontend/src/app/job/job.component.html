@@ -2,7 +2,7 @@
 <mat-expansion-panel *ngIf="userService.getUser()">
         <mat-expansion-panel-header>
           <mat-panel-title>
-              <input matInput placeholder="Jobname" [(ngModel)]="job.name" name="name" (ngModelChange)="onSave()">  <button mat-button (click)="onDestroy()">destroy</button>
+              <input matInput placeholder="Jobname" [(ngModel)]="job.name" name="name" (ngModelChange)="onSave()">  <button *ngIf="showDestroyButton" mat-button (click)="onDestroy()">destroy</button>
           </mat-panel-title>
         </mat-expansion-panel-header>
       <mat-form-field>

@@ -22,7 +22,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
         <button id="editJobs" (click)="openEditJob()" mat-menu-item>Edit Jobs</button>
       </mat-menu>
 
-      <button *ngIf="userService.getUser() && !(userService.getUser().userType === UserType.admin)" mat-button
+      <button class="w3-wide" *ngIf="userService.getUser() && !(userService.getUser().userType === UserType.admin)" mat-button
         [matMenuTriggerFor]="appMenu">Menu</button>
       <button *ngIf="userService.getUser() && (userService.getUser().userType === UserType.admin)" mat-button
         [matMenuTriggerFor]="appMenuAdmin">Menu</button>
@@ -35,14 +35,14 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 </div>
 
 
-<header class="w3-display-container w3-wide" id="home">
+<header class="{{currentPageName()}} w3-display-container" id="home">
   <div class="header-text w3-display-left w3-text-white" style="padding:48px">
     
 
-    <span class="w3-jumbo w3-hide-small">STUDIJOBS</span>
+    <span *ngIf="currentPageName() === 'home'" class="w3-jumbo w3-hide-small w3-wide">STUDIJOBS</span>
 
     <br>
-    <span class="w3-large">where companies can offer Jobs and Students can apply</span>
+    <span *ngIf="currentPageName() === 'home'" class="w3-large w3-wide">where companies can offer Jobs and Students can apply</span>
     <form class="logo">
       <div>
         <p><button *ngIf="!userService.getUser()" (click)="openDialog()" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Log
@@ -86,8 +86,5 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 <app-my-jobs *ngIf="openJobCreationField && userService.getUser() && !(userService.getUser().userType === UserType.admin)" (toggle)="openCreateJob()"></app-my-jobs>
 <app-edit-jobs *ngIf="openEditJobs && userService.getUser() && (userService.getUser().userType === UserType.admin)"></app-edit-jobs>
 <app-edit-user *ngIf="openEditUser && userService.getUser() && (userService.getUser().userType === UserType.admin)"></app-edit-user>
-
-
-
 
 <router-outlet></router-outlet>

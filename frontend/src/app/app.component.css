@@ -31,12 +31,27 @@
 }
 
 header{
+  --header-gradient: linear-gradient(rgba(0,0,0,0.5), rgba(32, 98, 116, 0.7));
+
   padding: 200px;
   margin: 0 0 0 0;
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(32, 98, 116, 0.7)), url("../assets/img/fabian-grohs-448419-unsplash.jpg");
+  background-image: var(--header-gradient), url("../assets/img/fabian-grohs-448419-unsplash.jpg");
   background-size: cover;
   background-position: center;
 }
+
+header.myprofile {
+  background-image: var(--header-gradient), url("../assets/img/lenny-miles-180752-unsplash.jpg");  
+}
+
+header.myjobs {
+  background-image: var(--header-gradient), url("../assets/img/myjobs.jpg");  
+}
+
+header.aboutus {
+  background-image: var(--header-gradient), url("../assets/img/rawpixel-653764-unsplash.jpg");  
+}
+
 
 .header-text {
   text-shadow: 0 3px 5px rgba(0,0,0,0.5);
