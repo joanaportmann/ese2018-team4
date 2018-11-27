@@ -1,32 +1,29 @@
-<mat-card>
-<mat-card-title>About Us</mat-card-title>
-</mat-card>
+<div class="aboutus">
+    <h1>About Us</h1>
+    <div class="intro">Who created this website?</div>
+    <div>
+      Imagine this: four students who don't really know each other have to get together and create this masterpiece
+      of a website. WTF, right? Well, this is exactly what happened to us roughly two months ago. We were faced a
+      pretty
+      tough challenge and had to learn what it means working in a team and get a taste of our possible future as
+      software engineers. <br><br>
+      Our Team consists of: <br><br>
+      <strong>Joana Portmann <br>
+        Kristjan Bardheci <br>
+        Joel Zuber <br>
+        Ann Kiener</strong> <br><br>
+      Thank you for being on our website! We really appreciate it!
+      <br>
 
-<mat-card>
-<mat-card-subtitle>Who created this website?</mat-card-subtitle>
-<mat-card-content>
-  Imagine this: four students who don't really know each other have to get together and create this masterpiece
-  of a website. WTF, right? Well, this is exactly what happened to us roughly two months ago. We were faced a pretty
-  tough challenge and had to learn what it means working in a team and get a taste of our possible future as
-  software engineers. <br><br>
-  Our Team consists of: <br><br>
-  <strong>Joana Portmann <br>
-    Kristjan <br>
-    Joel Zuber <br>
-    Ann Kiener</strong> <br><br>
-  Thank you for being on our website! We really appreciate it!
-  <br>
+      <svg width="200" height="200">
+        <image xlink:href="https://d1b10bmlvqabco.cloudfront.net/attach/jl2bsdaky4867r/il3qyrgkst84cu/jo8u1phb49x2/logomib_vector.svg"
+          height="200" width="200" />
+      </svg>
+      </div>
 
-  <svg width="200" height="200">
-    <image xlink:href="https://d1b10bmlvqabco.cloudfront.net/attach/jl2bsdaky4867r/il3qyrgkst84cu/jo8u1phb49x2/logomib_vector.svg"
-      height="200" width="200" />
-  </svg>
-
-</mat-card-content>
-</mat-card>
-
-<app-profile-editor *ngIf="openProfileField && userService.getUser()" (toggle)="openProfile()"></app-profile-editor>
-<app-my-jobs *ngIf="openJobCreationField && userService.getUser()" (toggle)="openCreateJob()"></app-my-jobs>
-<app-available-jobs *ngIf="onHomeClicked"></app-available-jobs>
-<app-edit-jobs *ngIf="openEditJobs && userService.getUser()"></app-edit-jobs>
-<app-edit-user *ngIf="openEditUser && userService.getUser()"></app-edit-user>
+    
+    <app-profile-editor *ngIf="openProfileField && userService.getUser()" (toggle)="openProfile()"></app-profile-editor>
+    <app-my-jobs *ngIf="openJobCreationField && userService.getUser()" (toggle)="openCreateJob()"></app-my-jobs>
+    <app-available-jobs *ngIf="onHomeClicked"></app-available-jobs>
+    <app-edit-jobs *ngIf="openEditJobs && userService.getUser()"></app-edit-jobs>
+    <app-edit-user *ngIf="openEditUser && userService.getUser()"></app-edit-user>
