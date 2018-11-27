@@ -7,16 +7,16 @@ export class Job extends Model<Job> {
   name!: string;
 
   @Column
-  percentage!: number;
-
-  @Column
-  time!: string;
+  description!: string;
 
   @Column
   necessarySkills!: string;
 
   @Column
-  description!: string;
+  percentage!: number;
+
+  @Column
+  time!: string;
 
   @Column
   approved!: boolean;
@@ -25,21 +25,19 @@ export class Job extends Model<Job> {
     return {
       'id': this.id,
       'name': this.name,
-      'percentage': this.percentage,
-      'time': this.time,
+      'description': this.description,
       'necessarySkills': this.necessarySkills,
-      'description': this.description
-
+      'percentage': this.percentage,
+      'time': this.time
     };
   }
 
   fromSimplification(simplification: any): void {
     this.name = simplification['name'];
+    this.description = simplification['description'];
+    this.necessarySkills = simplification['necessarySkills'];
     this.percentage = simplification['percentage'];
     this.time = simplification['time'];
-    this.necessarySkills = simplification['necessarySkills'];
-    this.description = simplification['description'];
-
   }
 
 }

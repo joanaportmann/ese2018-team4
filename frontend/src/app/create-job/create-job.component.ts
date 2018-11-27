@@ -14,7 +14,7 @@ import {HttpClient} from '@angular/common/http';
 export class CreateJobComponent implements OnInit {
   @ViewChild('jobForm')
   public jobForm: NgForm;
-  job: Job = new Job(null, '', null, '', '', '');
+  job: Job = new Job(null,'',null,'','','');
   jobs: Job[] = [];
   jobFormGroup: FormGroup;
 

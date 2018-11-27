@@ -1,4 +1,4 @@
-<mat-card>
+
 <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -29,4 +29,7 @@
                       Approve</mat-checkbox>
           </form>
       </mat-expansion-panel>
-</mat-card>
+
+<mat-expansion-panel *ngIf="!userService.getUser()">
+
+</mat-expansion-panel>
