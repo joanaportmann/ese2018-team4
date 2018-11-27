@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
 import { UserService } from './services/user.service';
 import {User} from './models/user';
+import { Router, PRIMARY_OUTLET } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,10 @@ export class AppComponent {
   openEditUser: boolean;
   UserType = UserType;
 
-  constructor(private httpClient: HttpClient, public dialog: MatDialog, public userService: UserService) {
+  constructor(private httpClient: HttpClient, 
+    public dialog: MatDialog, 
+    public userService: UserService,
+    public router: Router) {
   }
 
   /**
@@ -111,7 +115,16 @@ aboutUs() {
     return user && user.username;
   }
 
+  currentPageName(): string {
+    const url = this.router.url;
+    const rootPart = this.router.parseUrl(url).root;
+    if (!rootPart.hasChildren()) return '';
+    const firstSegment = rootPart.children[PRIMARY_OUTLET].segments[0];
+    return firstSegment ? firstSegment.path : '';
+  }
+  
 }
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
