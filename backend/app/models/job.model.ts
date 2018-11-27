@@ -19,6 +19,9 @@ export class Job extends Model<Job> {
   time!: string;
 
   @Column
+  info!: string;
+
+  @Column
   approved!: boolean;
 
   toSimplification(): any {
@@ -28,7 +31,8 @@ export class Job extends Model<Job> {
       'description': this.description,
       'necessarySkills': this.necessarySkills,
       'percentage': this.percentage,
-      'time': this.time
+      'time': this.time,
+      'info': this.info
     };
   }
 
@@ -38,6 +42,7 @@ export class Job extends Model<Job> {
     this.necessarySkills = simplification['necessarySkills'];
     this.percentage = simplification['percentage'];
     this.time = simplification['time'];
+    this.info = simplification['info'];
   }
 
 }

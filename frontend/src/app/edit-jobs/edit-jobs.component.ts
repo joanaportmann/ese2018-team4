@@ -9,14 +9,14 @@ import {Observable} from "rxjs";
   styleUrls: ['./edit-jobs.component.css']
 })
 export class EditJobsComponent implements OnInit {
-  job: Job = new Job(null, '', '', '', null, '');
+  job: Job = new Job(null, '', '', '', null, '','');
   jobs: Job[] = [];
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
       this.jobs = instances.map((instance) =>
-        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time));
+        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info));
     });
   }
   displayJobs(): Observable<Object> {

@@ -4,10 +4,12 @@ import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../services/user.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {ViewEncapsulation } from '@angular/core';
 
 //import {User} from './models/user';
 
 import {ActivatedRoute, Router} from '@angular/router';
+import {MatSnackBar} from "@angular/material";
 
 
 
@@ -26,13 +28,14 @@ export class JobComponent {
   destroy = new EventEmitter<Job>();
 
   options: FormGroup;
-
+  encapsulation: ViewEncapsulation.None;
   constructor(
     private httpClient: HttpClient,
     public userService: UserService,
     fb: FormBuilder,
     private route: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    public snackbar: MatSnackBar
   ) {
    this.options = fb.group({approved: false});
 
@@ -46,6 +49,7 @@ export class JobComponent {
 
   onSave() {
     this.httpClient.put('http://localhost:3000/job/' + this.job.id, this.job).subscribe();
+    this.snackbar.open('Changes saved!');
   }
 
   onDestroy() {

@@ -3,6 +3,7 @@ import {AppComponent, MyErrorStateMatcher} from '../app.component';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -14,18 +15,18 @@ import {HttpClient} from '@angular/common/http';
 export class CreateJobComponent implements OnInit {
   @ViewChild('jobForm')
   public jobForm: NgForm;
-  job: Job = new Job(null, '', '', '', null, '');
+  job: Job = new Job(null, '', '', '', null, '','');
   jobs: Job[] = [];
   jobFormGroup: FormGroup;
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private snackbar: MatSnackBar) {
   }
 
   ngOnInit(): void {
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
       this.jobs = instances.map((instance) =>
-        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time));
+        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info));
     });
 
     this.jobFormGroup = new FormGroup({
@@ -43,8 +44,9 @@ export class CreateJobComponent implements OnInit {
       .subscribe((instance: any) => {
         this.job.id = instance.id;
         this.jobs.push(this.job);
-        this.job = new Job(null, '', '', '', null, '');
+        this.job = new Job(null, '', '', '', null, '', '');
         this.jobForm.resetForm();
+        this.snackbar.open('Your Job will be displayed as soon as it is approved by an admin');
       });
   }
 

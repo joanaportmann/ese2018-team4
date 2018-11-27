@@ -69,6 +69,13 @@ as required -->
       </mat-form-field>
     </p>
     <p>
+      <mat-form-field>
+        <input matInput placeholder="Contact Information"
+               [(ngModel)] ="job.info"
+               name="info">
+      </mat-form-field>
+    </p>
+    <p>
       <button mat-button *ngIf="!jobForm.errors" (click)="onJobCreate()">create</button>
       <button mat-button (click)="resetForm()">reset</button>
     </p>
