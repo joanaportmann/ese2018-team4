@@ -30,7 +30,7 @@ export class ProfileEditorComponent {
     this.httpClient.put(`http://localhost:3000/user/${this.user.username}`, this.user, {
       withCredentials: true
     }).subscribe(() => {
-      this.snackBar.open('Your account is updated');
+      this.snackBar.open('Your account has been updated');
     });
   }
 

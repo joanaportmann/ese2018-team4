@@ -8,16 +8,17 @@ import {JobComponent} from './job/job.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { CreateJobComponent } from './create-job/create-job.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: SearchBarComponent },
   { path: 'demand/:text', component: DemandComponent },
   { path: 'search/:text', component: SearchComponent },
   { path: 'jobs/:id', component: JobComponent},
   { path: 'myprofile', component: ProfileEditorComponent},
   { path: 'myjobs', component: CreateJobComponent},
-  { path:'aboutus', component: AboutUsComponent}
+  { path:'aboutus', component: AboutUsComponent},
+  { path: 'home', component: AvailableJobsComponent}
 ];
 
 @NgModule({

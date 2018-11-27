@@ -5,7 +5,7 @@
   Are you sure you want to delete your account?
   <br>
   <mat-dialog-actions>
-    <button mat-button (click)="onYesClick()">Yes</button>
+    <a mat-button (click)="onYesClick() && logout()" routerLink="/home">Yes</a>
     <button mat-button (click)="onNoClick()">No</button>
   </mat-dialog-actions>
   </form>

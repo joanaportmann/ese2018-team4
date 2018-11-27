@@ -2,3 +2,8 @@ mat-card-title, mat-card-subtitle, mat-card-content {
   display: block;
   margin: 0 30px;
 }
+
+mat-card {
+    text-align: left;
+    padding: 15px 15px 15px 15px;
+}
