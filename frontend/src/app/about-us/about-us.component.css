@@ -1,0 +1,4 @@
+mat-card-title, mat-card-subtitle, mat-card-content {
+  display: block;
+  margin: 0 30px;
+}
