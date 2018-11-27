@@ -119,3 +119,4 @@ enum UserType {
   admin = 'admin',
   enterprise = 'enterprise'
 }
+
