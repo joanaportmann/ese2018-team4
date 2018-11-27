@@ -80,7 +80,8 @@ router.put('/:id/approved', async (req: Request, res: Response) => {
   });
 });
 
-router.delete('/:id', authenticatedUser, async (req: Request, res: Response) => {
+router.delete('/:id', authenticatedUser, 
+async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const instance = await Job.findById(id);
   if (instance == null) {
