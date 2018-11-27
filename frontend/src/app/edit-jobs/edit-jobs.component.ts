@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./edit-jobs.component.css']
 })
 export class EditJobsComponent implements OnInit {
-  job: Job = new Job(null, '', null, '', '', '');
+  job: Job = new Job(null, '', '', '', null, '');
   jobs: Job[] = [];
   constructor(private httpClient: HttpClient) { }
 

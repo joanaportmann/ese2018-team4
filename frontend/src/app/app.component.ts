@@ -18,7 +18,7 @@ export class AppComponent {
 
   @ViewChild('jobForm')
   public jobForm: NgForm;
-  job: Job = new Job(null, '', null, '', '', '');
+  job: Job = new Job(null, '', '', '', null, '');
   jobs: Job[] = [];
   onHomeClicked = true;
   onAboutUs = false;
@@ -64,7 +64,7 @@ aboutUs() {
       .subscribe((instance: any) => {
         this.job.id = instance.id;
         this.jobs.push(this.job);
-        this.job = new Job(null, '', null, '', '', '');
+        this.job = new Job(null, '', '', '', null, '');
       });
 
   }

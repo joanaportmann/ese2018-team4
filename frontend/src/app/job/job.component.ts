@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 
 //import {User} from './models/user';
 
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 
@@ -31,7 +31,8 @@ export class JobComponent {
     private httpClient: HttpClient,
     public userService: UserService,
     fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public router: Router
   ) {
    this.options = fb.group({approved: false});
 
