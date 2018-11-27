@@ -28,7 +28,7 @@ export class DeleteAccountComponent {
     this.httpClient.delete('http://localhost:3000/user/' + this.user.username).subscribe(() => {
     this.destroy.emit(this.user);
       this.dialogDel.close();
-      this.snackBar.open('Your account was deleted');
+      this.snackBar.open('Your account has been deleted');
   });
 
   }

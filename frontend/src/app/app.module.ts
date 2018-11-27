@@ -18,7 +18,7 @@ import {
   MatStepperModule,
   MatToolbar,
   MatToolbarModule,
-  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule
+  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule, MatFormFieldModule
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -29,9 +29,17 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
 import { ProfilePanelComponent } from './profile-panel/profile-panel.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
+import { SearchComponent } from './search/search.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 import { MyJobsComponent } from './my-jobs/my-jobs.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { LogoutComponent } from './logout/logout.component';
+import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { DemandComponent } from './demand/demand.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -45,9 +53,16 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     ProfilePanelComponent,
     ProfileEditorComponent,
     AvailableJobsComponent,
+    SearchComponent,
+    SearchBarComponent,
     MyJobsComponent,
     AdminViewComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    LogoutComponent,
+    EditJobsComponent,
+    EditUserComponent,
+    DemandComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +71,7 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatListModule,
     MatInputModule,
     MatCheckboxModule,
@@ -63,13 +79,15 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     MatDialogModule,
     MatDatepickerModule,
     MatExpansionModule,
+    MatFormFieldModule,
     MatSelectModule,
     MatSnackBarModule,
     MatStepperModule,
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    AppRoutingModule
   ],
   entryComponents: [
     DialogComponent,

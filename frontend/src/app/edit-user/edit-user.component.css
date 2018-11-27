@@ -1,0 +1,9 @@
+mat-card{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+mat-checkbox{
+  margin-left:5em
+}

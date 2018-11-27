@@ -1,5 +1,4 @@
 import { Model, Table, Column, PrimaryKey } from "sequelize-typescript";
-import { createSecureServer } from "http2";
 import crypto from 'crypto';
 
 @Table
@@ -18,13 +17,43 @@ export class User extends Model<User> {
     @Column
     enabled!: boolean;
 
+    @Column
+    companyName!: string;
+
+    @Column
+    email!: string;
+
+    @Column
+    address!: string;
+
+    @Column
+    phoneNumber!: string;
+
+    @Column
+    homePage!: string;
+
+    @Column
+    numberOfEmployees!: string;
+
+    @Column
+    business!: String;
+
+
+
     /**
      * Take simple object and copy data into this object.
-     * @param simplification 
+     * @param simplification
      */
     fromSimplification(simplification: any): void {
         this.username = simplification['username'];
         this.passwordHash = simplification['password'];
+        this.companyName = simplification['companyName'];
+        this.email = simplification['email'];
+        this.phoneNumber = simplification['phoneNumber'];
+        this.address = simplification['address'];
+        this.homePage = simplification['homepage'];
+        this.numberOfEmployees = simplification['numberOfEmployees'];
+        this.business = simplification['business'];
     }
 
     toSimplification(): any {
@@ -32,7 +61,14 @@ export class User extends Model<User> {
             'id': this.id,
             'username': this.username,
             'userType': this.userType,
-            'enabled': this.enabled
+            'enabled': this.enabled,
+            'companyName': this.companyName,
+            'email': this.email,
+            'address': this.address,
+            'phoneNumber': this.phoneNumber,
+            'homepage': this.homePage,
+            'numberOfEmployees': this.numberOfEmployees,
+            'business': this.business
         }
     }
 

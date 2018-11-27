@@ -8,8 +8,9 @@
 
 }
 */
-svg{
-  align-content: center;
+.logo{
+  display: flex;
+  justify-content: space-between;
 }
 button{
 

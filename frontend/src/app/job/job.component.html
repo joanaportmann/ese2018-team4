@@ -1,6 +1,5 @@
 <mat-card>
-
-    <mat-expansion-panel>
+<mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
               <input matInput placeholder="Jobname" [(ngModel)]="job.name" name="name" (ngModelChange)="onSave()">  <button mat-button (click)="onDestroy()">destroy</button>
@@ -23,6 +22,11 @@
         <input matInput placeholder="When?" [(ngModel)]="job.time" name="time" (ngModelChange)="onSave()">
       </mat-form-field>
       <br>
-
+      <!--<form [formGroup]="options">-->
+        <!--<mat-checkbox *ngIf="userService.getUser() && (userService.getUser().userType.toString() === 'admin')"-->
+                      <!--matInput-->
+                      <!--formControlName="approved">-->
+                      <!--Approve</mat-checkbox>-->
+          <!--</form>-->
       </mat-expansion-panel>
 </mat-card>
