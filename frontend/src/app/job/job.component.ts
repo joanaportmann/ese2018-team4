@@ -4,7 +4,11 @@ import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
 import {UserService} from '../services/user.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
+
 //import {User} from './models/user';
+
+import {ActivatedRoute} from '@angular/router';
+
 
 
 @Component({
@@ -23,8 +27,20 @@ export class JobComponent {
 
   options: FormGroup;
 
-  constructor(private httpClient: HttpClient, public userService: UserService, fb: FormBuilder) {
+  constructor(
+    private httpClient: HttpClient,
+    public userService: UserService,
+    fb: FormBuilder,
+    private route: ActivatedRoute
+  ) {
    this.options = fb.group({approved: false});
+
+   const id = +this.route.snapshot.paramMap.get('id');
+   this.job = this.getJob(id);
+  }
+
+  private getJob(id: number): Job {
+    return null;
   }
 
   onSave() {
