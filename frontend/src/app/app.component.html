@@ -8,7 +8,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
     <svg width="50" height="50" class="">
       <image xlink:href="https://d1b10bmlvqabco.cloudfront.net/attach/jl2bsdaky4867r/il3qyrgkst84cu/jo8u1phb49x2/logomib_vector.svg" height="50" width="50"/>
     </svg>
-    <a href="#home" routerLink="/home" class="w3-button"><b>UniBE</b> Studentenjobvermittlung</a>
+    <a href="#home" routerLink="/home" class="w3-button"><b>MIB</b> Studentenjobvermittlung</a>
     <!-- Float links to the right. Hide them on small screens -->
 
     <div class="menu w3-right w3-hide-small">
@@ -30,6 +30,8 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
       <a mat-button routerLink="/aboutus">About Us</a>
       <app-logout *ngIf="userService.getUser()"></app-logout>
       <button *ngIf="!userService.getUser()" mat-button (click)="openDialog()">Log In</button>
+      <button *ngIf="!userService.getUser()" mat-button (click)="openRegister()">Register</button>
+
     </div>
   </div>
 </div>
