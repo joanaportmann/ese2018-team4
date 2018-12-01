@@ -14,6 +14,7 @@ export class SalaryCalculatorComponent {
   hoursPerDay: number = 8.4;
   private readonly daysPerMonth = 21;
   partsPerYear: number = 13;
+  percentage: number = 100;
 
   constructor() { }
 
@@ -23,16 +24,16 @@ export class SalaryCalculatorComponent {
 
   update() {
     if(this.basis === 'hourly') {
-      this.monthly = this.round(this.daysPerMonth * this.hoursPerDay * this.hourly);
+      this.monthly = this.round(this.daysPerMonth * this.hoursPerDay * this.hourly * (this.percentage/100));
       this.yearly = this.round(this.monthly * this.partsPerYear);
     }
     if(this.basis === 'monthly') {
       this.yearly = this.round(this.monthly * this.partsPerYear);
-      this.hourly = this.round(this.monthly / (this.daysPerMonth * this.hoursPerDay));
+      this.hourly = this.round(this.monthly / (this.daysPerMonth * this.hoursPerDay * (this.percentage/100)));
     }
     if(this.basis === 'yearly') {
       this.monthly = this.round(this.yearly / this.partsPerYear);
-      this.hourly = this.round(this.monthly / (this.daysPerMonth * this.hoursPerDay));
+      this.hourly = this.round(this.monthly / (this.daysPerMonth * this.hoursPerDay * (this.percentage/100)));
     }
   }
 

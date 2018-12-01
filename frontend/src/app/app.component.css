@@ -52,6 +52,10 @@ header.aboutus {
   background-image: var(--header-gradient), url("../assets/img/rawpixel-653764-unsplash.jpg");  
 }
 
+header.salaryCalculator {
+  background-image: var(--header-gradient), url("../assets/img/rawpixel-602154-unsplash.jpg");  
+}
+
 
 .header-text {
   text-shadow: 0 3px 5px rgba(0,0,0,0.5);

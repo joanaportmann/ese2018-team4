@@ -1,3 +1,36 @@
-input.current {
-    background-color: hotpink;
+:host {
+    display: block;
+    padding: 1em;
+}
+
+.parameters {
+    margin-top: 2em;
+    display: flex;
+    max-width: 1000px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.salaries {
+    display: flex;
+    max-width: 1000px;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #04739180;
+    background-color: #04739110;
+    padding: 1em;
+    border-radius: 1ex;
+}
+
+.salaries mat-form-field {
+    padding: 1ex;
+    border-radius: 1ex;
+}
+
+.salaries mat-form-field.current {
+    background-color: #04739110;
+}
+
+.salaries mat-form-field.current input {
+    color: #047391;
 }
