@@ -1,13 +1,16 @@
 div.box-outside {
-  background-color: rgb(0, 255, 255);
+  display: flex;
+  align-items: center;
   width: 80%;
   margin: 50px auto;
+  border: 1px solid #04739180;
+  background-color: #04739110;
+  border-radius: 1ex;
 }
 
 div.search-bar {
-  width: 75%;
   margin: auto;
-  padding: 35px;
+  padding: 35px 0;
 }
 
 a {
