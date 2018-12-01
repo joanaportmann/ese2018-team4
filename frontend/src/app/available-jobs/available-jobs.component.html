@@ -2,6 +2,8 @@
  <div class="w3-container w3-padding-20" id="availableJobs">
   <h3  class="w3-border-bottom w3-border-light-grey w3-padding-16">Available Jobs</h3>
 
+   <app-search-bar></app-search-bar>
+
    <mat-card>
      <div>
        <app-job [showDestroyButton]="isEditable" [job]="job"  *ngFor="let job of jobs"></app-job>
