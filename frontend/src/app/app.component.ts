@@ -21,7 +21,6 @@ export class AppComponent {
   public jobForm: NgForm;
   job: Job = new Job(null, '', '', '', null, '', '');
   jobs: Job[] = [];
-  onHomeClicked = true;
   onAboutUs = false;
   openJobCreationField: boolean;
   openProfileField: boolean;
@@ -46,7 +45,6 @@ export class AppComponent {
     });
   }
   openJobs() {
-    this.onHomeClicked = true;
     this.onAboutUs = false;
     this.openJobCreationField = false;
     this.openProfileField = false;
@@ -56,7 +54,6 @@ export class AppComponent {
 
 aboutUs() {
     this.onAboutUs = true;
-    this.onHomeClicked = false;
     this.openProfileField = false;
     this.openJobCreationField = false;
     this.openEditUser = false;
@@ -80,7 +77,6 @@ aboutUs() {
   openCreateJob() {
     this.openJobCreationField = true;
     this.openProfileField = false;
-    this.onHomeClicked = false;
     this.onAboutUs = false;
     this.openEditJobs = false;
     this.openEditUser = false;
@@ -89,12 +85,10 @@ aboutUs() {
   openProfile() {
     this.openProfileField = true;
     this.openJobCreationField = false;
-    this.onHomeClicked = false;
     this.onAboutUs = false;
   }
 
   openEditUsers() {
-    this.onHomeClicked = false;
     this.openEditJobs = false;
     this.onAboutUs = false;
     this.openEditUser = true;
@@ -103,7 +97,6 @@ aboutUs() {
   }
 
   openEditJob() {
-    this.onHomeClicked = false;
     this.openEditUser = false;
     this.onAboutUs = false;
     this.openEditJobs = true;
