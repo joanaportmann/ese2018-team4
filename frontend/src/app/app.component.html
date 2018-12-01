@@ -6,7 +6,8 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 <div class="navbar">
   <div class="navbar-content w3-bar w3-white w3-wide w3-padding w3-card">
     <svg width="50" height="50" class="">
-      <image xlink:href="https://d1b10bmlvqabco.cloudfront.net/attach/jl2bsdaky4867r/il3qyrgkst84cu/jo8u1phb49x2/logomib_vector.svg" height="50" width="50"/>
+      <image xlink:href="https://d1b10bmlvqabco.cloudfront.net/attach/jl2bsdaky4867r/il3qyrgkst84cu/jo8u1phb49x2/logomib_vector.svg"
+        height="50" width="50" />
     </svg>
     <a href="#home" routerLink="/home" class="w3-button"><b>UniBE</b> Studentenjobvermittlung</a>
     <!-- Float links to the right. Hide them on small screens -->
@@ -15,18 +16,19 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
       <mat-menu #appMenu="matMenu" yPosition="above" xPosition="after">
         <a id="profile" routerLink="/myprofile" mat-menu-item>My Profile</a>
         <a id="createJob" routerLink="/myjobs" mat-menu-item>My Jobs</a>
-
       </mat-menu>
+
       <mat-menu #appMenuAdmin="matMenu" yPosition="above" xPosition="after">
         <button id="editUser" (click)="openEditUsers()" mat-menu-item>Edit Users</button>
         <button id="editJobs" (click)="openEditJob()" mat-menu-item>Edit Jobs</button>
       </mat-menu>
 
-      <button class="w3-wide" *ngIf="userService.getUser() && !(userService.getUser().userType === UserType.admin)" mat-button
-        [matMenuTriggerFor]="appMenu">Menu</button>
+      <button class="w3-wide" *ngIf="userService.getUser() && !(userService.getUser().userType === UserType.admin)"
+        mat-button [matMenuTriggerFor]="appMenu">Menu</button>
       <button *ngIf="userService.getUser() && (userService.getUser().userType === UserType.admin)" mat-button
         [matMenuTriggerFor]="appMenuAdmin">Menu</button>
 
+      <a mat-button routerLink="/salaryCalculator" >Salary Calculator</a>
       <a mat-button routerLink="/aboutus">About Us</a>
       <app-logout *ngIf="userService.getUser()"></app-logout>
       <button *ngIf="!userService.getUser()" mat-button (click)="openDialog()">Log In</button>
@@ -37,12 +39,13 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 
 <header class="{{currentPageName()}} w3-display-container" id="home">
   <div class="header-text w3-display-left w3-text-white" style="padding:48px">
-    
+
 
     <span *ngIf="currentPageName() === 'home'" class="w3-jumbo w3-hide-small w3-wide">STUDIJOBS</span>
 
     <br>
-    <span *ngIf="currentPageName() === 'home'" class="w3-large w3-wide">where companies can offer Jobs and Students can apply</span>
+    <span *ngIf="currentPageName() === 'home'" class="w3-large w3-wide">where companies can offer Jobs and Students can
+      apply</span>
     <form class="logo">
       <div>
         <p><button *ngIf="!userService.getUser()" (click)="openDialog()" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Log
@@ -68,22 +71,25 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
     software engineers. <br><br>
     Our Team consists of: <br><br>
     <strong>Joana Portmann <br>
-    Kristjan <br>
-    Joel Zuber <br>
+      Kristjan <br>
+      Joel Zuber <br>
       Ann Kiener</strong> <br><br>
     Thank you for being on our website! We really appreciate it!
     <br>
 
     <svg width="200" height="200">
-      <image xlink:href="https://d1b10bmlvqabco.cloudfront.net/attach/jl2bsdaky4867r/il3qyrgkst84cu/jo8u1phb49x2/logomib_vector.svg" height="200" width="200"/>
+      <image xlink:href="https://d1b10bmlvqabco.cloudfront.net/attach/jl2bsdaky4867r/il3qyrgkst84cu/jo8u1phb49x2/logomib_vector.svg"
+        height="200" width="200" />
     </svg>
 
   </mat-card-content>
 </mat-card>
 
 
-<app-profile-editor *ngIf="openProfileField && userService.getUser() && !(userService.getUser().userType === UserType.admin)" (toggle)="openProfile()"></app-profile-editor>
-<app-my-jobs *ngIf="openJobCreationField && userService.getUser() && !(userService.getUser().userType === UserType.admin)" (toggle)="openCreateJob()"></app-my-jobs>
+<app-profile-editor *ngIf="openProfileField && userService.getUser() && !(userService.getUser().userType === UserType.admin)"
+  (toggle)="openProfile()"></app-profile-editor>
+<app-my-jobs *ngIf="openJobCreationField && userService.getUser() && !(userService.getUser().userType === UserType.admin)"
+  (toggle)="openCreateJob()"></app-my-jobs>
 <app-edit-jobs *ngIf="openEditJobs && userService.getUser() && (userService.getUser().userType === UserType.admin)"></app-edit-jobs>
 <app-edit-user *ngIf="openEditUser && userService.getUser() && (userService.getUser().userType === UserType.admin)"></app-edit-user>
 

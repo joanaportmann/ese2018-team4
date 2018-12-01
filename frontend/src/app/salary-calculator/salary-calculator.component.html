@@ -1,0 +1,40 @@
+<h1>Salary calculator</h1>
+<p>
+  This application converts hourly, monthly and annual salaries into the other ones based on your pay parameters (working hours per day, pensum, parts per year).
+</p>
+
+<div class="parameters">
+  <mat-form-field>
+    <input matInput placeholder="Working hours (per day)" [(ngModel)]="hoursPerDay" type="number" (ngModelChange)="update()"
+      name="hoursPerDay" required>
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput placeholder="Pensum (in percentage)" [(ngModel)]="percentage" type="number" (ngModelChange)="update()"
+        name="percentage" required>
+    </mat-form-field>
+
+  <mat-form-field>
+    <mat-select [(value)]="partsPerYear" (selectionChange)="update()" placeholder="Number of parts per year">
+      <mat-option [value]=12>12</mat-option>
+      <mat-option [value]=13>13</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="salaries">
+  <mat-form-field [class.current]="basis === 'hourly'">
+    <input matInput placeholder="Hourly rate" [(ngModel)]="hourly" type="number" (focus)="basis = 'hourly'"
+      (ngModelChange)="update()" name="stundenlohn">
+  </mat-form-field>
+
+  <mat-form-field [class.current]="basis === 'monthly'">
+    <input matInput placeholder="Monthly rate" [(ngModel)]="monthly" type="number" (focus)="basis = 'monthly'"
+      (ngModelChange)="update()" name="monatslohn">
+  </mat-form-field>
+
+  <mat-form-field [class.current]="basis === 'yearly'">
+    <input matInput placeholder="Annual rate" [(ngModel)]="yearly" type="number" (focus)="basis = 'yearly'"
+      (ngModelChange)="update()" name="jahreslohn">
+  </mat-form-field>
+</div>

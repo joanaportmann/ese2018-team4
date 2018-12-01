@@ -40,6 +40,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DemandComponent } from './demand/demand.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     EditJobsComponent,
     EditUserComponent,
     DemandComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    SalaryCalculatorComponent
   ],
   imports: [
     BrowserModule,
