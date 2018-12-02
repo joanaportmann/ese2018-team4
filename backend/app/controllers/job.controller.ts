@@ -56,6 +56,9 @@ router.put('/:id', authenticatedUser, async (req: Request, res: Response) => {
 });
 
 router.put('/:id/approved', async (req: Request, res: Response) => {
+  
+  //TO-DO only show approved jobs
+
   const id = parseInt(req.params.id);
   const instance: Job | null = await Job.findById(id);
   if (instance == null) {
