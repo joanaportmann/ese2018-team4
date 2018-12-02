@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class AvailableJobsComponent implements OnInit {
 
-  job: Job = new Job(null, '', '', '', null, '', '');
+  job: Job = new Job(null, '', '', '', null, '', '', false);
   jobs: Job[] = [];
 
 
@@ -23,7 +23,7 @@ export class AvailableJobsComponent implements OnInit {
   ngOnInit() {
   this.httpClient.get('http://localhost:3000/job/').subscribe((instances: any) => {
   this.jobs = instances.map((instance) =>
-    new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info));
+    new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved));
 });
 }
 

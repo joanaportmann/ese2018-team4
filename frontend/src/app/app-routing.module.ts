@@ -9,6 +9,8 @@ import { ProfileEditorComponent } from './profile-editor/profile-editor.componen
 import { CreateJobComponent } from './create-job/create-job.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AvailableJobsComponent } from './available-jobs/available-jobs.component';
+import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,7 +20,10 @@ const routes: Routes = [
   { path: 'myprofile', component: ProfileEditorComponent},
   { path: 'myjobs', component: CreateJobComponent},
   { path:'aboutus', component: AboutUsComponent},
-  { path: 'home', component: AvailableJobsComponent}
+  { path: 'home', component: AvailableJobsComponent},
+  { path: 'approvejob', component: EditJobsComponent},
+  { path: 'approveuser', component: EditUserComponent}
+  
 ];
 
 @NgModule({

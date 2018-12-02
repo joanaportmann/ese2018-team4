@@ -21,8 +21,8 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 
       <mat-menu #appMenuAdmin="matMenu" yPosition="above" xPosition="after">
         <a href="#home" routerLink="/home" mat-menu-item>Home</a>
-        <button id="editUser" (click)="openEditUsers()" mat-menu-item>Edit Users</button>
-        <button id="editJobs" (click)="openEditJob()" mat-menu-item>Edit Jobs</button>
+        <a id="editUser" routerLink="/approveuser" mat-menu-item>Approve User</a>
+        <a id="editJobs" routerLink="/approvejob" mat-menu-item>Approve Job</a>
 
       </mat-menu>
 
