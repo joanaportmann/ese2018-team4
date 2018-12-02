@@ -1,5 +1,4 @@
-mat-card{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+:host {
+  display: block;
+  padding: 1em;
 }

@@ -27,6 +27,9 @@ export class JobComponent {
   @Input()
   showDestroyButton: Boolean;
 
+  @Input()
+  editable: Boolean = false;
+
   @Output()
   destroy = new EventEmitter<Job>();
 
