@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
@@ -14,6 +14,7 @@ export class EditJobsComponent implements OnInit {
   jobs: Job[] = [];
   checked = false;
   constructor(private httpClient: HttpClient, public userService: UserService) { }
+
 
   ngOnInit() {
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
@@ -31,4 +32,5 @@ export class EditJobsComponent implements OnInit {
   approve(job: Job): void {
     this.httpClient.put(`http://localhost:3000/job/${job.id}/approved`, job.approved.toString()).subscribe();
   }
+
 }

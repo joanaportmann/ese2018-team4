@@ -7,7 +7,6 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <app-job [job]="job"></app-job>
-    {{job.approved}}
   </mat-expansion-panel>
 
   <mat-checkbox [(ngModel)]="job.approved" (change)="approve(job)" *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"

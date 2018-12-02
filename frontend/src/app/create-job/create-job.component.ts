@@ -1,4 +1,4 @@
-import {Component, HostBinding, Injectable, OnInit, ViewChild, Output} from '@angular/core';
+import {Component, HostBinding, Injectable, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
@@ -20,6 +20,9 @@ export class CreateJobComponent implements OnInit {
 
   constructor(private httpClient: HttpClient, private snackbar: MatSnackBar) {
   }
+
+  @Output()
+  destroy = new EventEmitter<Job>();
 
   ngOnInit(): void {
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
@@ -48,13 +51,7 @@ export class CreateJobComponent implements OnInit {
       });
   }
 
-  /**
-   * delete created jobs so that they are also deleted from the database
-   * @param job
-   */
-  onJobDestroy(job: Job): void {
-    this.jobs.splice(this.jobs.indexOf(job), 1);
-  }
+ 
 
   /**
    * reset current data inputs so that the fields are empty again
@@ -62,6 +59,14 @@ export class CreateJobComponent implements OnInit {
   resetForm(): void {
     this.jobForm.reset();
 
+  }
+
+  
+  onDestroy(job: Job) {
+    this.httpClient.delete('http://localhost:3000/job/' + job.id, { withCredentials: true }).subscribe(() => {
+      this.destroy.emit(this.job); 
+      this.jobs.splice(this.jobs.indexOf(job), 1);
+    });
   }
 
 }

@@ -1,12 +1,6 @@
 <div class="container">
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-          {{job.name}} <button *ngIf="showDestroyButton" mat-button (click)="onDestroy()">destroy</button>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <input matInput placeholder="Jobname" [readonly]="!editable" [(ngModel)]="job.name" name="name">
+  <input matInput placeholder="Jobname" [readonly]="!editable" [(ngModel)]="job.name" name="name">
   
 
   <mat-form-field>
@@ -32,7 +26,5 @@
   <br>
 
   <button mat-button (click)="onSave()" *ngIf="editable">Save Changes</button>
-  </mat-expansion-panel>
-  
 
 </div>
