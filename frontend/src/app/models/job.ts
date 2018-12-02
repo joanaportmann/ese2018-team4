@@ -7,7 +7,8 @@ export class Job {
     public necessarySkills: string,
     public percentage: number,
     public time: string,
-    public info: string
+    public info: string,
+    public approved: boolean
 
   ) {
   }

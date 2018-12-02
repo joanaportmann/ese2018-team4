@@ -1,15 +1,16 @@
-<h1>Edit Jobs</h1>
-<ng-container *ngFor="let job of jobs">
-  <mat-expansion-panel>
+<h1>Approve Jobs</h1>
+<div class="line" *ngFor="let job of jobs">
+  <mat-expansion-panel class="description">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{job.name}}
       </mat-panel-title>
     </mat-expansion-panel-header>
     <app-job [job]="job"></app-job>
+    {{job.approved}}
   </mat-expansion-panel>
 
-  <mat-checkbox #checkbox (change)="approve(job, checkbox.checked)" *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"
+  <mat-checkbox [(ngModel)]="job.approved" (change)="approve(job)" *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"
     matInput>
     Approve</mat-checkbox>
-</ng-container>
+</div>

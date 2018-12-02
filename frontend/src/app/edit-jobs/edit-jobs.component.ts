@@ -10,7 +10,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./edit-jobs.component.css']
 })
 export class EditJobsComponent implements OnInit {
-  job: Job = new Job(null, '', '', '', null, '','');
+  job: Job = new Job(null, '', '', '', null, '','', false);
   jobs: Job[] = [];
   checked = false;
   constructor(private httpClient: HttpClient, public userService: UserService) { }
@@ -18,7 +18,7 @@ export class EditJobsComponent implements OnInit {
   ngOnInit() {
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
       this.jobs = instances.map((instance) =>
-        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info));
+        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved));
     });
   }
   displayJobs(): Observable<Object> {
@@ -28,7 +28,7 @@ export class EditJobsComponent implements OnInit {
     this.jobs.push(this.job);
   }
 
-  approve(job: Job, value: boolean): void {
-    this.httpClient.put(`http://localhost:3000/job/${job.id}/approved`, value.toString()).subscribe();
+  approve(job: Job): void {
+    this.httpClient.put(`http://localhost:3000/job/${job.id}/approved`, job.approved.toString()).subscribe();
   }
 }
