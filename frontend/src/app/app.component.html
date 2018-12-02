@@ -13,13 +13,17 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 
     <div class="menu w3-right w3-hide-small">
       <mat-menu #appMenu="matMenu" yPosition="above" xPosition="after">
+        <a href="#home" routerLink="/home" mat-menu-item>Home</a>
         <a id="profile" routerLink="/myprofile" mat-menu-item>My Profile</a>
         <a id="createJob" routerLink="/myjobs" mat-menu-item>My Jobs</a>
 
       </mat-menu>
+
       <mat-menu #appMenuAdmin="matMenu" yPosition="above" xPosition="after">
+        <a href="#home" routerLink="/home" mat-menu-item>Home</a>
         <button id="editUser" (click)="openEditUsers()" mat-menu-item>Edit Users</button>
         <button id="editJobs" (click)="openEditJob()" mat-menu-item>Edit Jobs</button>
+
       </mat-menu>
 
       <button class="w3-wide" *ngIf="userService.getUser() && !(userService.getUser().userType === UserType.admin)" mat-button
@@ -29,7 +33,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 
       <a mat-button routerLink="/aboutus">About Us</a>
       <app-logout *ngIf="userService.getUser()"></app-logout>
-      <button *ngIf="!userService.getUser()" mat-button (click)="openDialog()">Log In</button>
+      <button *ngIf="!userService.getUser()" mat-button (click)="openDialog()"> For Employers only: Log In</button>
       <button *ngIf="!userService.getUser()" mat-button (click)="openRegister()">Register</button>
 
     </div>

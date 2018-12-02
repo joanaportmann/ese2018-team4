@@ -9,7 +9,7 @@ import {ViewEncapsulation } from '@angular/core';
 //import {User} from './models/user';
 
 import {ActivatedRoute, Router} from '@angular/router';
-import {MatSnackBar} from "@angular/material";
+import {MatSnackBar} from '@angular/material';
 
 
 
@@ -32,6 +32,8 @@ export class JobComponent {
 
   options: FormGroup;
   encapsulation: ViewEncapsulation.None;
+  checked = false;
+
   constructor(
     private httpClient: HttpClient,
     public userService: UserService,
@@ -53,6 +55,9 @@ export class JobComponent {
   onSave() {
     this.httpClient.put('http://localhost:3000/job/' + this.job.id, this.job).subscribe();
     this.snackbar.open('Changes saved!');
+    if (this.checked = true) {
+      this.httpClient.put('http://localhost:3000/job/id/approved/' + true, this.job).subscribe();
+    }
   }
 
   onDestroy() {
@@ -61,6 +66,9 @@ export class JobComponent {
     });
   }
 
+  onApprove() {
+    this.checked = true;
+  }
 }
 
 enum UserType {

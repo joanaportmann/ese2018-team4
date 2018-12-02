@@ -2,37 +2,39 @@
 <mat-expansion-panel *ngIf="userService.getUser()">
         <mat-expansion-panel-header>
           <mat-panel-title>
-              <input matInput placeholder="Jobname" [(ngModel)]="job.name" name="name" (ngModelChange)="onSave()">  <button *ngIf="showDestroyButton" mat-button (click)="onDestroy()">destroy</button>
+              <input matInput placeholder="Jobname" [(ngModel)]="job.name" name="name">  <button *ngIf="showDestroyButton" mat-button (click)="onDestroy()">destroy</button>
           </mat-panel-title>
         </mat-expansion-panel-header>
       <mat-form-field>
-        <input matInput placeholder="Description" [(ngModel)]="job.description" name="description" (ngModelChange)="onSave()">
+        <input matInput placeholder="Description" [(ngModel)]="job.description" name="description">
       </mat-form-field>
       <br>
       <mat-form-field>
-      <input matInput placeholder="Necessary Skills" [(ngModel)]="job.necessarySkills" name="necessarySkills" (ngModelChange)="onSave()">
+      <input matInput placeholder="Necessary Skills" [(ngModel)]="job.necessarySkills" name="necessarySkills">
     </mat-form-field>
 <br>
 
       <mat-form-field>
-        <input matInput placeholder="Percentage (%)" [(ngModel)]="job.percentage" name="percentage" (ngModelChange)="onSave()">
+        <input matInput placeholder="Percentage (%)" [(ngModel)]="job.percentage" name="percentage">
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput placeholder="When?" [(ngModel)]="job.time" name="time" (ngModelChange)="onSave()">
+        <input matInput placeholder="When?" [(ngModel)]="job.time" name="time">
       </mat-form-field>
       <br>
   <mat-form-field>
-    <input matInput placeholder="Contact Information" [(ngModel)]="job.info" name="info" (ngModelChange)="onSave()">
+    <input matInput placeholder="Contact Information" [(ngModel)]="job.info" name="info">
   </mat-form-field>
 <br>
-  <button mat-button (click)="onSave()">Save Changes</button>
+
   <form [formGroup]="options">
-        <mat-checkbox *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"
+        <mat-checkbox [(ngModel)]="checked" (change)="onApprove()"
+                      *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"
                       matInput
                       formControlName="approved">
                       Approve</mat-checkbox>
           </form>
+  <button mat-button (click)="onSave()">Save Changes</button>
       </mat-expansion-panel>
 
 <mat-expansion-panel *ngIf="!userService.getUser()">

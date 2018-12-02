@@ -11,6 +11,7 @@ import {Observable} from "rxjs";
 export class EditJobsComponent implements OnInit {
   job: Job = new Job(null, '', '', '', null, '','');
   jobs: Job[] = [];
+  checked = false;
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
