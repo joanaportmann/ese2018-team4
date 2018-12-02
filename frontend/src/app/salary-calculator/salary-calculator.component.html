@@ -6,12 +6,12 @@
 <div class="parameters">
   <mat-form-field>
     <input matInput placeholder="Working hours (per day)" [(ngModel)]="hoursPerDay" type="number" (ngModelChange)="update()"
-      name="hoursPerDay" required>
+      name="hoursPerDay" min="0" max="24" required>
   </mat-form-field>
 
   <mat-form-field>
       <input matInput placeholder="Pensum (in percentage)" [(ngModel)]="percentage" type="number" (ngModelChange)="update()"
-        name="percentage" required>
+        name="percentage" min="0" max="100" step="5" required>
     </mat-form-field>
 
   <mat-form-field>
@@ -25,16 +25,16 @@
 <div class="salaries">
   <mat-form-field [class.current]="basis === 'hourly'">
     <input matInput placeholder="Hourly rate" [(ngModel)]="hourly" type="number" (focus)="basis = 'hourly'"
-      (ngModelChange)="update()" name="stundenlohn">
+      (ngModelChange)="update()" name="stundenlohn" min="0">
   </mat-form-field>
 
   <mat-form-field [class.current]="basis === 'monthly'">
     <input matInput placeholder="Monthly rate" [(ngModel)]="monthly" type="number" (focus)="basis = 'monthly'"
-      (ngModelChange)="update()" name="monatslohn">
+      (ngModelChange)="update()" name="monatslohn" min="0" step="10">
   </mat-form-field>
 
   <mat-form-field [class.current]="basis === 'yearly'">
     <input matInput placeholder="Annual rate" [(ngModel)]="yearly" type="number" (focus)="basis = 'yearly'"
-      (ngModelChange)="update()" name="jahreslohn">
+      (ngModelChange)="update()" name="jahreslohn" min="0" step="100">
   </mat-form-field>
 </div>
