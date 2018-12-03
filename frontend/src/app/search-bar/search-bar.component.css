@@ -13,13 +13,14 @@ div.search-bar {
   padding: 35px 0;
 }
 
-a {
+button {
   color: white;
   background-color: rgb(50, 145, 175);
   padding: 5px 15px;
   margin: 10px;
+  cursor: pointer;
 }
 
-a:hover, a:active {
+button:hover {
   background-color: rgb(72, 209, 252);
 }
