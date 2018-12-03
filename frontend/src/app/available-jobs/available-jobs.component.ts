@@ -11,9 +11,10 @@ import {Router} from "@angular/router";
 })
 export class AvailableJobsComponent implements OnInit {
 
-  job: Job = new Job(null, '', '', '', null, '','');
-  jobs: Job[] = [];
+  
 
+  job: Job = new Job(null, '', '', '', null, '', '', false);
+  jobs: Job[] = [];
 
   constructor(private httpClient: HttpClient, public router: Router) { }
 
@@ -21,9 +22,11 @@ export class AvailableJobsComponent implements OnInit {
   isOpen = false;
 
   ngOnInit() {
-  this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
-  this.jobs = instances.map((instance) =>
-    new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info));
+  this.httpClient.get('http://localhost:3000/job/').subscribe((instances: any) => {
+  this.jobs = instances
+      .filter((instance) => instance.approved)
+      .map((instance) =>
+    new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved));
 });
 }
 

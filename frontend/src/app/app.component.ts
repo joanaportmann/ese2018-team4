@@ -8,6 +8,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { UserService } from './services/user.service';
 import {User} from './models/user';
 import { Router, PRIMARY_OUTLET } from '@angular/router';
+import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class AppComponent {
 
   @ViewChild('jobForm')
   public jobForm: NgForm;
-  job: Job = new Job(null, '', '', '', null, '', '');
+  job: Job = new Job(null, '', '', '', null, '', '', false);
   jobs: Job[] = [];
   onAboutUs = false;
   openJobCreationField: boolean;
@@ -28,8 +29,8 @@ export class AppComponent {
   openEditUser: boolean;
   UserType = UserType;
 
-  constructor(private httpClient: HttpClient, 
-    public dialog: MatDialog, 
+  constructor(private httpClient: HttpClient,
+    public dialog: MatDialog,
     public userService: UserService,
     public router: Router) {
   }
@@ -44,6 +45,16 @@ export class AppComponent {
       console.log('this dialog is closed');
     });
   }
+
+  openRegister() {
+      const dialogReg = this.dialog.open(RegisterDialogComponent);
+
+      dialogReg.afterClosed().subscribe(result => {
+        console.log('this dialog is closed');
+      });
+  }
+
+
   openJobs() {
     this.onAboutUs = false;
     this.openJobCreationField = false;
@@ -65,7 +76,7 @@ aboutUs() {
       .subscribe((instance: any) => {
         this.job.id = instance.id;
         this.jobs.push(this.job);
-        this.job = new Job(null, '', '', '', null, '', '');
+        this.job = new Job(null, '', '', '', null, '', '', false);
       });
 
   }
@@ -111,11 +122,11 @@ aboutUs() {
   currentPageName(): string {
     const url = this.router.url;
     const rootPart = this.router.parseUrl(url).root;
-    if (!rootPart.hasChildren()) return '';
+    if (!rootPart.hasChildren()) { return ''; }
     const firstSegment = rootPart.children[PRIMARY_OUTLET].segments[0];
     return firstSegment ? firstSegment.path : '';
   }
-  
+
 }
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
