@@ -13,7 +13,7 @@ export class SearchBarComponent implements OnInit {
     this.input = window.location.pathname.substr(8);
   }
 
-  onButtonClicked() {
+  search() {
     this.router.navigateByUrl('/demand/' + this.input);
   }
 
