@@ -8,6 +8,7 @@
       id="searchBox"
       placeholder="Find your own StudiJob..."
       [(ngModel)]="input"
+      (keyup.enter)="onButtonClicked()"
       size="50">
 
     <button id="searchButton" (click)="onButtonClicked()">
