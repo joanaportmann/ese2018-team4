@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,15 +6,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  input = '';
 
-  constructor(private router: Router) {
-    this.input = window.location.pathname.substr(8);
-  }
+  constructor(
 
-  onButtonClicked() {
-    this.router.navigateByUrl('/demand/' + this.input);
-  }
+  ) { }
 
   ngOnInit() {
   }

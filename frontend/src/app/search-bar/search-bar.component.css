@@ -1,26 +1,18 @@
 div.box-outside {
-  display: flex;
-  align-items: center;
+  background-color: lightyellow;
   width: 80%;
-  margin: 50px auto;
-  border: 1px solid #04739180;
-  background-color: #04739110;
-  border-radius: 1ex;
+  margin: auto;
 }
 
 div.search-bar {
+  width: 75%;
   margin: auto;
-  padding: 35px 0;
+  padding: 35px;
 }
 
-button {
+a {
   color: white;
-  background-color: rgb(50, 145, 175);
+  background-color: blue;
   padding: 5px 15px;
   margin: 10px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: rgb(72, 209, 252);
 }
