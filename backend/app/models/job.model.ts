@@ -32,7 +32,8 @@ export class Job extends Model<Job> {
       'necessarySkills': this.necessarySkills,
       'percentage': this.percentage,
       'time': this.time,
-      'info': this.info
+      'info': this.info,
+      'approved': this.approved
     };
   }
 

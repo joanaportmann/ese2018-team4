@@ -1,66 +1,30 @@
 <div class="container">
-<mat-expansion-panel *ngIf="userService.getUser()">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-              <input matInput placeholder="Jobname" [(ngModel)]="job.name" name="name" (ngModelChange)="onSave()">  <button *ngIf="showDestroyButton" mat-button (click)="onDestroy()">destroy</button>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-      <mat-form-field>
-        <input matInput placeholder="Description" [(ngModel)]="job.description" name="description" (ngModelChange)="onSave()">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-      <input matInput placeholder="Necessary Skills" [(ngModel)]="job.necessarySkills" name="necessarySkills" (ngModelChange)="onSave()">
-    </mat-form-field>
-<br>
 
-      <mat-form-field>
-        <input matInput placeholder="Percentage (%)" [(ngModel)]="job.percentage" name="percentage" (ngModelChange)="onSave()">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput placeholder="When?" [(ngModel)]="job.time" name="time" (ngModelChange)="onSave()">
-      </mat-form-field>
-      <br>
-  <mat-form-field>
-    <input matInput placeholder="Contact Information" [(ngModel)]="job.info" name="info" (ngModelChange)="onSave()">
-  </mat-form-field>
-<br>
-  <button mat-button (click)="onSave()">Save Changes</button>
-  <form [formGroup]="options">
-        <mat-checkbox *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"
-                      matInput
-                      formControlName="approved">
-                      Approve</mat-checkbox>
-          </form>
-      </mat-expansion-panel>
+  <input matInput placeholder="Jobname" [readonly]="!editable" [(ngModel)]="job.name" name="name">
+  
 
-<mat-expansion-panel *ngIf="!userService.getUser()">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      <input matInput placeholder="Jobname" [(ngModel)]="job.name" name="name" (ngModelChange)="onSave()" readonly="readonly">
-    </mat-panel-title>
-  </mat-expansion-panel-header>
   <mat-form-field>
-    <input matInput placeholder="Description" [(ngModel)]="job.description" name="description" (ngModelChange)="onSave()" readonly="readonly">
+    <input matInput placeholder="Description" [readonly]="!editable" [(ngModel)]="job.description" name="description">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput placeholder="Necessary Skills" [(ngModel)]="job.necessarySkills" name="necessarySkills" (ngModelChange)="onSave()" readonly="readonly">
+    <input matInput placeholder="Necessary Skills" [readonly]="!editable" [(ngModel)]="job.necessarySkills" name="necessarySkills">
   </mat-form-field>
   <br>
 
   <mat-form-field>
-    <input matInput placeholder="Percentage (%)" [(ngModel)]="job.percentage" name="percentage" (ngModelChange)="onSave()" readonly="readonly">
+    <input matInput placeholder="Percentage (%)" [readonly]="!editable" [(ngModel)]="job.percentage" name="percentage">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput placeholder="When?" [(ngModel)]="job.time" name="time" (ngModelChange)="onSave()" readonly="readonly">
+    <input matInput placeholder="When?" [readonly]="!editable" [(ngModel)]="job.time" name="time">
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput placeholder="Contact Information" [(ngModel)]="job.info" name="info" (ngModelChange)="onSave()" readonly="readonly">
+    <input matInput placeholder="Contact Information" [readonly]="!editable" [(ngModel)]="job.info" name="info">
   </mat-form-field>
+  <br>
 
-</mat-expansion-panel>
+  <button mat-button (click)="onSave()" *ngIf="editable">Save Changes</button>
+
 </div>

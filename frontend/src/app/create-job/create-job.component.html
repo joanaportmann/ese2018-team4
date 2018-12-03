@@ -8,7 +8,21 @@ as required -->
       <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"> My created Jobs</h3>
       <h6 class="w3-border-bottom w3-border-light-grey w3-padding-16">(not displayed on website until they get
         approved)</h6>
-      <app-job [job]="job" [showDestroyButton]="true" (destroy)="onJobDestroy($event)" *ngFor="let job of jobs"></app-job>
+  
+
+      <div class="line"  *ngFor="let job of jobs">
+          <mat-expansion-panel class="description">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{job.name}} <button mat-button (click)="onDestroy(job)">destroy</button>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-job [job]="job" (destroy)="onJobDestroy($event)" [showDestroyButton]="true" [editable]="true"></app-job>
+          </mat-expansion-panel>
+        
+         
+        </div>
+
     </mat-card>
   </div>
 

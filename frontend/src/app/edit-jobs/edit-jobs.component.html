@@ -1,12 +1,15 @@
-<form class="edit-jobs">
-  <mat-card>
-      <mat-card-title>Edit Jobs</mat-card-title>
-    <div>
-    <app-job [job]="job"  *ngFor="let job of jobs"></app-job>
-    </div>
-    <div>
-      <br>
-    <button mat-button>save</button>
-    </div>
-  </mat-card>
-</form>
+<h1>Approve Jobs</h1>
+<div class="line" *ngFor="let job of jobs">
+  <mat-expansion-panel class="description">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{job.name}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-job [job]="job"></app-job>
+  </mat-expansion-panel>
+
+  <mat-checkbox [(ngModel)]="job.approved" (change)="approve(job)" *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')"
+    matInput>
+    Approve</mat-checkbox>
+</div>

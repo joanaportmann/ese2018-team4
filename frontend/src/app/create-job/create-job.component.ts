@@ -1,5 +1,4 @@
-import {Component, HostBinding, Injectable, OnInit, ViewChild} from '@angular/core';
-import {AppComponent, MyErrorStateMatcher} from '../app.component';
+import {Component, HostBinding, Injectable, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
@@ -15,18 +14,20 @@ import {MatSnackBar} from '@angular/material';
 export class CreateJobComponent implements OnInit {
   @ViewChild('jobForm')
   public jobForm: NgForm;
-  job: Job = new Job(null, '', '', '', null, '','');
+  job: Job = new Job(null, '', '', '', null, '','', false);
   jobs: Job[] = [];
   jobFormGroup: FormGroup;
-
 
   constructor(private httpClient: HttpClient, private snackbar: MatSnackBar) {
   }
 
+  @Output()
+  destroy = new EventEmitter<Job>();
+
   ngOnInit(): void {
     this.httpClient.get('http://localhost:3000/job').subscribe((instances: any) => {
       this.jobs = instances.map((instance) =>
-        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info));
+        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved));
     });
 
     this.jobFormGroup = new FormGroup({
@@ -44,19 +45,13 @@ export class CreateJobComponent implements OnInit {
       .subscribe((instance: any) => {
         this.job.id = instance.id;
         this.jobs.push(this.job);
-        this.job = new Job(null, '', '', '', null, '', '');
+        this.job = new Job(null, '', '', '', null, '', '', false);
         this.jobForm.resetForm();
         this.snackbar.open('Your Job will be displayed as soon as it is approved by an admin');
       });
   }
 
-  /**
-   * delete created jobs so that they are also deleted from the database
-   * @param job
-   */
-  onJobDestroy(job: Job): void {
-    this.jobs.splice(this.jobs.indexOf(job), 1);
-  }
+ 
 
   /**
    * reset current data inputs so that the fields are empty again
@@ -64,6 +59,14 @@ export class CreateJobComponent implements OnInit {
   resetForm(): void {
     this.jobForm.reset();
 
+  }
+
+  
+  onDestroy(job: Job) {
+    this.httpClient.delete('http://localhost:3000/job/' + job.id, { withCredentials: true }).subscribe(() => {
+      this.destroy.emit(this.job); 
+      this.jobs.splice(this.jobs.indexOf(job), 1);
+    });
   }
 
 }
