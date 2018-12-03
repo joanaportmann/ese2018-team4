@@ -24,7 +24,7 @@ const routes: Routes = [
   { path:'aboutus', component: AboutUsComponent},
   { path: 'home', component: AvailableJobsComponent},
   { path: 'approvejob', component: EditJobsComponent},
-  { path: 'approveuser', component: EditUserComponent}
+  { path: 'approveuser', component: EditUserComponent},
   { path: 'salaryCalculator', component: SalaryCalculatorComponent}
 ];
 
