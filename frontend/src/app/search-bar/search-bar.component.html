@@ -3,7 +3,7 @@
 
 <div class="box-outside">
   <div class="search-bar">
-    <input #searchBox id="searchBox" placeholder="Find your own StudiJob..." size="50">
+    <input #searchBox id="searchBox" value="{{preset}}" placeholder="Find your own StudiJob..." size="50">
     <a id="searchButton" routerLink="/demand/{{searchBox.value}}"><i class="fas fa-search"></i></a>
   </div>
 </div>

@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
+  preset = '';
 
-  constructor(
-
-  ) { }
+  constructor() {
+    this.preset = window.location.pathname.substr(8);
+  }
 
   ngOnInit() {
   }
