@@ -6,7 +6,7 @@
 
   <mat-list>
     <mat-list-item *ngFor="let user of users">{{user.username}},<br>
-      <mat-checkbox>Approve</mat-checkbox></mat-list-item>
+      <mat-checkbox [(ngModel)]="user.enabled" (change)="enable(users)" *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')">Approve</mat-checkbox></mat-list-item>
   </mat-list>
 
 
