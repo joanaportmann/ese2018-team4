@@ -1,8 +1,15 @@
 <!-- This HTML file is the portrayal of a 'Job-Creation', it
 consists of several input fields, some of them are validated
 as required -->
+<div *ngIf="!(userService.getUser().enabled === true)" class="create-job">
+  <mat-card> 
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"> You are not allowed to create jobs yet.</h3>
+    <h6 class="w3-border-bottom w3-border-light-grey w3-padding-16">(Wait until you get enabled by an admin.)</h6>
+      </mat-card>
+      </div>
 
-<form class="createjob">
+
+<form *ngIf="userService.getUser().enabled === true" class="createjob">
   <div>
     <mat-card>
       <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"> My created Jobs</h3>

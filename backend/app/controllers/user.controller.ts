@@ -57,6 +57,7 @@ router.put('/:username/enabled', async (req:Request, res: Response) => {
     return;
   }
   instance.fromSimplification(req.body);
+  instance.enabled = req.body;
   await instance.save();
   res.cookie('user', instance.toSimplification());
   res.statusCode = 204;
