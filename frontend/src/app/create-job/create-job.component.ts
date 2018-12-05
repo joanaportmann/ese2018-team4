@@ -3,6 +3,7 @@ import {FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Job} from '../models/job';
 import {HttpClient} from '@angular/common/http';
 import {MatSnackBar} from '@angular/material';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CreateJobComponent implements OnInit {
   jobs: Job[] = [];
   jobFormGroup: FormGroup;
 
-  constructor(private httpClient: HttpClient, private snackbar: MatSnackBar) {
+  constructor(private httpClient: HttpClient, private snackbar: MatSnackBar, public userService: UserService) {
   }
 
   @Output()
