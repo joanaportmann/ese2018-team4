@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Job} from '../models/job';
 import {User} from '../models/user';
-import {UserService} from "../services/user.service";
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-edit-user',

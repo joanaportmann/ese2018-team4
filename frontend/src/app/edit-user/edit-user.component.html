@@ -1,18 +1,26 @@
-<form class="edit-user">
-  <mat-card>
+ <mat-card>
     <div>
-      <mat-card-title>Edit Users</mat-card-title>
+      <mat-card-title>Approve Users</mat-card-title>
     </div>
+    <div class="line" *ngFor="let user of users">
+      <mat-expansion-panel class="description">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{user.username}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
 
-  <mat-list>
-    <mat-list-item *ngFor="let user of users">{{user.username}},<br>
-      <mat-checkbox [(ngModel)]="user.enabled" (change)="enable(users)" *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')">Approve</mat-checkbox></mat-list-item>
-  </mat-list>
+        <mat-list dense>
+          <mat-list-item>Company Name: <br> {{user.companyName}}</mat-list-item><br>
+          <mat-list-item>Address: <br> {{user.address}}</mat-list-item><br>
+          <mat-list-item>Phone Number: <br> {{user.phoneNumber}}</mat-list-item><br>
+          <mat-list-item>Homepage: <br> {{user.homepage}}</mat-list-item><br>
+          <mat-list-item>Number of Employees:<br> {{user.numberOfEmployees}}</mat-list-item><br>
+          <mat-list-item>Business: <br>{{user.business}}</mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
 
+      <mat-checkbox *ngIf="userService.getUser() && (userService.getUser().userType === 'admin')">Approve</mat-checkbox>
 
-    <div>
-      <br>
-      <button mat-button>save</button>
     </div>
   </mat-card>
-</form>

@@ -14,12 +14,12 @@ as required -->
           <mat-expansion-panel class="description">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                {{job.name}} <button mat-button (click)="onDestroy(job)">destroy</button>
+                {{job.name}}
               </mat-panel-title>
             </mat-expansion-panel-header>
             <app-job [job]="job" (destroy)="onJobDestroy($event)" [showDestroyButton]="true" [editable]="true"></app-job>
           </mat-expansion-panel>
-        
+        <button mat-button (click)="onDestroy(job)">destroy</button>
          
         </div>
 

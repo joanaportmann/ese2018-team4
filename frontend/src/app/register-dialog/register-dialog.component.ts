@@ -19,6 +19,10 @@ export class RegisterDialogComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   PasswordConfirmationMatcher: GroupErrorStateMatcher = new GroupErrorStateMatcher();
+  emailFormControl = new FormControl('', [
+    Validators.email,
+  ]);
+  matcher = new MyErrorStateMatcher();
 
   constructor(private httpClient: HttpClient, public snackBar: MatSnackBar, private _formBuilder: FormBuilder,
     public dialog: MatDialog, private dialogReg: MatDialogRef<RegisterDialogComponent>) { }

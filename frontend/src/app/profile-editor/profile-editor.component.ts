@@ -27,6 +27,7 @@ export class ProfileEditorComponent {
   matcher = new MyErrorStateMatcher();
 
   submitChanges() {
+    this.snackBar.open('Your account has been updated')
     this.httpClient.put(`http://localhost:3000/user/${this.user.username}`, this.user, {
       withCredentials: true
     }).subscribe(() => {

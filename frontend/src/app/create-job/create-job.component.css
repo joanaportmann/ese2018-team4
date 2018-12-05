@@ -6,3 +6,20 @@
   align-items: flex-start;
   padding: 1em;
 }
+
+:host {
+  display: block;
+  padding: 1em;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.line .description {
+  flex-grow: 1;
+  margin-right: 2ex
+}
