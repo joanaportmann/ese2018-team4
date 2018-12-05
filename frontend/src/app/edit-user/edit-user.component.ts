@@ -19,13 +19,10 @@ export class EditUserComponent implements OnInit {
   ngOnInit() {
     this.httpClient.get('http://localhost:3000/user').subscribe((instances: any) => {
       this.users = instances;
-      //   .map((instance) =>
-      //     new User();
-      // });
     });
   }
 
- /* enable(users[i]):void {
-    this.httpClient.put(`http://localhost:3000/job/${users[i].username}/enable`, users[i].enabled.toString()).subscribe();
-  }*/
+  enable(user: User):void {
+    this.httpClient.put(`http://localhost:3000/user/${user.username}/enabled`, user.enabled.toString()).subscribe();
+  }
 }
