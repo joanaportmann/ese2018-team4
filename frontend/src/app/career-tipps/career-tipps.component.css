@@ -1,0 +1,25 @@
+.careerTipps{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1em;
+}
+
+
+mat-grid-tile{
+    display: flex;
+    max-width: 1000px;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #04739180;
+    background-color: #04739110;
+    padding: 1em;
+    border-radius: 1ex;
+  }
+
+
+ul{
+  align-items: center;
+  padding: 1em;
+}

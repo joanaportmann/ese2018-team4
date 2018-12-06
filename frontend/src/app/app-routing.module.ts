@@ -12,6 +12,7 @@ import { AvailableJobsComponent } from './available-jobs/available-jobs.componen
 import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator.component';
+import { CareerTippsComponent } from './career-tipps/career-tipps.component';
 
 
 const routes: Routes = [
@@ -21,11 +22,12 @@ const routes: Routes = [
   { path: 'jobs/:id', component: JobComponent},
   { path: 'myprofile', component: ProfileEditorComponent},
   { path: 'myjobs', component: CreateJobComponent},
-  { path:'aboutus', component: AboutUsComponent},
+  { path: 'aboutus', component: AboutUsComponent},
   { path: 'home', component: AvailableJobsComponent},
   { path: 'approvejob', component: EditJobsComponent},
   { path: 'approveuser', component: EditUserComponent},
-  { path: 'salaryCalculator', component: SalaryCalculatorComponent}
+  { path: 'salaryCalculator', component: SalaryCalculatorComponent},
+  { path: 'careerTipps', component: CareerTippsComponent}
 ];
 
 @NgModule({

@@ -27,7 +27,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
         mat-button [matMenuTriggerFor]="appMenu">Menu</button>
       <button *ngIf="userService.getUser() && (userService.getUser().userType === UserType.admin)" mat-button
         [matMenuTriggerFor]="appMenuAdmin">Menu</button>
-
+      <a mat-button routerLink="/careerTipps">Career Tipps</a>
       <a mat-button routerLink="/salaryCalculator" >Salary Calculator</a>
       <a mat-button routerLink="/aboutus">About Us</a>
       <app-logout *ngIf="userService.getUser()"></app-logout>

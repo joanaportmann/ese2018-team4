@@ -18,7 +18,13 @@ import {
   MatStepperModule,
   MatToolbar,
   MatToolbarModule,
-  MatMenuModule, MatIconModule, MatDatepickerModule, MatSelectModule, MatNativeDateModule, MatFormFieldModule
+  MatMenuModule,
+  MatIconModule,
+  MatDatepickerModule,
+  MatSelectModule,
+  MatNativeDateModule,
+  MatFormFieldModule,
+  MatGridListModule
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -41,6 +47,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DemandComponent } from './demand/demand.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator.component';
+import { CareerTippsComponent } from './career-tipps/career-tipps.component';
 
 
 @NgModule({
@@ -64,7 +71,8 @@ import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator
     EditUserComponent,
     DemandComponent,
     AboutUsComponent,
-    SalaryCalculatorComponent
+    SalaryCalculatorComponent,
+    CareerTippsComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +90,7 @@ import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator
     MatDatepickerModule,
     MatExpansionModule,
     MatFormFieldModule,
+    MatGridListModule,
     MatSelectModule,
     MatSnackBarModule,
     MatStepperModule,
