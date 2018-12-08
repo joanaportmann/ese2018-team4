@@ -31,8 +31,8 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
       <a mat-button routerLink="/salaryCalculator" >Salary Calculator</a>
       <a mat-button routerLink="/aboutus">About Us</a>
       <app-logout *ngIf="userService.getUser()"></app-logout>
-      <button *ngIf="!userService.getUser()" mat-button (click)="openDialog()"> For Employers only: Log In</button>
-      <button *ngIf="!userService.getUser()" mat-button (click)="openRegister()">Register</button>
+      <button *ngIf="!userService.getUser()" mat-button (click)="openDialog()">Company Log In</button>
+      <button *ngIf="!userService.getUser()" mat-button (click)="openRegister()">Company Register</button>
 
     </div>
   </div>
