@@ -1,11 +1,10 @@
 div.box-outside {
   display: flex;
-  align-items: center;
-  width: 80%;
-  margin: 50px auto;
-  border: 1px solid #04739180;
-  background-color: #04739110;
-  border-radius: 1ex;
+  align-items: stretch;
+  padding: 1em;
+  max-width: 1000px;
+  justify-content: center;
+  margin: auto;
 }
 
 div.search-bar {
@@ -14,13 +13,14 @@ div.search-bar {
 }
 
 button {
-  color: white;
-  background-color: rgb(50, 145, 175);
-  padding: 5px 15px;
   margin: 10px;
-  cursor: pointer;
 }
 
-button:hover {
-  background-color: rgb(72, 209, 252);
+.search-field {
+  flex-grow: 1;
+}
+
+/* remove bottom spacing -  */
+::ng-deep .search-field .mat-form-field-wrapper {
+  padding-bottom: 0;
 }

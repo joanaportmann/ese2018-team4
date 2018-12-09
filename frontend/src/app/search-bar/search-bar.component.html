@@ -1,19 +1,17 @@
 <!-- implement search button -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+  crossorigin="anonymous">
 
 <div class="box-outside">
-  <div class="search-bar">
 
-    <input
-      id="searchBox"
-      placeholder="Find your own StudiJob..."
-      [(ngModel)]="input"
-      (keyup.enter)="onButtonClicked()"
-      size="50">
+    <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search term</mat-label>
+      <input matInput id="searchBox" placeholder="Frontend engineer" [(ngModel)]="input" (keyup.enter)="onButtonClicked()"
+        size="50">
+    </mat-form-field>
 
-    <button id="searchButton" (click)="search()">
+    <button color="primary" mat-flat-button id="searchButton" (click)="search()">
       <i class="fas fa-search"></i>
     </button>
 
-  </div>
 </div>
