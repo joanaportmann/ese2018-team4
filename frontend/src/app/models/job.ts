@@ -8,7 +8,8 @@ export class Job {
     public percentage: number,
     public time: string,
     public info: string,
-    public approved: boolean
+    public approved: boolean, 
+    public owner: string
 
   ) {
   }

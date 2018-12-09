@@ -1,4 +1,5 @@
 import {Table, Column, Model, HasMany} from 'sequelize-typescript';
+import { User } from './user.model';
 
 @Table
 export class Job extends Model<Job> {
@@ -24,6 +25,9 @@ export class Job extends Model<Job> {
   @Column
   approved!: boolean;
 
+  @Column
+  owner!: string;
+
   toSimplification(): any {
     return {
       'id': this.id,
@@ -33,7 +37,8 @@ export class Job extends Model<Job> {
       'percentage': this.percentage,
       'time': this.time,
       'info': this.info,
-      'approved': this.approved
+      'approved': this.approved,
+      'owner': this.owner
     };
   }
 
@@ -44,6 +49,7 @@ export class Job extends Model<Job> {
     this.percentage = simplification['percentage'];
     this.time = simplification['time'];
     this.info = simplification['info'];
+    this.owner = simplification['owner'];
   }
 
 }
