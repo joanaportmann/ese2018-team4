@@ -4,6 +4,7 @@ import { Job } from '../models/job';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
 import { UserService } from '../services/user.service';
+import { getDefaultService } from 'selenium-webdriver/opera';
 
 
 @Component({
@@ -27,8 +28,10 @@ export class CreateJobComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient.get('http://localhost:3000/job', { withCredentials: true }).subscribe((instances: any) => {
-      this.jobs = instances.map((instance) =>
-        new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved, instance.owner));
+      this.jobs = instances
+        .filter(instance => instance.owner === this.userService.getUser().username) 
+        .map((instance) =>
+          new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved, instance.owner));
     });
 
     this.jobFormGroup = new FormGroup({
