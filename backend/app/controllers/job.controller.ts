@@ -4,10 +4,18 @@ import { authenticatedUser } from './authentication';
 
 const router: Router = Router();
 
-function sameUser (req: Request, res: Response, next: Function) {
-  //TODO: Implement as soon as we have user-job relation!!! Issue 23
+function sameUser(req: Request, res: Response, next: Function, username: string) {
+   if (req.user.username !== username) {
+
+    res.statusCode = 403;
+    res.json({
+      'message': 'not correct user'
+    });
+    return;
+  }
   next();
 }
+
 
 router.get('/', async (req: Request, res: Response) => {
   const instances = await Job.findAll();
@@ -20,6 +28,8 @@ router.post('/', authenticatedUser, async (req: Request, res: Response) => {
 
   instance.fromSimplification(req.body);
   instance.approved = false;
+  instance.owner = req.user.username;
+  console.log(req.user.username);
   await instance.save();
   res.statusCode = 201;
   res.send(instance.toSimplification());
@@ -56,7 +66,7 @@ router.put('/:id', authenticatedUser, async (req: Request, res: Response) => {
 });
 
 router.put('/:id/approved', async (req: Request, res: Response) => {
-  
+
   //TO-DO only show approved jobs
 
   const id = parseInt(req.params.id);
@@ -68,7 +78,7 @@ router.put('/:id/approved', async (req: Request, res: Response) => {
     });
     return;
   }
-  if(!(req.body === 'true' || req.body === 'false')) {
+  if (!(req.body === 'true' || req.body === 'false')) {
     res.statusCode = 400;
     res.json({
       'message': 'expected body to be "true" or "false"'
@@ -83,21 +93,36 @@ router.put('/:id/approved', async (req: Request, res: Response) => {
   });
 });
 
-router.delete('/:id', authenticatedUser, 
-async (req: Request, res: Response) => {
-  const id = parseInt(req.params.id);
-  const instance = await Job.findById(id);
-  if (instance == null) {
-    res.statusCode = 404;
-    res.json({
-      'message': 'not found'
-    });
-    return;
-  }
-  instance.fromSimplification(req.body);
-  await instance.destroy();
-  res.statusCode = 204;
-  res.send();
-});
+router.delete('/:id', authenticatedUser,
+  async (req: Request, res: Response, next: Function) => {
+    const id = parseInt(req.params.id);
+    const instance = await Job.findById(id);
+    
+    if (instance == null) {
+      res.statusCode = 404;
+      res.json({
+        'message': 'job not found'
+      });
+      return;
+    }
+    console.log(instance.owner);
+    sameUser(req, res, next, instance.owner);
+  },
+  async (req: Request, res: Response) => {
+
+    const id = parseInt(req.params.id);
+    const instance = await Job.findById(id);
+    if (instance == null) {
+      res.statusCode = 404;
+      res.json({
+        'message': 'not found'
+      });
+      return;
+    }
+    instance.fromSimplification(req.body);
+    await instance.destroy();
+    res.statusCode = 204;
+    res.send();
+  });
 
 export const JobController: Router = router;
