@@ -56,6 +56,10 @@ header.salaryCalculator {
   background-image: var(--header-gradient), url("../assets/img/rawpixel-602154-unsplash.jpg");  
 }
 
+header.careerTipps{
+  background-image: var(--header-gradient), url("../assets/img/careerTipps.jpg");
+}
+
 
 .header-text {
   text-shadow: 0 3px 5px rgba(0,0,0,0.5);
@@ -69,5 +73,20 @@ mat-card{
   text-align: left;
   padding: 15px 15px 15px 15px;
   margin: 2px 2px 10px 2px;
+}
+
+.footer-line {
+  border-color: lightgray;
+  margin: 0 2em;
+}
+
+footer {
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+}
+
+footer .mat-button {
+  opacity: 0.5;
 }
 

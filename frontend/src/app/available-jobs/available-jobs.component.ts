@@ -13,7 +13,7 @@ export class AvailableJobsComponent implements OnInit {
 
   
 
-  job: Job = new Job(null, '', '', '', null, '', '', false);
+  job: Job = new Job(null, '', '', '', null, '', '', false, '');
   jobs: Job[] = [];
 
   constructor(private httpClient: HttpClient, public router: Router) { }
@@ -26,7 +26,7 @@ export class AvailableJobsComponent implements OnInit {
   this.jobs = instances
       .filter((instance) => instance.approved)
       .map((instance) =>
-    new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved));
+    new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved, instance.owner));
 });
 }
 

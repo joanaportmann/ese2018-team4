@@ -1,10 +1,16 @@
-mat-card{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+:host {
+  display: block;
+  padding: 1em;
 }
 
-mat-checkbox{
-  margin-left:5em;
-  -ms-background-position-x: left;
+.line {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.line .description {
+  flex-grow: 1;
+  margin-right: 2ex
 }

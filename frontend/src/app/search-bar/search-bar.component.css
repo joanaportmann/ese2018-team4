@@ -8,8 +8,9 @@ div.box-outside {
 }
 
 div.search-bar {
+  width: 75%;
   margin: auto;
-  padding: 35px 0;
+  padding: 35px;
 }
 
 button {
