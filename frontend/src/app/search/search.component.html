@@ -1,9 +1,17 @@
-<p>
-  <app-search-bar></app-search-bar>
-</p>
+<app-search-bar></app-search-bar>
 
-<div *ngFor="let job of jobs">
-  <a *ngIf="job" routerLink="/jobs/{{job.id}}">
-    {{job.name}}
-  </a>
+<!-- Job Section -->
+<div class="w3-container w3-padding-20" id="availableJobs">
+
+  <div>
+    <mat-expansion-panel *ngFor="let job of jobs">
+      <mat-expansion-panel-header >
+        <mat-panel-title>
+          {{job.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-job [showDestroyButton]="isEditable" [job]="job"></app-job>
+    </mat-expansion-panel>
+
+  </div>
 </div>
