@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
         .filter((instance) => instance.approved)
         .filter((instance) => instance.name.includes(this.searchText))
         .map((instance) =>
-          new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved));
+          new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved, instance.owner));
     });
   }
 }
