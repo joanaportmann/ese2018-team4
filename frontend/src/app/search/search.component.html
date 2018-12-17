@@ -13,5 +13,14 @@
       <app-job [showDestroyButton]="isEditable" [job]="job"></app-job>
     </mat-expansion-panel>
 
+    <div class="noResults" *ngIf="jobs.length === 0">
+      <p class="fat">No job results for "{{searchText}}"... :(</p>
+      <p>Suggestions:</p>
+      <p>   -  Check if everything is spelled correctly</p>
+      <p>   -  Try out some another keywords</p>
+      <p>   -  Try more general keywords</p>
+    </div>
+
+
   </div>
 </div>
