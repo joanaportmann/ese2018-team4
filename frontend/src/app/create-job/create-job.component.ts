@@ -4,7 +4,6 @@ import { Job } from '../models/job';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
 import { UserService } from '../services/user.service';
-import { getDefaultService } from 'selenium-webdriver/opera';
 
 
 @Component({
@@ -19,6 +18,7 @@ export class CreateJobComponent implements OnInit {
   job: Job = new Job(null, '', '', '', null, '', '', false, null);
   jobs: Job[] = [];
   jobFormGroup: FormGroup;
+  checked = false;
 
   constructor(private httpClient: HttpClient, private snackbar: MatSnackBar, public userService: UserService) {
   }
@@ -71,6 +71,10 @@ export class CreateJobComponent implements OnInit {
       this.destroy.emit(this.job);
       this.jobs.splice(this.jobs.indexOf(job), 1);
     });
+  }
+
+  approve(job: Job): void {
+    this.httpClient.put(`http://localhost:3000/job/${job.id}/approved`, job.approved.toString()).subscribe();
   }
 
 }
