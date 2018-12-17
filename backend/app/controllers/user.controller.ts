@@ -1,5 +1,8 @@
 import { Request, Response, Router } from "express";
 import { User } from '../models/user.model';
+import { authenticatedUser } from './authentication';
+import { sameUser } from './sameUser';
+
 
 
 const router: Router = Router();
@@ -29,7 +32,7 @@ router.post('/', async (req: Request, res: Response) => {
   res.send(instance.toSimplification());
 });
 
-router.put('/:username', async (req:Request, res: Response) => {
+router.put('/:username', async (req: Request, res: Response) => {
   const username = req.params.username;
   const instance = await User.findByPrimary(username);
   if (!instance) {
@@ -46,7 +49,7 @@ router.put('/:username', async (req:Request, res: Response) => {
   res.send();
 });
 
-router.put('/:username/enabled', async (req:Request, res: Response) => {
+router.put('/:username/enabled', async (req: Request, res: Response) => {
   const username = req.params.username;
   const instance = await User.findByPrimary(username);
   if (!instance) {
@@ -64,7 +67,7 @@ router.put('/:username/enabled', async (req:Request, res: Response) => {
   res.send();
 });
 
-router.delete('/:username', async (req: Request, res: Response) => {
+router.delete('/:username', authenticatedUser, async (req: Request, res: Response, next: Function) => {
   const username = req.params.username;
   const instance = await User.findByPrimary(username);
   if (instance == null) {
@@ -74,11 +77,30 @@ router.delete('/:username', async (req: Request, res: Response) => {
     });
     return;
   }
-  instance.fromSimplification(req.body);
-  await instance.destroy();
-  res.clearCookie('user');
-  res.statusCode = 204;
-  res.send();
-});
+  sameUser(req, res, next, username);
+},
+  async (req: Request, res: Response) => {
+    const username = req.params.username;
+    const instance = await User.findByPrimary(username);
+    if (instance == null) {
+      res.statusCode = 404;
+      res.json({
+        'message': 'not found'
+      });
+      return;
+    }
+
+    instance.fromSimplification(req.body);
+    try {
+      await User.findByPrimary(username);
+      await instance.destroy();
+      res.clearCookie('user');
+      req.logout();
+      res.statusCode = 204;
+      res.send();
+    } catch (err) {
+      console.log("**** Error: " + err);
+    }
+  });
 
 export const UserController: Router = router;

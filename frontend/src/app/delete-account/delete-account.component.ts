@@ -28,19 +28,10 @@ export class DeleteAccountComponent {
   }
 
   onYesClick() {
-    this.httpClient.delete('http://localhost:3000/user/' + this.user.username).subscribe(() => {
+    this.httpClient.delete('http://localhost:3000/user/' + this.user.username, { withCredentials: true }).subscribe(() => {
       this.destroy.emit(this.user);
       this.dialogDel.close();
       this.snackBar.open('Your account has been deleted');
-      this.httpClient.post('http://localhost:3000/logout', this.credentials, {
-        responseType: 'text',
-        withCredentials: true
-      }).subscribe((responseText: string) => {
-        console.log('logged out');
-
-        this.snackBar.open('Your account has been deleted');
-      });
-
     });
 
   }
