@@ -11,7 +11,7 @@ export class SearchBarComponent implements OnInit {
   input = '';
 
   constructor(private router: Router) {
-    this.input = window.location.pathname.substr(8).split('&')[0];
+    this.input = window.location.pathname.substr(8);
   }
 
   search() {
