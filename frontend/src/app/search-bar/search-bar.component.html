@@ -23,11 +23,12 @@
     style="width: 500px;"
     color="primary"
     [(ngModel)]="maxPercentage"
+    (change)="search()"
     thumbLabel
     [displayWith]="formatLabel"
     min="0"
     max="100"
     step="5">
   </mat-slider>
-  
+
 </div>
