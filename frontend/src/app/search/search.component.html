@@ -4,6 +4,7 @@
 <div class="w3-container w3-padding-20" id="availableJobs">
 
   <div>
+
     <mat-expansion-panel *ngFor="let job of jobs">
       <mat-expansion-panel-header >
         <mat-panel-title>
@@ -14,13 +15,12 @@
     </mat-expansion-panel>
 
     <div class="noResults" *ngIf="jobs.length === 0">
-      <p class="fat">No job results for "{{searchText}}"... :(</p>
+      <mat-icon>sentiment_very_dissatisfied</mat-icon>
+      <p class="fat">No job results for "{{searchText}}"...</p>
       <p>Suggestions:</p>
       <p>   -  Check if everything is spelled correctly</p>
-      <p>   -  Try out some another keywords</p>
+      <p>   -  Remove activated filters, if possible</p>
       <p>   -  Try more general keywords</p>
     </div>
-
-
   </div>
 </div>

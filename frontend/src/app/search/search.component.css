@@ -19,6 +19,13 @@ div.noResults {
   border: 3px solid blueviolet;
 }
 
+mat-icon {
+  margin: 0 24px 24px;
+  width: 24px;
+  height: 24px;
+  transform: scale(2);
+}
+
 p.fat {
   margin-bottom: 24px;
   font-weight: bold;
