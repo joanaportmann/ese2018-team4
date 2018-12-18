@@ -5,6 +5,7 @@ import { ErrorStateMatcher, MatDialog, MatDialogRef, MatSnackBar } from '@angula
 import { Credentials } from '../models/credentials';
 import { UserService } from '../services/user.service';
 import { Person } from '../models/user';
+import { LoginComponent } from '../login/login.component';
 
 
 @Component({
@@ -65,6 +66,7 @@ export class RegisterDialogComponent implements OnInit {
     }).subscribe((responseText: string) => {
       this.snackBar.open('You are now registered! Please log yourself in.');
       this.dialogReg.close();
+      this.dialog.open(LoginComponent);
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Username already taken');
     });
