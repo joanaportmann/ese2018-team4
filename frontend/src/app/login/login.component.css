@@ -1,3 +1,23 @@
 mat-menu{
   align: right;
 }
+
+div {
+  display: block;
+}
+
+div p {
+  display: inline-block;
+  margin-top: 16px;
+  margin-right: 8px;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a: visited, a:hover, a:active {
+  color: purple;
+}

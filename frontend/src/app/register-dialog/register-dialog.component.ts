@@ -5,6 +5,7 @@ import { ErrorStateMatcher, MatDialog, MatDialogRef, MatSnackBar } from '@angula
 import { Credentials } from '../models/credentials';
 import { UserService } from '../services/user.service';
 import { Person } from '../models/user';
+import {DialogComponent} from '../dialog/dialog.component';
 
 
 @Component({
@@ -48,6 +49,14 @@ export class RegisterDialogComponent implements OnInit {
     let pass = group.controls.password.value;
     let confirmPass = group.controls.confirmedPassword.value;
     return pass === confirmPass ? null : { notSame: true };
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('this dialog is closed');
+    });
   }
 
   /**
