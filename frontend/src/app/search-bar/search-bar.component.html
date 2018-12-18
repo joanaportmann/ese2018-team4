@@ -10,8 +10,24 @@
         size="50">
     </mat-form-field>
 
+
     <button color="primary" mat-flat-button id="searchButton" (click)="search()">
       <i class="fas fa-search"></i>
     </button>
+</div>
 
+<div>
+
+  <p>Maximum Percentage:</p>
+  <mat-slider
+    style="width: 500px;"
+    color="primary"
+    [(ngModel)]="maxPercentage"
+    thumbLabel
+    [displayWith]="formatLabel"
+    min="0"
+    max="100"
+    step="5">
+  </mat-slider>
+  
 </div>

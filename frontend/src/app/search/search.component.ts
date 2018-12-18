@@ -9,17 +9,16 @@ import {HttpClient} from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
   jobs: Job[] = [];
-  filters: String[] = [];
+
   searchText = '';
+  percentage = 100;
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
   ngOnInit() {
-    this.filters = window.location.pathname.substr(8).split('&');
-
-    this.searchText = this.filters[0];
+    this.interpret(window.location.pathname.substr(8));
 
     this.httpClient.get('http://localhost:3000/job/').subscribe((instances: any) => {
       this.jobs = instances
@@ -29,8 +28,23 @@ export class SearchComponent implements OnInit {
               || instance.description.toLowerCase().includes(this.searchText.toLowerCase())
               || instance.time.toLowerCase().includes(this.searchText.toLowerCase())
         )
+        .filter((instance) => instance.percentage <= this.percentage)
         .map((instance) =>
           new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved, instance.owner));
     });
+  }
+
+  private interpret(input: String) {
+    var filters = input.split('&');
+
+    for (let filter of filters) {
+      var expression = filter.split(':');
+      if (expression[0] === 'search') {
+        this.searchText = expression[1];
+      }
+      if (expression[0] === 'percentage') {
+        this.percentage = +expression[1];
+      }
+    }
   }
 }

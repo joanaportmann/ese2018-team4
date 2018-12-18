@@ -1,16 +1,10 @@
-div.box-outside {
+div {
   display: flex;
   align-items: stretch;
   padding: 1em;
   max-width: 1000px;
   justify-content: center;
   margin: auto;
-}
-
-div.search-bar {
-  width: 75%;
-  margin: auto;
-  padding: 35px;
 }
 
 button {
