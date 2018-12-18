@@ -20,7 +20,7 @@ export class AppComponent {
 
   @ViewChild('jobForm')
   public jobForm: NgForm;
-  job: Job = new Job(null, '', '', '', null, '', '', false);
+  job: Job = new Job(null, '', '', '', null, '', '', false, '');
   jobs: Job[] = [];
   onAboutUs = false;
   openJobCreationField: boolean;
@@ -76,7 +76,7 @@ aboutUs() {
       .subscribe((instance: any) => {
         this.job.id = instance.id;
         this.jobs.push(this.job);
-        this.job = new Job(null, '', '', '', null, '', '', false);
+        this.job = new Job(null, '', '', '', null, '', '', false, '');
       });
 
   }

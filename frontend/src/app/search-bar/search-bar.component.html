@@ -1,9 +1,17 @@
 <!-- implement search button -->
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+  crossorigin="anonymous">
 
-<!-- <div class="box-outside">
-  <div class="search-bar">
-    <input #searchBox id="searchBox" size="70">
-    <a id="searchButton" routerLink="/demand/{{searchBox.value}}"><i class="fas fa-search"></i></a>
-  </div>
-</div> -->
+<div class="box-outside">
+
+    <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search for Jobs</mat-label>
+      <input matInput id="searchBox" [(ngModel)]="input" (keyup.enter)="search()"
+        size="50">
+    </mat-form-field>
+
+    <button color="primary" mat-flat-button id="searchButton" (click)="search()">
+      <i class="fas fa-search"></i>
+    </button>
+
+</div>
