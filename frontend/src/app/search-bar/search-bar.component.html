@@ -17,8 +17,14 @@
 </div>
 
 <div>
+  <mat-form-field appearance="outline">
+    <mat-label>Your Skills</mat-label>
+    <input matInput [(ngModel)]="necessarySkills" (keyup.enter)="search()"
+         size="20">
+  </mat-form-field>
 
-  <p>Maximum Percentage:</p>
+  <p style="margin-left: 10%;">Maximum Percentage:</p>
+  <p>0%</p>
   <mat-slider
     style="width: 500px;"
     color="primary"
@@ -30,5 +36,6 @@
     max="100"
     step="5">
   </mat-slider>
+  <p>100%</p>
 
 </div>

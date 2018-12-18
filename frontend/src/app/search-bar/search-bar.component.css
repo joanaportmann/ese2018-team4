@@ -15,6 +15,11 @@ button {
   flex-grow: 1;
 }
 
+mat-slider {
+  width: 70%;
+  max-width: 500px;
+}
+
 /* remove bottom spacing -  */
 ::ng-deep .search-field .mat-form-field-wrapper {
   padding-bottom: 0;

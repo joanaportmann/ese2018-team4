@@ -10,6 +10,7 @@ export class SearchBarComponent implements OnInit {
 
   input = '';
   maxPercentage = 100;
+  necessarySkills = '';
 
   constructor(private router: Router) {
     this.interpret(window.location.pathname.substr(8));
@@ -23,15 +24,20 @@ export class SearchBarComponent implements OnInit {
       if (expression[0] === 'search') {
         this.input = expression[1];
       }
-      if (expression[0] === 'percentage')
+      if (expression[0] === 'percentage') {
         this.maxPercentage = +expression[1];
+      }
+      if (expression[0] === 'skills') {
+        this.necessarySkills = expression[1];
+      }
     }
   }
 
   search() {
     this.router.navigateByUrl('/demand/'
       + this.searchTerm()
-      + this.percentage());
+      + this.percentage()
+      + this.skills());
   }
 
   private searchTerm(): String {
@@ -43,6 +49,13 @@ export class SearchBarComponent implements OnInit {
       return '';
     }
     return '&percentage:' + this.maxPercentage;
+  }
+
+  private skills(): String {
+    if (this.necessarySkills === '') {
+      return '';
+    }
+    return '&skills:' + this.necessarySkills;
   }
 
   formatLabel(value: number | null) {

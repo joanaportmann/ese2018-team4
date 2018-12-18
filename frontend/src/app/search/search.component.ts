@@ -12,6 +12,7 @@ export class SearchComponent implements OnInit {
 
   searchText = '';
   percentage = 100;
+  skills = '';
 
   constructor(
     private httpClient: HttpClient
@@ -23,12 +24,9 @@ export class SearchComponent implements OnInit {
     this.httpClient.get('http://localhost:3000/job/').subscribe((instances: any) => {
       this.jobs = instances
         .filter((instance) => instance.approved)
-        .filter((instance) =>
-              instance.name.toLowerCase().includes(this.searchText.toLowerCase())
-              || instance.description.toLowerCase().includes(this.searchText.toLowerCase())
-              || instance.time.toLowerCase().includes(this.searchText.toLowerCase())
-        )
-        .filter((instance) => instance.percentage <= this.percentage)
+        .filter((instance) => this.textFilter(instance))
+        .filter((instance) => this.percentageFilter(instance))
+        .filter((instance) => this.skillsFilter(instance))
         .map((instance) =>
           new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved, instance.owner));
     });
@@ -45,6 +43,36 @@ export class SearchComponent implements OnInit {
       if (expression[0] === 'percentage') {
         this.percentage = +expression[1];
       }
+      if (expression[0] === 'skills') {
+        this.skills = expression[1];
+      }
     }
+  }
+
+  private textFilter(instance): boolean {
+    return this.searchText == '' || (
+      (
+        instance.name != null &&
+        instance.name.toLowerCase().includes(this.searchText.toLowerCase())
+      ) || (
+        instance.description != null &&
+        instance.description.toLowerCase().includes(this.searchText.toLowerCase())
+      ) || (
+        instance.time != null &&
+        instance.time.toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    )
+  }
+
+  private percentageFilter(instance): boolean {
+    return instance.percentage != null
+      && instance.percentage <= this.percentage
+  }
+
+  private skillsFilter(instance): boolean {
+    return this.skills == '' || (
+      instance.necessarySkills != null
+      && instance.necessarySkills.toLowerCase().includes(this.skills.toLowerCase())
+    )
   }
 }
