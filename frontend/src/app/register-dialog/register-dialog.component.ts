@@ -25,8 +25,12 @@ export class RegisterDialogComponent implements OnInit {
   ]);
   matcher = new MyErrorStateMatcher();
 
-  constructor(private httpClient: HttpClient, public snackBar: MatSnackBar, private _formBuilder: FormBuilder,
-    public dialog: MatDialog, private dialogReg: MatDialogRef<RegisterDialogComponent>) { }
+  constructor(
+    private httpClient: HttpClient,
+    public snackBar: MatSnackBar,
+    private _formBuilder: FormBuilder,
+    public dialog: MatDialog,
+    private dialogRef: MatDialogRef<RegisterDialogComponent>) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -52,6 +56,14 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   /**
+   * close this window and open the login pop-up window
+   */
+  openDialogLogin() {
+    this.dialogRef.close();
+    this.dialog.open(LoginComponent);
+  }
+
+  /**
    * more or less the same function as the login() function
    */
   register() {
@@ -65,7 +77,7 @@ export class RegisterDialogComponent implements OnInit {
       withCredentials: true
     }).subscribe((responseText: string) => {
       this.snackBar.open('You are now registered! Please log yourself in.');
-      this.dialogReg.close();
+      this.dialogRef.close();
       this.dialog.open(LoginComponent);
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Username already taken');

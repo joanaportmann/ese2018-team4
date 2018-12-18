@@ -29,6 +29,7 @@ Please fill in this form to create an Account
           <div>
             <button style="float: right;" mat-button matStepperNext *ngIf="!firstFormGroup.errors">Next</button>
           </div>
+          <button mat-button (click)="openDialogLogin()">Already registered? Login</button>
         </form>
       </mat-step>
       <mat-step [stepControl]="secondFormGroup">
