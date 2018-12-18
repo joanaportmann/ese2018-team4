@@ -24,7 +24,12 @@ export class SearchComponent implements OnInit {
     this.httpClient.get('http://localhost:3000/job/').subscribe((instances: any) => {
       this.jobs = instances
         .filter((instance) => instance.approved)
-        .filter((instance) => instance.name.toLowerCase().includes(this.searchText.toLowerCase()))
+        .filter(
+              (instance) => instance.name.toLowerCase().includes(this.searchText.toLowerCase())
+              || instance.description.toLowerCase().includes(this.searchText.toLowerCase())
+              || instance.necessarySkills.toLowerCase().includes(this.searchText.toLowerCase())
+              || instance.time.toLowerCase().includes(this.searchText.toLowerCase())
+        )
         .map((instance) =>
           new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved, instance.owner));
     });
