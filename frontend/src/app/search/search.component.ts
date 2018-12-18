@@ -9,6 +9,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
   jobs: Job[] = [];
+  filters: String[] = [];
   searchText = '';
 
   constructor(
@@ -16,7 +17,10 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.searchText = window.location.pathname.substr(8);
+    this.filters = window.location.pathname.substr(8).split('&');
+
+    this.searchText = this.filters[0];
+
     this.httpClient.get('http://localhost:3000/job/').subscribe((instances: any) => {
       this.jobs = instances
         .filter((instance) => instance.approved)
