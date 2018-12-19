@@ -27,7 +27,9 @@ as required -->
             <app-job [job]="job" (destroy)="onJobDestroy($event)" [showDestroyButton]="true" [editable]="true"></app-job>
           </mat-expansion-panel>
         <button mat-button (click)="onDestroy(job)">destroy</button>
-         
+        <mat-checkbox [checked]="job.approved" (change)="approve(job)" disabled="true"
+        matInput>
+        Approved</mat-checkbox>
         </div>
 
     </mat-card>
