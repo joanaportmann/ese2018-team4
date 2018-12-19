@@ -1,21 +1,9 @@
 import { Router, Request, Response } from 'express';
 import { Job } from '../models/job.model';
 import { authenticatedUser } from './authentication';
+import { sameUser } from './sameUser';
 
 const router: Router = Router();
-
-function sameUser(req: Request, res: Response, next: Function, username: string) {
-   if (req.user.username !== username) {
-
-    res.statusCode = 403;
-    res.json({
-      'message': 'not correct user'
-    });
-    return;
-  }
-  next();
-}
-
 
 router.get('/', async (req: Request, res: Response) => {
   const instances = await Job.findAll();
@@ -105,8 +93,7 @@ router.delete('/:id', authenticatedUser,
       });
       return;
     }
-    console.log(instance.owner);
-    sameUser(req, res, next, instance.owner);
+        sameUser(req, res, next, instance.owner);
   },
   async (req: Request, res: Response) => {
 

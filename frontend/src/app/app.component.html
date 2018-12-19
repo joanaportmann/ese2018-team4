@@ -5,8 +5,8 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 <!-- Navbar (fixed)-->
 <div class="navbar">
   <div class="navbar-content w3-bar w3-white w3-wide w3-padding w3-card">
-    <img src="../assets/img/logo.PNG" width="45" height="25">
-    <a href="#home" routerLink="/home" class="w3-button"><b>MIB</b> Studentenjobvermittlung</a>
+    <a href="#home" routerLink="/home" class="w3-button"><img src="../assets/img/logo.PNG"
+        width="45" height="25"> <b>MIB</b> Studentenjobvermittlung  </a>
     <!-- Float links to the right. Hide them on small screens -->
 
     <div class="menu w3-right w3-hide-small">
@@ -34,12 +34,11 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
         [matMenuTriggerFor]="appMenuAdmin">Menu</button>
 
       <a mat-button routerLink="/careerTipps">Career Tipps</a>
-      <a mat-button routerLink="/salaryCalculator" >Salary Calculator</a>
-      
-      <button *ngIf="!userService.getUser()" mat-button
-      [matMenuTriggerFor]="appMenuSignIn">For Employers only</button>
+      <a mat-button routerLink="/salaryCalculator">Salary Calculator</a>
+
+      <button *ngIf="!userService.getUser()" mat-button [matMenuTriggerFor]="appMenuSignIn">For Employers only</button>
       <app-logout *ngIf="userService.getUser()"></app-logout>
-     
+
 
     </div>
   </div>
@@ -57,8 +56,10 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
       apply</span>
     <form class="logo">
       <div>
-        <p><button *ngIf="!userService.getUser()" (click)="openDialog()" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Log
-            In or Sign Up here</button></p>
+        <p>
+          <button *ngIf="!userService.getUser()" (click)="openDialog()" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">
+            For Employers: Log In or Register now!</button>
+        </p>
       </div>
       <div>
 
