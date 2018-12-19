@@ -33,7 +33,6 @@ export class LoginComponent {
    * close this window and open the register pop-up window
    */
   openDialogRegister() {
-    this.dialogRef.close();
     this.dialog.open(RegisterDialogComponent);
   }
 
