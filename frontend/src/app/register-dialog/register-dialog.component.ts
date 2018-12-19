@@ -56,11 +56,11 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   /**
-   * close this window and open the login pop-up window
+   * close this window
+   * The login pop-up window should already be open in the background
    */
   openDialogLogin() {
     this.dialogRef.close();
-    this.dialog.open(LoginComponent);
   }
 
   /**
@@ -78,7 +78,6 @@ export class RegisterDialogComponent implements OnInit {
     }).subscribe((responseText: string) => {
       this.snackBar.open('You are now registered! Please log yourself in.');
       this.dialogRef.close();
-      this.dialog.open(LoginComponent);
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Username already taken');
     });
