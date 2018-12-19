@@ -39,19 +39,16 @@ export class AppComponent {
    * open the log-In popUp-window
    */
   openDialog() {
-    const dialogRef = this.dialog.open(DialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('this dialog is closed');
-    });
+    this.dialog.open(DialogComponent);
   }
 
+  /**
+   * open the register popUp-window and the log-In popUp-window in the background
+   * (to log in directly after registration)
+   */
   openRegister() {
-      const dialogReg = this.dialog.open(RegisterDialogComponent);
-
-      dialogReg.afterClosed().subscribe(result => {
-        console.log('this dialog is closed');
-      });
+    this.openDialog();
+    this.dialog.open(RegisterDialogComponent);
   }
 
 
