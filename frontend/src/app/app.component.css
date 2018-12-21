@@ -30,14 +30,18 @@
   justify-content: flex-end;
 }
 
-header{
+header {
   --header-gradient: linear-gradient(rgba(0,0,0,0.5), rgba(32, 98, 116, 0.7));
 
-  padding: 200px;
-  margin: 0 0 0 0;
+  padding: 50px;
+  margin: 0;
   background-image: var(--header-gradient), url("../assets/img/fabian-grohs-448419-unsplash.jpg");
   background-size: cover;
   background-position: center;
+}
+
+header.home {
+  padding: 200px;
 }
 
 header.myprofile {
