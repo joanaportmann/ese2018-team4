@@ -65,8 +65,10 @@ export class SearchComponent implements OnInit {
   }
 
   private percentageFilter(instance): boolean {
-    return instance.percentage != null
+    return this.percentage == 100 || (
+      instance.percentage != null
       && instance.percentage <= this.percentage
+    )
   }
 
   private skillsFilter(instance): boolean {
