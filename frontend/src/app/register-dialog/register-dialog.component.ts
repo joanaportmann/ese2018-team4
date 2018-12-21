@@ -5,6 +5,7 @@ import { ErrorStateMatcher, MatDialog, MatDialogRef, MatSnackBar } from '@angula
 import { Credentials } from '../models/credentials';
 import { UserService } from '../services/user.service';
 import { Person } from '../models/user';
+import { LoginComponent } from '../login/login.component';
 
 
 @Component({
@@ -24,8 +25,12 @@ export class RegisterDialogComponent implements OnInit {
   ]);
   matcher = new MyErrorStateMatcher();
 
-  constructor(private httpClient: HttpClient, public snackBar: MatSnackBar, private _formBuilder: FormBuilder,
-    public dialog: MatDialog, private dialogReg: MatDialogRef<RegisterDialogComponent>) { }
+  constructor(
+    private httpClient: HttpClient,
+    public snackBar: MatSnackBar,
+    private _formBuilder: FormBuilder,
+    public dialog: MatDialog,
+    private dialogRef: MatDialogRef<RegisterDialogComponent>) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -51,6 +56,14 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   /**
+   * close this window
+   * The login pop-up window should already be open in the background
+   */
+  openDialogLogin() {
+    this.dialogRef.close();
+  }
+
+  /**
    * more or less the same function as the login() function
    */
   register() {
@@ -64,7 +77,7 @@ export class RegisterDialogComponent implements OnInit {
       withCredentials: true
     }).subscribe((responseText: string) => {
       this.snackBar.open('You are now registered! Please log yourself in.');
-      this.dialogReg.close();
+      this.dialogRef.close();
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Username already taken');
     });

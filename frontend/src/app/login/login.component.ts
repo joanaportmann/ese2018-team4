@@ -14,7 +14,8 @@ export class LoginComponent {
   credentials = new Credentials('', '');
 
   constructor(private httpClient: HttpClient, public snackBar: MatSnackBar,
-              public dialog: MatDialog, private dialogRef: MatDialogRef<LoginComponent>) {}
+              public dialog: MatDialog, private dialogRef: MatDialogRef<LoginComponent>) {
+  }
 
   login() {
     this.httpClient.post('http://localhost:3000/login', this.credentials, {
@@ -27,17 +28,14 @@ export class LoginComponent {
     }, (error: HttpErrorResponse) => {
       this.snackBar.open('Login failed');
     });
+
   }
 
   /**
-   * open the register pop-up window
+   * close this window and open the register pop-up window
    */
   openDialogRegister() {
-    const openDialogReg = this.dialog.open(RegisterDialogComponent);
-
-    openDialogReg.afterClosed().subscribe( result => {
-      console.log('Dialog to Register is closed');
-    });
+    this.dialog.open(RegisterDialogComponent);
   }
 
 }
