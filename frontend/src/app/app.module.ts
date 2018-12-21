@@ -24,7 +24,7 @@ import {
   MatSelectModule,
   MatNativeDateModule,
   MatFormFieldModule,
-  MatGridListModule
+  MatGridListModule, MAT_SNACK_BAR_DEFAULT_OPTIONS
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -108,7 +108,7 @@ import { CareerTippsComponent } from './career-tipps/career-tipps.component';
     ProfileEditorComponent,
     DeleteAccountComponent
   ],
-  providers: [AppComponent, ProfileEditorComponent],
+  providers: [AppComponent, ProfileEditorComponent, {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
