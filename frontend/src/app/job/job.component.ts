@@ -56,7 +56,7 @@ export class JobComponent {
   }
 
   onSave() {
-    this.httpClient.put('http://localhost:3000/job/' + this.job.id, this.job).subscribe();
+    this.httpClient.put('http://localhost:3000/job/' + this.job.id, this.job, { withCredentials: true }).subscribe();
     this.snackbar.open('Changes saved!');
     if (this.checked = true) {
       this.httpClient.put('http://localhost:3000/job/id/approved/' + true, this.job).subscribe();
