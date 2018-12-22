@@ -54,7 +54,7 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
     <br>
     <span *ngIf="currentPageName() === 'home'" class="w3-large w3-wide">where companies can offer Jobs and Students can
       apply</span>
-    <form class="logo">
+    <form *ngIf="currentPageName() === 'home'" class="logo">
       <div>
         <p>
           <button *ngIf="!userService.getUser()" (click)="openDialog()" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">
