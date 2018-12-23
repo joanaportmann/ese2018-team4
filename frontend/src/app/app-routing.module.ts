@@ -13,6 +13,7 @@ import { EditJobsComponent } from './edit-jobs/edit-jobs.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator.component';
 import { CareerTippsComponent } from './career-tipps/career-tipps.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'approvejob', component: EditJobsComponent},
   { path: 'approveuser', component: EditUserComponent},
   { path: 'salaryCalculator', component: SalaryCalculatorComponent},
-  { path: 'careerTipps', component: CareerTippsComponent}
+  { path: 'careerTipps', component: CareerTippsComponent},
+  { path: 'changePassword', component: ChangePasswordComponent}
 ];
 
 @NgModule({

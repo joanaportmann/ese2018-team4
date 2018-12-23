@@ -9,6 +9,8 @@ import { UserService } from './services/user.service';
 import {User} from './models/user';
 import { Router, PRIMARY_OUTLET } from '@angular/router';
 import {RegisterDialogComponent} from './register-dialog/register-dialog.component';
+import { ChangePasswordComponent } from "./change-password/change-password.component";
+
 
 @Component({
   selector: 'app-root',
@@ -122,6 +124,15 @@ aboutUs() {
     if (!rootPart.hasChildren()) { return ''; }
     const firstSegment = rootPart.children[PRIMARY_OUTLET].segments[0];
     return firstSegment ? firstSegment.path : '';
+  }
+
+  changePassword() {
+    const dialogRef = this.dialog.open(ChangePasswordComponent);
+    dialogRef.componentInstance.user = this.userService.getUser();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog to Delete Account is closed');
+    });
   }
 
 }

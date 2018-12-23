@@ -5,8 +5,8 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
 <!-- Navbar (fixed)-->
 <div class="navbar">
   <div class="navbar-content w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="#home" routerLink="/home" class="w3-button"><img src="../assets/img/logo.PNG"
-        width="45" height="25"> <b>MIB</b> Studentenjobvermittlung  </a>
+    <a href="#home" routerLink="/home" class="w3-button"><img src="../assets/img/logo.PNG" width="45" height="25"> <b>MIB</b>
+      Studentenjobvermittlung </a>
     <!-- Float links to the right. Hide them on small screens -->
 
     <div class="menu w3-right w3-hide-small">
@@ -37,6 +37,8 @@ of a navigation bar, a header section and the job-creation-expansion panel -->
       <a mat-button routerLink="/salaryCalculator">Salary Calculator</a>
 
       <button *ngIf="!userService.getUser()" mat-button [matMenuTriggerFor]="appMenuSignIn">For Employers only</button>
+      <a mat-button *ngIf="userService.getUser() && (userService.getUser().userType === UserType.admin)" (click)="changePassword()">Change
+        Password</a>
       <app-logout *ngIf="userService.getUser()"></app-logout>
 
 
