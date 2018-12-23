@@ -18,7 +18,7 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit() {
     this.httpClient.get('http://localhost:3000/user').subscribe((instances: any) => {
-      this.users = instances;
+      this.users = instances.filter((user: User) => user.userType != 'admin');
     });
   }
 
