@@ -67,6 +67,24 @@ router.put('/:username/enabled', async (req: Request, res: Response) => {
   res.send();
 });
 
+router.put('/:username/password', async(req: Request, res: Response) => {
+  const passwordHash = User.hashPassword(req.body);
+  const username = req.params.username;
+  const instance = await User.findByPrimary(username);
+  if (!instance) {
+    res.statusCode = 404;
+    res.json({
+      'message': 'not found'
+    });
+    return;
+  }
+  instance.passwordHash = passwordHash;
+  await instance.save();
+  res.cookie('user', instance.toSimplification());
+  res.statusCode = 204;
+  res.send();
+});
+
 router.delete('/:username', authenticatedUser, async (req: Request, res: Response, next: Function) => {
   const username = req.params.username;
   const instance = await User.findByPrimary(username);

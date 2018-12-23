@@ -5,25 +5,24 @@
     <form class="left">
       <mat-card-title>My Profile</mat-card-title>
       <br>
-        <mat-card-subtitle>Update your Profile Data</mat-card-subtitle>
-        
-        <br>
+      <mat-card-subtitle>Update your Profile Data</mat-card-subtitle>
+
+      <br>
       <mat-form-field>
         <input matInput placeholder="Your Company" [(ngModel)]="user.companyName" name="companyName"
-               [errorStateMatcher]="matcher">
+          [errorStateMatcher]="matcher">
         <mat-error *ngIf="emailFormControl.hasError('company')">
           Please enter the name of your Company
         </mat-error>
       </mat-form-field>
       <br>
       <mat-form-field>
-          <input matInput placeholder="Homepage" [(ngModel)]="user.homepage" name="homepage">
-          
-        </mat-form-field>
+        <input matInput placeholder="Homepage" [(ngModel)]="user.homepage" name="homepage">
+
+      </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Business" [(ngModel)]="user.business" name="business"
-               [errorStateMatcher]="matcher">
+        <input matInput placeholder="Business" [(ngModel)]="user.business" name="business" [errorStateMatcher]="matcher">
         <mat-error *ngIf="emailFormControl.hasError('business')">
           Please enter the business of your Company
         </mat-error>
@@ -36,11 +35,10 @@
     </form>
     <form class="right">
       <mat-form-field>
-      <input matInput placeholder="Address" [(ngModel)]="user.address" name="address"
-             [errorStateMatcher]="matcher">
-      <mat-error *ngIf="emailFormControl.hasError('address')">
-        Please enter the address of your Company
-      </mat-error>
+        <input matInput placeholder="Address" [(ngModel)]="user.address" name="address" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="emailFormControl.hasError('address')">
+          Please enter the address of your Company
+        </mat-error>
       </mat-form-field>
       <br>
       <br>
@@ -50,8 +48,7 @@
       <br>
       <br>
       <mat-form-field>
-        <input matInput placeholder="Email" [(ngModel)]="user.email" name="email"
-               [errorStateMatcher]="matcher">
+        <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" [errorStateMatcher]="matcher">
         <mat-error *ngIf="emailFormControl.hasError('email')">
           Please enter a valid email address
         </mat-error>
@@ -64,16 +61,10 @@
 
       </mat-form-field>
     </form>
-      <form class="delete">
-      <button mat-button (click)="submitChanges()" >Submit changes</button>
-
-
-
-
-    <button mat-button (click)="deleteAccount()">Delete Account</button>
+    <form class="delete">
+      <button mat-button (click)="submitChanges()">Submit changes</button>
+      <button mat-button (click)="changePassword()" >Change password</button>
+      <button mat-button (click)="deleteAccount()">Delete Account</button>
     </form>
   </mat-card>
 </form>
-
-
-
