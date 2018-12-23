@@ -12,6 +12,7 @@ export class CareerTippsComponent implements OnInit {
   coverLetter: boolean;
   jobInterview: boolean;
   preparation: boolean;
+  content: boolean;
 
   constructor() { }
 
@@ -23,6 +24,7 @@ export class CareerTippsComponent implements OnInit {
     this.coverLetter = false;
     this.jobInterview = false;
     this.preparation = false;
+    this.scrollDown();
   }
 
   openCoverLetter(){
@@ -30,6 +32,7 @@ export class CareerTippsComponent implements OnInit {
     this.cv = false;
     this. jobInterview = false;
     this. preparation = false;
+    this.scrollDown();
   }
 
   openJobInterview(){
@@ -37,6 +40,7 @@ export class CareerTippsComponent implements OnInit {
     this.cv = false;
     this.coverLetter = false;
     this.preparation = false;
+    this.scrollDown();
   }
 
   openPrep(){
@@ -44,5 +48,22 @@ export class CareerTippsComponent implements OnInit {
     this.cv = false;
     this.coverLetter = false;
     this.jobInterview = false;
+    this.scrollDown();
+  }
+
+  scrollDown() {
+    if (this.content) {
+      CareerTippsComponent.scrollDownImmediately();
+    }
+    else {
+      setTimeout(function() {
+        CareerTippsComponent.scrollDownImmediately();
+        }, 1);  // wait 1 millisecond for content to render
+    }
+    this.content = true;
+  }
+
+  static scrollDownImmediately() {
+    document.getElementById('target').scrollIntoView();
   }
 }
