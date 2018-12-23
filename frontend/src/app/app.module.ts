@@ -24,7 +24,9 @@ import {
   MatSelectModule,
   MatNativeDateModule,
   MatFormFieldModule,
-  MatGridListModule, MAT_SNACK_BAR_DEFAULT_OPTIONS
+  MatGridListModule,
+  MatSliderModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
 import { LoginComponent } from './login/login.component';
@@ -91,6 +93,7 @@ import { CareerTippsComponent } from './career-tipps/career-tipps.component';
     MatExpansionModule,
     MatFormFieldModule,
     MatGridListModule,
+    MatSliderModule,
     MatSelectModule,
     MatSnackBarModule,
     MatStepperModule,

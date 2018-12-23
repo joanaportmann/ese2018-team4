@@ -9,20 +9,84 @@ import {HttpClient} from '@angular/common/http';
 })
 export class SearchComponent implements OnInit {
   jobs: Job[] = [];
+
   searchText = '';
+  percentage = 100;
+  skills = '';
+  jobDescription = '';
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
   ngOnInit() {
-    this.searchText = window.location.pathname.substr(8);
+    this.interpret(window.location.pathname.substr(8));
+
     this.httpClient.get('http://localhost:3000/job/').subscribe((instances: any) => {
       this.jobs = instances
         .filter((instance) => instance.approved)
-        .filter((instance) => instance.name.toLowerCase().includes(this.searchText.toLowerCase()))
+        .filter((instance) => this.textFilter(instance))
+        .filter((instance) => this.percentageFilter(instance))
+        .filter((instance) => this.skillsFilter(instance))
+        .filter((instance) => this.descriptionFilter(instance))
         .map((instance) =>
           new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved, instance.owner));
     });
+  }
+
+  private interpret(input: String) {
+    var filters = input.split('&');
+
+    for (let filter of filters) {
+      var expression = filter.split(':');
+      if (expression[0] === 'search') {
+        this.searchText = expression[1];
+      }
+      if (expression[0] === 'percentage') {
+        this.percentage = +expression[1];
+      }
+      if (expression[0] === 'skills') {
+        this.skills = expression[1];
+      }
+      if (expression[0] === 'description') {
+        this.jobDescription = expression[1];
+      }
+    }
+  }
+
+  private textFilter(instance): boolean {
+    return this.searchText == '' || (
+      (
+        instance.name != null &&
+        instance.name.toLowerCase().includes(this.searchText.toLowerCase())
+      ) || (
+        instance.description != null &&
+        instance.description.toLowerCase().includes(this.searchText.toLowerCase())
+      ) || (
+        instance.time != null &&
+        instance.time.toLowerCase().includes(this.searchText.toLowerCase())
+      )
+    )
+  }
+
+  private percentageFilter(instance): boolean {
+    return this.percentage == 100 || (
+      instance.percentage != null
+      && instance.percentage <= this.percentage
+    )
+  }
+
+  private skillsFilter(instance): boolean {
+    return this.skills == '' || (
+      instance.necessarySkills != null
+      && instance.necessarySkills.toLowerCase().includes(this.skills.toLowerCase())
+    )
+  }
+
+  private descriptionFilter(instance): boolean {
+    return this.jobDescription == '' || (
+      instance.description != null
+      && instance.description.toLowerCase().includes(this.jobDescription.toLowerCase())
+    )
   }
 }
