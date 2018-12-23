@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   searchText = '';
   percentage = 100;
   skills = '';
+  jobDescription = '';
 
   constructor(
     private httpClient: HttpClient
@@ -27,6 +28,7 @@ export class SearchComponent implements OnInit {
         .filter((instance) => this.textFilter(instance))
         .filter((instance) => this.percentageFilter(instance))
         .filter((instance) => this.skillsFilter(instance))
+        .filter((instance) => this.descriptionFilter(instance))
         .map((instance) =>
           new Job(instance.id, instance.name, instance.description, instance.necessarySkills, instance.percentage, instance.time, instance.info, instance.approved, instance.owner));
     });
@@ -45,6 +47,9 @@ export class SearchComponent implements OnInit {
       }
       if (expression[0] === 'skills') {
         this.skills = expression[1];
+      }
+      if (expression[0] === 'description') {
+        this.jobDescription = expression[1];
       }
     }
   }
@@ -75,6 +80,13 @@ export class SearchComponent implements OnInit {
     return this.skills == '' || (
       instance.necessarySkills != null
       && instance.necessarySkills.toLowerCase().includes(this.skills.toLowerCase())
+    )
+  }
+
+  private descriptionFilter(instance): boolean {
+    return this.jobDescription == '' || (
+      instance.description != null
+      && instance.description.toLowerCase().includes(this.jobDescription.toLowerCase())
     )
   }
 }

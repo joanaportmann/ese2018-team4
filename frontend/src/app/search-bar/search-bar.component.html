@@ -1,42 +1,34 @@
-<!-- implement search button -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-  crossorigin="anonymous">
-<mat-card style="margin: 28px 4%">
-  <div class="box-outside">
-
+<mat-card class="search-area">
+  <div class="search">
     <mat-form-field appearance="outline" class="search-field">
-      <mat-label>Search for Jobs</mat-label>
-      <input matInput id="searchBox" [(ngModel)]="input" (keyup.enter)="search()"
-             size="50">
+      <mat-label>Search by job name</mat-label>
+      <input matInput id="searchBox" [(ngModel)]="input" (keyup.enter)="search()" size="50">
     </mat-form-field>
-
 
     <button color="primary" mat-flat-button id="searchButton" (click)="search()">
       <i class="fas fa-search"></i>
     </button>
   </div>
 
-  <div>
+  <div class="filter">
+
     <mat-form-field appearance="outline">
-      <mat-label>Your Skills</mat-label>
-      <input matInput [(ngModel)]="necessarySkills" (keyup.enter)="search()"
-             size="20">
+      <mat-label>Search by required skills</mat-label>
+      <input matInput [(ngModel)]="necessarySkills" (keyup.enter)="search()" size="20">
     </mat-form-field>
 
-    <p style="margin-left: 10%;">Maximum Percentage:</p>
-    <p>0%</p>
-    <mat-slider
-      style="width: 500px;"
-      color="primary"
-      [(ngModel)]="maxPercentage"
-      (change)="search()"
-      thumbLabel
-      [displayWith]="formatLabel"
-      min="0"
-      max="100"
-      step="5">
-    </mat-slider>
-    <p>100%</p>
+    <mat-form-field appearance="outline">
+      <mat-label>Search by job description</mat-label>
+      <input matInput [(ngModel)]="description" (keyup.enter)="search()" size="20">
+    </mat-form-field>
+
+    <div class="workload">
+      Maximum percentage: 0%
+      <mat-slider thumbLabel [displayWith]="formatLabel" color="primary" [(ngModel)]="maxPercentage"
+        (change)="search()" min="0" max="100" step="5">
+      </mat-slider>
+      100%
+    </div>
 
   </div>
 </mat-card>

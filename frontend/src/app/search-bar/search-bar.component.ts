@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -6,11 +6,12 @@ import {Router} from '@angular/router';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent {
 
   input = '';
   maxPercentage = 100;
   necessarySkills = '';
+  description = '';
 
   constructor(private router: Router) {
     this.interpret(window.location.pathname.substr(8));
@@ -30,6 +31,9 @@ export class SearchBarComponent implements OnInit {
       if (expression[0] === 'skills') {
         this.necessarySkills = expression[1];
       }
+      if (expression[0] === 'jobDescription') {
+        this.description = expression[1];
+      }
     }
   }
 
@@ -37,7 +41,8 @@ export class SearchBarComponent implements OnInit {
     this.router.navigateByUrl('/demand/'
       + this.searchTerm()
       + this.percentage()
-      + this.skills());
+      + this.skills()
+      + this.jobDescription());
   }
 
   private searchTerm(): String {
@@ -58,10 +63,15 @@ export class SearchBarComponent implements OnInit {
     return '&skills:' + this.necessarySkills;
   }
 
+  private jobDescription(): String {
+    if (this.description === '') {
+      return '';
+    }
+    return '&jobDescription:' + this.description;
+  }
+
   formatLabel(value: number | null) {
     return value + '%';
   }
 
-  ngOnInit() {
-  }
 }

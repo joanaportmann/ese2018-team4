@@ -25,8 +25,7 @@ import {
   MatNativeDateModule,
   MatFormFieldModule,
   MatGridListModule,
-  MatSliderModule
-  MatGridListModule,
+  MatSliderModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS
 } from '@angular/material';
 import { JobComponent } from './job/job.component';
