@@ -1,9 +1,22 @@
+.search-area {
+  padding: 2em;
+}
+
 .search {
   display: flex;
 }
 
 .search-field {
   flex-grow: 1;
+}
+
+.filter-panel {
+  /*border: 1px solid lightgray;*/
+  /*border-radius: 1ex;*/
+}
+
+.filter-panel mat-expansion-panel-header {
+  width: 200px;
 }
 
 .filter {

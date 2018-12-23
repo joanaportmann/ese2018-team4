@@ -1,4 +1,4 @@
-<mat-card class="search-area">
+<div class="search-area">
   <div class="search">
     <mat-form-field appearance="outline" class="search-field">
       <mat-label>Search by job name</mat-label>
@@ -10,25 +10,31 @@
     </button>
   </div>
 
-  <div class="filter">
+  <mat-expansion-panel #filterPanel class="filter-panel mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Extended search
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="filter">
+      <mat-form-field appearance="outline">
+        <mat-label>Search by required skills</mat-label>
+        <input matInput [(ngModel)]="necessarySkills" (keyup.enter)="search()" size="20">
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Search by required skills</mat-label>
-      <input matInput [(ngModel)]="necessarySkills" (keyup.enter)="search()" size="20">
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Search by job description</mat-label>
+        <input matInput [(ngModel)]="description" (keyup.enter)="search()" size="20">
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Search by job description</mat-label>
-      <input matInput [(ngModel)]="description" (keyup.enter)="search()" size="20">
-    </mat-form-field>
-
-    <div class="workload">
-      Maximum percentage: 0%
-      <mat-slider thumbLabel [displayWith]="formatLabel" color="primary" [(ngModel)]="maxPercentage"
-        (change)="search()" min="0" max="100" step="5">
-      </mat-slider>
-      100%
+      <div class="workload">
+        Maximum percentage: 0%
+        <mat-slider thumbLabel [displayWith]="formatLabel" color="primary" [(ngModel)]="maxPercentage" (change)="search()"
+          min="0" max="100" step="5">
+        </mat-slider>
+        100%
+      </div>
     </div>
 
-  </div>
-</mat-card>
+  </mat-expansion-panel>
+</div>

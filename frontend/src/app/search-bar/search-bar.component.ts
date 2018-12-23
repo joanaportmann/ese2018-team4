@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { MatExpansionPanel } from '@angular/material';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
-export class SearchBarComponent {
+export class SearchBarComponent implements OnInit {
+
+  @ViewChild('filterPanel')
+  filterPanel: MatExpansionPanel;
 
   input = '';
   maxPercentage = 100;
@@ -14,6 +18,9 @@ export class SearchBarComponent {
   description = '';
 
   constructor(private router: Router) {
+  }
+  
+  ngOnInit() {
     this.interpret(window.location.pathname.substr(8));
   }
 
@@ -27,12 +34,15 @@ export class SearchBarComponent {
       }
       if (expression[0] === 'percentage') {
         this.maxPercentage = +expression[1];
+        this.filterPanel.open();
       }
       if (expression[0] === 'skills') {
         this.necessarySkills = expression[1];
+        this.filterPanel.open();
       }
       if (expression[0] === 'jobDescription') {
         this.description = expression[1];
+        this.filterPanel.open();
       }
     }
   }
