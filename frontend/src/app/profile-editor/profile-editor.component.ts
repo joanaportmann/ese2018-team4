@@ -5,6 +5,7 @@ import { ErrorStateMatcher, MatDialog, MatSnackBar } from '@angular/material';
 import { DeleteAccountComponent } from "../delete-account/delete-account.component";
 import { User } from '../models/user';
 import { UserService } from '../services/user.service';
+import { ChangePasswordComponent } from "../change-password/change-password.component";
 
 
 @Component({
@@ -39,10 +40,19 @@ export class ProfileEditorComponent {
     const dialogRef = this.dialog.open(DeleteAccountComponent);
     dialogRef.componentInstance.user = this.userService.getUser();
 
-    dialogRef.afterClosed().subscribe( result => {
+    dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog to Delete Account is closed');
-  });
-}
+    });
+  }
+
+  changePassword() {
+    const dialogRef = this.dialog.open(ChangePasswordComponent);
+    dialogRef.componentInstance.user = this.userService.getUser();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog to Delete Account is closed');
+    });
+  }
 
 }
 

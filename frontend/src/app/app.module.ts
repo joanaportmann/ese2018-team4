@@ -50,6 +50,7 @@ import { DemandComponent } from './demand/demand.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SalaryCalculatorComponent } from './salary-calculator/salary-calculator.component';
 import { CareerTippsComponent } from './career-tipps/career-tipps.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { CareerTippsComponent } from './career-tipps/career-tipps.component';
     DemandComponent,
     AboutUsComponent,
     SalaryCalculatorComponent,
-    CareerTippsComponent
+    CareerTippsComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +111,8 @@ import { CareerTippsComponent } from './career-tipps/career-tipps.component';
     ProfilePanelComponent,
     LoginComponent,
     ProfileEditorComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    ChangePasswordComponent
   ],
   providers: [AppComponent, ProfileEditorComponent, {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
   bootstrap: [AppComponent]
